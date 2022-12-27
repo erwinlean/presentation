@@ -149,6 +149,7 @@ const check = () =>{
         };
     });
 };
+
 doc.onclick = check;
 setTimeout(() => {
     create_star();
