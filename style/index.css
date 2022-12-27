@@ -1,0 +1,144 @@
+@font-face {
+    font-family: Myriad;
+    src: url(./fonts/Myriad\ Pro\ Bold.ttf);
+}
+html,body{
+    background: black;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+    font-family: Myriad;
+}
+a{
+    text-decoration: none;
+    z-index: 150;
+    color: white;
+    height: fit-content;
+    text-shadow: white 0px 0 20px;
+}
+li{
+    list-style: none;
+}
+.body_content{
+    width: 100%;
+    overflow: hidden;
+    display: grid;
+}
+.header{
+    display: inline-flex;
+    justify-content: space-between;
+    z-index: 152;
+    background-color: transparent;
+}
+.text_zone{
+    width: auto;
+    padding: 15px;
+    align-self: center;
+    text-align-last: center;
+}
+.text_zone > ul {
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+}
+.text_zone > ul > li{
+    padding: 0 18px 0 18px;
+}
+.networks{
+    width: auto;
+    text-align-last: center;
+    padding: 15px;
+}
+.networks > ul {
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+}
+.networks > ul > li{
+    padding: 0 5px 0 5px;
+    width: auto;
+    height: auto;
+}
+.networks > ul > li > a{
+    width: 100%;
+    height: auto;
+}
+.networks > ul > li > a > img {
+    width: 35px;
+}
+.stars{
+    border-radius: 50%;
+    z-index: 100;
+    position: fixed;
+    opacity: 0.3;
+    animation: appears 3s forwards;
+    -webkit-animation: appears 3s forwards;
+}
+.black_hole{
+    border-radius: 50%;
+    z-index: 120;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    box-shadow: 0px 0px 70px 30px gray;
+    animation: appears 3s forwards;
+    -webkit-animation: appears 3s forwards;
+}
+.info{
+    width: 100%;
+    min-height: 800px; 
+    width: auto;
+    display: flex;
+    margin-top: -120px;
+}
+.info > img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50% 40%;
+    filter:grayscale(0.7);
+    text-shadow: white 0px 0 50px;
+    z-index: 150;
+    align-self: center;
+    padding: 120px;
+}
+.name{
+    align-self: center;
+    font-size: 2.5em;
+    position: relative; 
+	float: left;
+    margin-left: -50px;
+    text-align: center;
+    text-shadow: white 0px 0 10px;
+}
+.name > span {
+    z-index: 150;
+    position:absolute;
+    right:0;
+    z-index: 0;
+    width:0;
+    background: black;
+    border-left: 1px solid white;
+    animation: write 4s steps(30) infinite alternate;
+}
+@keyframes write {
+    from { width: 100% }
+    to { width:0 }
+}
+.footer{
+    display: flex;
+}
+@-webkit-keyframes appears {
+    from { -webkit-transform: rotate(0deg) scale(0.001)}
+    to { -webkit-transform: rotate(360deg) scale(1)}
+}
+@keyframes appears {
+    from { transform: rotate(0deg) scale(0.001); }
+    to { transform: rotate(360deg) scale(1); }
+}
+
+
+.info2{
+    visibility: hidden;
+}
