@@ -126,7 +126,7 @@ li{
     from { width: 100% }
     to { width:0 }
 }
-.footer{
+.play{
     display: flex;
 }
 @-webkit-keyframes appears {
@@ -139,7 +139,7 @@ li{
 }
 
 
-.info2{
+.play-title{
     visibility: hidden;
     color: red;
 }
