@@ -45,7 +45,7 @@ function create_star(){
         let numStarDivs = starDivs.length;
 
         // If the stars are less than 50 it create the star
-        if (numStarDivs < 300){
+        if (numStarDivs < 100){
             // Create star
             let star_create = document.createElement("div");   
             star_create.setAttribute("class", "stars");
@@ -85,7 +85,7 @@ function create_star(){
     //let dom_specific_percentage = percent_of_x(dom_area, 0.01);
 
     // Create the black hole
-    if(document.querySelectorAll("div").length <= 150){
+    if(document.querySelectorAll("div").length <= 100){
         let black_hole = document.createElement("div");
         black_hole.setAttribute("class", "black_hole");
         black_hole.setAttribute("id", "hole");
@@ -94,11 +94,12 @@ function create_star(){
         black_hole.style.top = `${x}px`;
     };
 
-    stars = document.querySelectorAll('div');  
+    
 };
 
 // Constant movement for stars/black hole
 function moves() {
+    stars = document.querySelectorAll('#star, #hole');  
     function animate() {
         stars.forEach(star => {
             let actual_left = parseInt(star.style.left);
@@ -144,6 +145,6 @@ setTimeout(() => {
     create_star();
     moves();
     animate_blackHola();
-}, 1500);
+}, 800);
 
 doc.onclick = create_star;

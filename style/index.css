@@ -143,3 +143,16 @@ li{
     visibility: hidden;
     color: red;
 }
+
+.game_scores{
+    display: grid;
+}
+.game_scores > table{
+    border-collapse: collapse;
+    justify-self: right;
+}
+.game_scores > table > tr,th, td {
+    padding: 5px;
+    border: 1px solid white;
+    text-align-last: auto;
+}

@@ -20,17 +20,12 @@
 
             <div class="text_zone">
                 <ul>
-                    <li><a href="#header">About</a></li>
+                    <li><a href="./index.html">About</a></li>
                     <li><a href="./style/assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
-                    <li><a href="#info2">Contact</a></li>
-                    <li><a href="./game.html">Play</a></li>
+                    <li><a href="./index.html">Contact</a></li>
+                    <li><a href="#canvas">Play</a></li>
                 </ul>
             </div>
-        </div>
-
-        <div class="info" id="perfil_name">
-            <img src="./style/assets/me.jfif" alt="me">
-            <h1 class="name">Erwin Leandro Marte&nbsp&nbsp<span>&#160;</span</h1>
         </div>
 
         <div class="game_scores" id="game_points">
@@ -53,9 +48,13 @@
                 </tr>
             </table>
         </div>
+
+        <div id="game_canvas" class="canvas">
+            <canvas id="canvas"></canvas>
+        </div>
     </div>
 
+    <script type="module" src="./functions/game/index.js"></script>
     <script src="./functions/play_function.js"></script>
-    <script src="./functions/stars_functions.js"></script>
 </body>
 </html>
