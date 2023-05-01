@@ -1,5 +1,3 @@
-"use strict";
-
 const doc = document.querySelector("body");
 const dom_info = doc.getBoundingClientRect();
 let dom_area;
@@ -8,7 +6,6 @@ const colours = ["white","#72076E", "#2B0245" ,"#250096", "#5600f4", "#E923F4"];
 const area_of_the_stars = [];
 let count = 0;
 let stars;
-
 //General Funtions
 const sum_total = (array_to_reduce) =>{
     return array_to_reduce.reduce((acc, act_value) => acc + act_value);
@@ -24,14 +21,11 @@ const percent_of_x = (number_to_look , percent_to) => {
     let rounded_percent = Math.round(divided_multiplied_number);
     return rounded_percent;
 };
-
 // Stars/black hole se deberia modelar con programacion orientada a objectos y llamar al objecto
 function create_star(){
     let repeat = scales.length*Math.PI;
-
     for (let i = 0; i < repeat; i++) {
         count += 1;
-
         // Random
         let height = doc.clientHeight - 50;
         let width = doc.clientWidth - 50;
@@ -39,11 +33,9 @@ function create_star(){
         var y = Math.floor(Math.random() * width);
         let colour = Math.floor(Math.random() * colours.length);
         let scale = Math.floor(Math.random() * scales.length);
-
         // Check number of stars in the DOM actually
         let starDivs = document.querySelectorAll('div[id="star"]');
         let numStarDivs = starDivs.length;
-
         // If the stars are less than 50 it create the star
         if (numStarDivs < 100){
             // Create star
@@ -51,14 +43,12 @@ function create_star(){
             star_create.setAttribute("class", "stars");
             star_create.setAttribute("id", "star");
             doc.appendChild(star_create);
-
             // Styles of the star
             star_create.style.left = `${y}px`;
             star_create.style.top = `${x}px`;
             star_create.style.height = `${scales[scale]}px`;
             star_create.style.width = `${scales[scale]}px`;
             star_create.style.background = colours[colour];
-
             // Depends the scale of the star the scale of the shadow blur and spread
             if(scales[scale] < 1){
                 var blur_radius = 3;
@@ -71,19 +61,15 @@ function create_star(){
                 var spread_radius = 2;
             }
             star_create.style.boxShadow = `0px 0px ${blur_radius}px ${spread_radius}px ${colours[colour]}`;
-
             // Calculate the area of the stars(DIVs) and the area of the universe(DOM)
             let area = area_calc(scales[scale]);
             area_of_the_stars.push(area);
-
             dom_area = dom_info.width * dom_info.height;
         }
     };
-    
     // If the "stars" area in total equals or is bigger than 10% of the total DOM area, create a black hole, to "DELETE" some of the stars
     //let total_area_stars = sum_total(area_of_the_stars);
     //let dom_specific_percentage = percent_of_x(dom_area, 0.01);
-
     // Create the black hole
     if(document.querySelectorAll("div").length <= 100){
         let black_hole = document.createElement("div");
@@ -93,10 +79,7 @@ function create_star(){
         black_hole.style.left = `${y}px`;
         black_hole.style.top = `${x}px`;
     };
-
-    
 };
-
 // Constant movement for stars/black hole
 function moves() {
     stars = document.querySelectorAll('#star, #hole');  
@@ -118,7 +101,6 @@ function moves() {
     };
     requestAnimationFrame(animate);
 };
-
 // Black hole consum funtions
 function black_hole_consume() {
     let hole = document.getElementById("hole");    
@@ -139,12 +121,9 @@ function animate_blackHola (){
     requestAnimationFrame(animate_blackHola)
 }
 
-
-
 setTimeout(() => {
     create_star();
     moves();
     animate_blackHola();
 }, 800);
-
 doc.onclick = create_star;

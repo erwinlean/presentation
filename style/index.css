@@ -2,6 +2,11 @@
     font-family: Myriad;
     src: url(./fonts/Myriad\ Pro\ Bold.ttf);
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 html,body{
     background: black;
     margin: 0;
@@ -137,13 +142,6 @@ li{
     from { transform: rotate(0deg) scale(0.001); }
     to { transform: rotate(360deg) scale(1); }
 }
-
-
-.play-title{
-    visibility: hidden;
-    color: red;
-}
-
 .game_scores{
     display: grid;
 }
