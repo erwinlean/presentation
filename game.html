@@ -8,6 +8,7 @@
     <title>Erwin Leandro Marte</title>
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/game.css">
+    <link rel="stylesheet" href="./style/canvas.css">
 </head>
 <body>
     <div id="content" class="body_content">
@@ -29,29 +30,37 @@
             </div>
         </div>
 
-        <div class="game_scores" id="game_points">
-            <table>
-                <tr>
-                    <th>Number of times game was played</th>
-                    <th>423 </th>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <th>Score</th>
-                </tr>
-                <tr>
-                    <td>pepe</td>
-                    <td>123</td>
-                </tr>
-                <tr>
-                    <td>pepito</td>
-                    <td>345</td>
-                </tr>
-            </table>
-        </div>
-
         <div id="game_canvas" class="canvas">
+            <div>
+                <table>
+                    <tr>
+                        <th id="actualPoints">Points: 0</th>
+                    </tr>
+                </table>
+            </div>
+
             <canvas id="myCanvasGame" style="border: 1px solid white !important"></canvas>
+
+            <div class="game_scores" id="game_points">
+                <table>
+                    <tr>
+                        <th>Number of times game was played</th>
+                        <th>423 </th>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <td>pepe</td>
+                        <td>123</td>
+                    </tr>
+                    <tr>
+                        <td>pepito</td>
+                        <td>345</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 

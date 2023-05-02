@@ -1,3 +1,6 @@
+"use strict";
+
+let actualPoints = document.getElementById("actualPoints")
 let angle = 0;
 let mouseX;
 let mouseY;
@@ -6,9 +9,11 @@ let circleX, circleY;
 let tipX;
 let tipY;
 let direction;
+let detectFunctionActivity = false;
+let meteorRandomSelect = 1;
 // Obtener referencia al canvas y establecer su ancho y altura
 const canvas = document.getElementById("myCanvasGame");
-canvas.width = 1200;
+canvas.width = 800;
 canvas.height = 600; 
 
 // Obtener contexto 2D del canvas
@@ -27,8 +32,8 @@ let count = 0;
 // Función para crear cuadrados pequeños aleatorios
 function createSmallSquare() {
   let x, y;
-  let width = Math.random() * 20 + 10;
-  let height = Math.random() * 20 + 10;
+  let width = Math.random() * 30 + 15;
+  let height = width;
   let speed = Math.random() * 2 + 1;
   let direction = Math.random() * 360;
 
@@ -64,15 +69,16 @@ function createSmallSquare() {
   smallSquares.push(smallSquare);
 }
 
-//test img
+// space cat
 let space_cat = new Image();
-let img = new Image();
+let meteor = new Image();
 space_cat.src = "./style/assets/cat-driver.png"; // ver imagen por una hd
-img.src = "./style/assets/meteor.png"
+meteor.src = "./style/assets/meteor.png";
 // Dibujar
 function draw() {
+
   // Dibujar el triángulo principal
-  // Calcular la posición de la punta del triángulo
+  // Calcular la posición de la punta del triángulo}
   tipX = squareX + 25 + 20 * Math.cos(angle);
   tipY = squareY + 25 + 20 * Math.sin(angle);
   ctx.translate(tipX, tipY);
@@ -85,7 +91,7 @@ function draw() {
   for (let i = 0; i < smallSquares.length; i++) {
     let smallSquare = smallSquares[i];
     // Dibujar la imagen en lugar del cuadrado amarillo
-    ctx.drawImage(img, smallSquare.x, smallSquare.y, smallSquare.width, smallSquare.height);
+    ctx.drawImage(meteor, smallSquare.x, smallSquare.y, smallSquare.width, smallSquare.height);
     smallSquare.x += Math.cos(smallSquare.direction * Math.PI / 180) * smallSquare.speed;
     smallSquare.y += Math.sin(smallSquare.direction * Math.PI / 180) * smallSquare.speed;
     // Si un cuadrado pequeño sale del canvas, eliminarlo
@@ -98,7 +104,7 @@ function draw() {
   }
 }
 
-  // red circle  
+  // red circle > shot
   if (shouldDrawCircle) {
     // Dibuja el círculo rojo
     let pointinX = circleX += Math.cos(direction) * 10;
@@ -117,15 +123,17 @@ function draw() {
 // Función para revisar colisión entre el círculo y los cuadrados pequeños
 function checkCollision() {
   for (let i = 0; i < smallSquares.length; i++) {
+    //revision de distancias
     let smallSquare = smallSquares[i];
     let dx = circleX - (smallSquare.x + smallSquare.width / 2);
     let dy = circleY - (smallSquare.y + smallSquare.height / 2);
     let distance = Math.sqrt(dx * dx + dy * dy);
     if (distance < 3 + Math.sqrt(smallSquare.width * smallSquare.width + smallSquare.height * smallSquare.height) / 2) {
-      // Eliminar el cuadrado pequeño de la lista
+      // Eliminar el cuadrado pequeño(asteoride ) de la lista
       smallSquares.splice(i, 1);
       count = count + 1;
       console.log(count)
+      actualPoints.innerHTML = `<th>Points : ${count}</th>`
     }
   }
 
@@ -136,7 +144,7 @@ function checkCollision() {
     let distance = Math.sqrt(dx * dx + dy * dy);
 
     if (distance < 20 + smallSquare.width / 2) {
-      // Colisión detectada
+      // Colisión detectada elimina nave
       destroyTriangle();
       // Eliminar el cuadrado pequeño de la lista
       smallSquares.splice(i, 1);
@@ -155,6 +163,7 @@ function destroyTriangle() {
   // Eliminar el triángulo principal
   squareX = -100;
   squareY = -100;
+  detectFunctionActivity = true;
 }
 
 // Detectar cuando se presionan las teclas de flecha
@@ -192,26 +201,27 @@ canvas.addEventListener("click", function(event){
   // Definir el estilo de relleno del círculo como rojo
   circleX = tipX;
   circleY = tipY;
-  shouldDrawCircle = true;
 
-  
-  // Calcular la dirección del mouse con respecto al centro del círculo gris
-  let dx = mouseX - tipX;
-  let dy = mouseY - tipY;
-  circleList.push({x: circleX, y: circleY});
-  direction = Math.atan2(dy, dx);
+  //Detectar si la nave fue destruida o no, segun true o false, para que pueda seguir disparando o no
+  if(detectFunctionActivity==false){
+    shouldDrawCircle = true;
 
-  // Mover gradualmente el círculo en la dirección del mouse hasta que llegue al borde del canvas
-  let intervalId = setInterval(function() {
-    // Calcular las nuevas coordenadas del círculo
-    circleX += Math.cos(direction) * 10;
-    circleY += Math.sin(direction) * 10;
-
-    // Si el círculo está en el borde del canvas, detener el intervalo
-    if (circleX < 0 || circleX > canvas.width || circleY < 0 || circleY > canvas.height) {
-      clearInterval(intervalId);
-    }
-  }, 10);
+    // Calcular la dirección del mouse con respecto al centro del círculo gris
+    let dx = mouseX - tipX;
+    let dy = mouseY - tipY;
+    circleList.push({x: circleX, y: circleY});
+    direction = Math.atan2(dy, dx);
+    // Mover gradualmente el círculo en la dirección del mouse hasta que llegue al borde del canvas
+    let intervalId = setInterval(function() {
+      // Calcular las nuevas coordenadas del círculo
+      circleX += Math.cos(direction) * 10;
+      circleY += Math.sin(direction) * 10;
+      // Si el círculo está en el borde del canvas, detener el intervalo
+      if (circleX < 0 || circleX > canvas.width || circleY < 0 || circleY > canvas.height) {
+        clearInterval(intervalId);
+      }
+    }, 10);
+  }
 });
 
 
@@ -221,7 +231,7 @@ canvas.addEventListener("click", function(event){
 // Agregar cuadrados pequeños aleatorios cada 2 segundos
 setInterval(function() {
   createSmallSquare();
-}, 100); //Crear mas o menos cuadrados
+}, 80); //Crear mas o menos cuadrados
 
 // Función para animar el canvas
 function animate() {
