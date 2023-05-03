@@ -72,7 +72,7 @@ function createSmallSquare() {
 // space cat
 let space_cat = new Image();
 let meteor = new Image();
-space_cat.src = "./style/assets/cat-driver.png"; // ver imagen por una hd
+space_cat.src = "./style/assets/cat-driver_1.png"; // ver imagen por una hd
 meteor.src = "./style/assets/meteor.png";
 // Dibujar
 function draw() {
@@ -83,7 +83,7 @@ function draw() {
   tipY = squareY + 25 + 20 * Math.sin(angle);
   ctx.translate(tipX, tipY);
   ctx.rotate(angle + Math.PI / 2);
-  ctx.drawImage(space_cat, -20, -20, 25, 60); // manejar el tamaño de la imagen aca
+  ctx.drawImage(space_cat, -95, -5, 100 , 125); // manejar el tamaño de la imagen aca > y de donde dispara
   ctx.rotate(-angle - Math.PI / 2);
   ctx.translate(-tipX, -tipY);
 
@@ -192,7 +192,7 @@ canvas.addEventListener('mousemove', function(event) {
   mouseY = event.clientY - rect.top;
 
   // Calcular el ángulo de rotación del triángulo en base a la posición del mouse
-  angle = Math.atan2(mouseY - (squareY + 25), mouseX - (squareX + 25));
+  angle = Math.atan2(mouseY - (squareY + 240), mouseX - (squareX + 240)); // > a donde apunta mira del mouse
 });
 
 // disparo
