@@ -38,8 +38,8 @@ restartButton.addEventListener("click", function() {
   detectFunctionActivity = false;
   shouldDrawCircle = false;
 
-  // Iniciar la animación nuevamentes
-  animationId = requestAnimationFrame(animate);
+  // Iniciar la animación nuevamentes (cd)
+  startCountdown();
 });
 
 // Función para crear cuadrados pequeños aleatorios
@@ -305,7 +305,7 @@ setInterval(function() {
 
   // Check colision con meteorito, para eliminar o no  el "triangulo"
   checkCollision();
-}, 80); //Crear mas o menos cuadrados
+}, 120); //Crear mas o menos cuadrados
 
 // Función para animar el canvas
 function animate() {
@@ -319,7 +319,48 @@ function animate() {
   animationId = requestAnimationFrame(animate);
 }
 
+// Función para dibujar la cuenta regresiva
+function drawCountdown(countdown) {
+  // Limpiar el canvas antes de dibujar el número
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Establecer las propiedades de estilo para el número
+  ctx.font = "bold 100px Arial";
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  // Dibujar el número en el centro del canvas
+  ctx.fillText(countdown, canvas.width / 2, canvas.height / 2);
+}
+
+// Función para iniciar la cuenta regresiva
+function startCountdown() {
+  let countdown = 3;
+
+  // Dibujar el número inicial antes de esperar un segundo
+  drawCountdown(countdown);
+
+  // Esperar un segundo y dibujar el siguiente número
+  setTimeout(() => {
+    countdown--;
+    drawCountdown(countdown);
+
+    // Esperar otro segundo y dibujar el último número
+    setTimeout(() => {
+      countdown--;
+      drawCountdown(countdown);
+
+      // Esperar un segundo más y comenzar la animación
+      setTimeout(() => {
+        animationId = requestAnimationFrame(animate);
+      }, 1000);
+    }, 1000);
+  }, 1000);
+}
+
+
 // Comenzar la animación del canvas
 setTimeout(() => {
-  animationId = requestAnimationFrame(animate);
-}, 3000);
+  startCountdown();
+}, 500);

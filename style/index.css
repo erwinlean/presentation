@@ -24,6 +24,16 @@ a:hover{
     text-decoration: line-through;
     text-shadow: white 0px 0 22px;
 }
+a:active {
+    text-decoration: underline;
+    text-decoration-color: white;
+    outline: none;
+}
+a:focus {
+    text-decoration: underline;
+    text-decoration-color: white;
+    outline: none;
+}
 li{
     list-style: none;
 }
@@ -50,7 +60,11 @@ li{
     margin: 0;
 }
 .text_zone > ul > li{
-    padding: 0 18px 0 18px;
+    padding: 10px 25px 10px 25px;
+}
+.text_zone > ul > li > a{
+    font-size: 20px;
+    z-index: 352;
 }
 .networks {
     width: auto;
@@ -82,17 +96,16 @@ li{
     min-height: 800px; 
     width: auto;
     display: flex;
-    margin-top: -120px;
+    margin-top: 80px;
 }
 .name{
     align-self: center;
     font-size: 2.5em;
     position: relative; 
 	float: left;
-    margin-top: 20%;
-    margin-left: 35%;
+    margin-top: -20%;
+    margin-left: 20%;
     text-align: center;
-    text-shadow: white 0px 0 10px;
 }
 .name > span {
     z-index: 150;
@@ -111,14 +124,6 @@ li{
 .play{
     display: flex;
 }
-/*@-webkit-keyframes appears {*/
-/*    from { -webkit-transform: rotate(0deg) scale(0.001)}*/
-/*    to { -webkit-transform: rotate(360deg) scale(1)}*/
-/*}*/
-/*@keyframes appears {*/
-/*    from { transform: rotate(0deg) scale(0.001); }*/
-/*    to { transform: rotate(360deg) scale(1); }*/
-/*}*/
 .game_scores{
     display: grid;
 }

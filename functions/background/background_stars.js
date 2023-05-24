@@ -13,7 +13,8 @@ canvas.height = window.innerHeight;
 const circles = [];
 const numCircles = 100;
 const scales = [1.15,3,2,4,3,2.25, 1.50 ,1.75 ,0.5 ,0.30 ,0.25 ,2.75,3.2,1.3,2.35,2.05,0.2,0.6,0.9,1.9,2.7,4,3.05,];
-const colours = ["white","#72076E", "#2B0245" ,"#250096", "#5600f4", "#E923F4"];
+//const colours = ["white","#72076E", "#2B0245" ,"#250096", "#5600f4", "#E923F4"];
+const colours = ["white", "#0A1776", "#071158","#090D58", "#000158","orange", "#132BDF", "yellow", "grey","#071158","#090D58", "#000158", "#1C2B58", "#132BDF", "grey","#071158","#090D58", "#000158", "#1C2B58"];
 let circle;
 
 // Función para dibujar los círculos en el lienzo

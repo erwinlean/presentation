@@ -1,11 +1,25 @@
+.bodyBackground{
+    background: url(./assets/background_stars.jpg);
+    background-repeat: repeat;
+}
 .canvas{
     display: grid;
     padding: 50px;
     justify-content: center;
+    margin-top: 50px;
 }
 .canvas > div{
     display: flex;
 }
-th > #actualPoints{
-    width: 30%;
+.btnGame{
+    background: black;
+    color: white;
+    border: 1px solid white;
+    padding: 5px
+}
+.btnGame:hover{
+    color: rgb(43, 43, 43);;
+}
+.btnGame:active{
+    border: 1px solid rgb(43, 43, 43);
 }
