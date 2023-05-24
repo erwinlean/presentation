@@ -19,46 +19,30 @@
                 </ul>
             </div>
 
-            <canvas id="myCanvas"></canvas>
-
-
             <div class="text_zone">
                 <ul>
-                    <li><a href="#header">About</a></li>
+                    <li><a href="#body_content">About</a></li>
                     <li><a href="./style/assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
                     <li><a href="#info2">Contact</a></li>
                     <li><a href="./game.html">Play</a></li>
                 </ul>
             </div>
+
+            <canvas id="holeCanvas" class="hole"></canvas>
+            <canvas id="starsCanvas" class="stars"></canvas>
+
         </div>
 
         <div class="info" id="perfil_name">
-            <img src="./style/assets/me.jfif" alt="me">
             <h1 class="name">Erwin Leandro Marte&nbsp&nbsp<span>&#160;</span</h1>
-        </div>
-
-        <div class="game_scores" id="game_points">
-            <table>
-                <tr>
-                    <th>Number of times game was played</th>
-                    <th>423 </th>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <th>Score</th>
-                </tr>
-                <tr>
-                    <td>pepe</td>
-                    <td>123</td>
-                </tr>
-                <tr>
-                    <td>pepito</td>
-                    <td>345</td>
-                </tr>
-            </table>
         </div>
     </div>
 
+    <div class="restartStars">
+        <a id="restartStars" href="#">New Stars</a>
+    </div>
+
     <script src="./functions/background_stars.js"></script>
+    <script src="./functions/background_hole.js"></script>
 </body>
 </html>

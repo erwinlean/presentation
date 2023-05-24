@@ -17,10 +17,12 @@ html,body{
 }
 a{
     text-decoration: none;
-    z-index: 150;
     color: white;
-    height: fit-content;
     text-shadow: white 0px 0 20px;
+}
+a:hover{
+    text-decoration: line-through;
+    text-shadow: white 0px 0 22px;
 }
 li{
     list-style: none;
@@ -50,7 +52,7 @@ li{
 .text_zone > ul > li{
     padding: 0 18px 0 18px;
 }
-.networks{
+.networks {
     width: auto;
     text-align-last: center;
     padding: 15px;
@@ -60,36 +62,20 @@ li{
     padding: 0;
     margin: 0;
 }
-.networks > ul > li{
-    padding: 0 5px 0 5px;
-    width: auto;
-    height: auto;
+.networks > ul > li {
+    padding: 0 5px;
 }
-.networks > ul > li > a{
+.networks > ul > li > a {
+    display: block;
     width: 100%;
     height: auto;
 }
 .networks > ul > li > a > img {
     width: 35px;
+    transition: filter 0.3s ease;
 }
-.stars{
-    border-radius: 50%;
-    z-index: 100;
-    position: fixed;
-    opacity: 0.3;
-    animation: appears 3s forwards;
-    -webkit-animation: appears 3s forwards;
-}
-.black_hole{
-    border-radius: 50%;
-    z-index: 120;
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    background-color: black;
-    box-shadow: 0px 0px 70px 30px gray;
-    animation: appears 3s forwards;
-    -webkit-animation: appears 3s forwards;
+.networks > ul > li > a > img:hover {
+    filter: drop-shadow(0 0 10px white);
 }
 .info{
     width: 100%;
@@ -98,22 +84,13 @@ li{
     display: flex;
     margin-top: -120px;
 }
-.info > img{
-    width: 150px;
-    height: 150px;
-    border-radius: 50% 40%;
-    filter:grayscale(0.7);
-    text-shadow: white 0px 0 50px;
-    z-index: 150;
-    align-self: center;
-    padding: 120px;
-}
 .name{
     align-self: center;
     font-size: 2.5em;
     position: relative; 
 	float: left;
-    margin-left: -50px;
+    margin-top: 20%;
+    margin-left: 35%;
     text-align: center;
     text-shadow: white 0px 0 10px;
 }
@@ -134,14 +111,14 @@ li{
 .play{
     display: flex;
 }
-@-webkit-keyframes appears {
-    from { -webkit-transform: rotate(0deg) scale(0.001)}
-    to { -webkit-transform: rotate(360deg) scale(1)}
-}
-@keyframes appears {
-    from { transform: rotate(0deg) scale(0.001); }
-    to { transform: rotate(360deg) scale(1); }
-}
+/*@-webkit-keyframes appears {*/
+/*    from { -webkit-transform: rotate(0deg) scale(0.001)}*/
+/*    to { -webkit-transform: rotate(360deg) scale(1)}*/
+/*}*/
+/*@keyframes appears {*/
+/*    from { transform: rotate(0deg) scale(0.001); }*/
+/*    to { transform: rotate(360deg) scale(1); }*/
+/*}*/
 .game_scores{
     display: grid;
 }
@@ -153,4 +130,19 @@ li{
     padding: 5px;
     border: 1px solid white;
     text-align-last: auto;
+}
+.restartStars{
+    display: flex;
+    position: relative;
+    z-index: 300;
+}
+.restartStars > a{
+    background: transparent;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+    font-family: Myriad;
+    height: fit-content;
+    text-shadow: white 0px 0 20px;
 }

@@ -1,0 +1,12 @@
+.hole{
+    position: absolute;
+    z-index: -10;
+    height: auto;
+    max-height: 1200px;
+}
+.stars{
+    height: auto;
+    max-height: 1200px;
+    position: absolute;
+    z-index: -15;
+}

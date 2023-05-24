@@ -1,3 +1,11 @@
 .canvas{
+    display: grid;
+    padding: 50px;
+    justify-content: center;
+}
+.canvas > div{
     display: flex;
+}
+th > #actualPoints{
+    width: 30%;
 }

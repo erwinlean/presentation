@@ -1,18 +1,13 @@
 "use strict";
 
+let restartButton = document.getElementById("restartGame");
 let actualPoints = document.getElementById("actualPoints");
 let actualLives = document.getElementById("actualLives");
-let lives = 3;
 let angle = 0;
-let mouseX;
-let mouseY;
 let shouldDrawCircle = false;
-let circleX, circleY; 
-let tipX;
-let tipY;
-let direction;
 let detectFunctionActivity = false;
-let meteorRandomSelect = 1;
+let circleX, circleY, tipX ,tipY ,direction, mouseX, mouseY, animationId;
+
 // Obtener referencia al canvas y establecer su ancho y altura
 const canvas = document.getElementById("myCanvasGame");
 canvas.width = 800;
@@ -29,6 +24,23 @@ let smallSquares = [];
 let circleList = [];
 //colisions
 let count = 0;
+
+restartButton.addEventListener("click", function() {
+  // Detener la animación actual
+  cancelAnimationFrame(animationId);
+
+  // Reiniciar las variables y listas necesarias
+  smallSquares = [];
+  circleList = [];
+  count = 0;
+  squareX = 250;
+  squareY = 250;
+  detectFunctionActivity = false;
+  shouldDrawCircle = false;
+
+  // Iniciar la animación nuevamentes
+  animationId = requestAnimationFrame(animate);
+});
 
 // Función para crear cuadrados pequeños aleatorios
 // Función para crear cuadrados pequeños aleatorios
@@ -69,18 +81,19 @@ function createSmallSquare() {
     direction: direction
   };
   smallSquares.push(smallSquare);
-}
+};
 
 // space cat
 let space_cat = new Image();
 let meteor = new Image();
 space_cat.src = "./style/assets/space_cat_DALLE.png"; // ver imagen por una hd
 meteor.src = "./style/assets/meteor.png";
+
+
 // Dibujar
 function draw() {
-
   // Dibujar el triángulo principal
-  // Calcular la posición de la punta del triángulo}
+  // Calcular la posición de la punta del triángulo
   tipX = squareX + 25 + 20 * Math.cos(angle);
   tipY = squareY + 25 + 20 * Math.sin(angle);
   ctx.translate(tipX, tipY);
@@ -88,6 +101,7 @@ function draw() {
   ctx.drawImage(space_cat, -95, -40, 120 , 135); // manejar el tamaño de la imagen aca > y de donde dispara
   ctx.rotate(-angle - Math.PI / 2);
   ctx.translate(-tipX, -tipY);
+  
 
   // Dibujar los cuadrados pequeños y actualizar su posición
   for (let i = 0; i < smallSquares.length; i++) {
@@ -103,23 +117,9 @@ function draw() {
       const index = smallSquares.indexOf(smallSquare);
       // Eliminar el cuadrado pequeño de la lista
       smallSquares.splice(index, 1);
-  }
-}
+    };
+  };
 
-  // red circle > shot > OLD SHOT, circle shot not LASER
-  //if (shouldDrawCircle) {
-  //  // Dibuja el círculo rojo
-  //  let pointinX = circleX += Math.cos(direction) * 10;
-  //  let pointinY = circleY += Math.sin(direction) * 10;
-  //  for(let i=0; i<circleList.length; i++){
-  //    ctx.beginPath();
-  //    ctx.fillStyle = 'red';
-  //    ctx.arc(pointinX, pointinY, 3, 0, 2 * Math.PI);
-  //    ctx.fill();
-  //  }
-//
-  //  checkCollision();
-  //}
   if (shouldDrawCircle) {
     // Dibuja la línea roja
     let lineLength = 50; // longitud de la línea
@@ -132,25 +132,29 @@ function draw() {
     ctx.moveTo(circleX, circleY);
     ctx.lineTo(pointinX, pointinY);
     ctx.stroke();
-  
-    checkCollision();
-  }
-  
+  };
 }
 
 // Función para revisar colisión entre el círculo y los cuadrados pequeños
 function checkCollision() {
+  // Update points
+  actualPoints.innerHTML = `<th>Points: ${count}</th>`;
+
   for (let i = 0; i < smallSquares.length; i++) {
-    //revision de distancias
     let smallSquare = smallSquares[i];
     let dx = circleX - (smallSquare.x + smallSquare.width / 2);
     let dy = circleY - (smallSquare.y + smallSquare.height / 2);
     let distance = Math.sqrt(dx * dx + dy * dy);
-    if (distance < 3 + Math.sqrt(smallSquare.width * smallSquare.width + smallSquare.height * smallSquare.height) / 2) {
-      // Eliminar el cuadrado pequeño(asteoride ) de la lista
+
+    let collisionRadius = Math.sqrt(
+      smallSquare.width * smallSquare.width +
+      smallSquare.height * smallSquare.height
+    ) / 2;
+
+    if (distance < 3 + collisionRadius) {
+      // Eliminar el cuadrado pequeño (asteroide) de la lista
       smallSquares.splice(i, 1);
       count = count + 1;
-      console.log(count)
     }
   }
 
@@ -160,8 +164,8 @@ function checkCollision() {
     let dy = tipY - (smallSquare.y + smallSquare.height / 2);
     let distance = Math.sqrt(dx * dx + dy * dy);
 
-    if (distance < 20 + smallSquare.width / 2) {
-      // Colisión detectada elimina nave
+    if (distance < 20 + smallSquare.width / 2 || distance < 20 + smallSquare.height / 2) {
+      // Colisión detectada, eliminar nave
       destroyTriangle();
       // Eliminar el cuadrado pequeño de la lista
       smallSquares.splice(i, 1);
@@ -173,19 +177,14 @@ function checkCollision() {
 // Función para destruir el triángulo principal
 function destroyTriangle() {
 
-  // Contavilizador de vidas
-  lives = lives - 1;
-  console.log(lives)
-  actualPoints.innerHTML = `<th>Points : ${count}</th>`;
-  if(lives === 3){
-    actualLives.innerHTML = `<th>${lives.lives} ${lives.lives} ${lives.lives}</th>`;
-  }else if(lives===2){
-    actualLives.innerHTML = `<th>${lives.lives} ${lives.lives}</th>`;
-  }else if (lives===1){
-    actualLives.innerHTML = `<th>${lives.lives}</th>`;
-  }else if (lives === 0){
-    actualLives.innerHTML = `<th> </th>`;
+  // Clear meteors step by step
+  while(circleList.length > 0 && smallSquares.length > 0){
+    circleList.pop();
+    smallSquares.pop();
   }
+
+  //console.log("Vidas actuales: " + lives)
+  actualPoints.innerHTML = `<th>Points : ${count}</th>`;
 
   // Destruccion del gato espacial > ex triangulo
   ctx.beginPath();
@@ -252,23 +251,7 @@ setInterval(function() {
   squareY += dy;
 }, 10); // ejecutar la verificación de teclas cada 10 milisegundos
 
-// OLD MOVIMENT not diagonal moviment here
-//document.addEventListener("keydown", function(event) {
-//  if (event.code === "ArrowUp" || event.code === "KeyW") {
-//    squareY -= 3;
-//  } else if (event.code === "ArrowRight" || event.code === "KeyD") {
-//    squareX += 3;
-//  } else if (event.code === "ArrowDown" || event.code === "KeyS") {
-//    squareY += 3;
-//  } else if (event.code === "ArrowLeft" || event.code === "KeyA") {
-//    squareX -= 3;
-//  }
-//
-//  //console.log("Posicion del mouse: " + mouseX +" "+ mouseY);
-//  //console.log("Posicion del triangulo: " + squareY + " " + squareX);
-//});
-
-//mouse
+// Mouse
 canvas.addEventListener('mousemove', function(event) {
   // Obtener la posición del mouse en el canvas
   // Calcular la posición del mouse en el canvas
@@ -315,8 +298,14 @@ canvas.addEventListener("click", function(event){
 
 // Agregar cuadrados pequeños aleatorios cada 2 segundos
 setInterval(function() {
-  createSmallSquare();
-}, 800); //Crear mas o menos cuadrados
+  // Si existe el "triangulo" seguiran apareciendo meteoritos
+  if(detectFunctionActivity==false){
+    createSmallSquare();
+  }
+
+  // Check colision con meteorito, para eliminar o no  el "triangulo"
+  checkCollision();
+}, 80); //Crear mas o menos cuadrados
 
 // Función para animar el canvas
 function animate() {
@@ -327,8 +316,10 @@ function animate() {
   draw();
 
   // Solicitar la siguiente animación
-  requestAnimationFrame(animate);
+  animationId = requestAnimationFrame(animate);
 }
 
 // Comenzar la animación del canvas
-animate();
+setTimeout(() => {
+  animationId = requestAnimationFrame(animate);
+}, 3000);
