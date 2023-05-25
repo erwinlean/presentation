@@ -1,11 +1,10 @@
 "use strict";
 
-// EXAMPLE > POST new game data
-//const newData = {
-//    usersName: 'user4',
-//    gamePoints: 800,
-//    timesPlayed: 2
-//};
+//let newData = {
+//    "usersName": "userrt46",
+//    "gamePoints": 560,
+//    "timesPlayed": 1
+//}
 //
 //fetch('https://sore-erin-goldfish-tutu.cyclic.app/api/game/add', {
 //    method: 'POST',
@@ -21,7 +20,7 @@
 //.catch(error => {
 //    console.log(error);
 //});
-//
+
 //// DELETE user data
 //const username = 'theUsernameHere';
 //

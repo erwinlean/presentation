@@ -15,20 +15,43 @@ html,body{
     color: white;
     font-family: Myriad;
 }
-a{
+a {
     text-decoration: none;
     color: white;
     text-shadow: white 0px 0 20px;
+    z-index: 350;
+    overflow: hidden;
 }
-a:hover{
-    text-decoration: line-through;
-    text-shadow: white 0px 0 22px;
-    filter: drop-shadow(0 0 10px white);
+#content.body_content > .header .text_zone ul li a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    overflow: hidden;
+    text-shadow: white 0px 0 20px;
+    z-index: 350;
 }
-a:focus {
-    text-decoration: underline;
-    text-decoration-color: white;
-    outline: none;
+#content.body_content > .header .text_zone ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 9px;
+    width: 0;
+    height: 4px;
+    background-color: black;
+    opacity: 0;
+    z-index: 350;
+    transition: width 0.5s, opacity 0.5s, left 0.5s;
+    overflow: hidden;
+}
+#content.body_content > .header .text_zone ul li a:hover {
+    filter: drop-shadow(0 0 20px white);
+    overflow: hidden;
+}
+#content.body_content > .header .text_zone ul li a:hover::after {
+    left: -13px;
+    width: 150%;
+    opacity: 0.9;
+    overflow: hidden;
 }
 li{
     list-style: none;
@@ -66,6 +89,7 @@ li{
     width: auto;
     text-align-last: center;
     padding: 15px;
+    overflow: visible;
 }
 .networks > ul {
     display: inline-flex;
@@ -85,7 +109,10 @@ li{
     transition: filter 0.3s ease;
 }
 .networks > ul > li > a > img:hover {
-    filter: drop-shadow(0 0 10px white);
+    transform: scale(1.05);
+}
+.networks > ul > li:last-child > a > img:hover {
+    transform: scale(1.50);
 }
 .info{
     width: 100%;
@@ -132,3 +159,35 @@ li{
     height: fit-content;
     text-shadow: grey 0px 0 8px;
 }
+.restartStars > a:hover{
+    filter: drop-shadow(0 0 10px white);
+}
+
+/*Scroll style*/
+/*
+.visible {
+    opacity: 1;
+    transition: opacity 1s;
+}
+.fade-in.visible {
+    animation: fadeInAnimation 1s;
+}
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.zoom-in {
+    animation: zoomAnimation 3s;
+}
+@keyframes zoomAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}*/

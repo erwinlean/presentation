@@ -14,8 +14,9 @@
         <div class="header">
             <div class="networks">
                 <ul>
-                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="github"></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin"></a></li>
+                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="github" title="github"></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin" title="linkedin"></a></li>
+                    <li><a target="_self" href="#" id="restartStars"><img src="./assets/star_icon.png" alt="create New Stars" title="create New Stars"></a></li>
                 </ul>
             </div>
 
@@ -32,16 +33,28 @@
             <canvas id="starsCanvas" class="stars"></canvas>
 
         </div>
-
-        <div class="info" id="perfil_name">
-            <h1 class="name">Erwin Leandro Marte&nbsp&nbsp<span>&#160;</span</h1>
-        </div>
     </div>
 
-    <div class="restartStars">
-        <a id="restartStars" href="#">Add stars</a>
+    <div class="info" id="perfil_name">
+        <h1 class="name">Erwin Leandro Marte&nbsp&nbsp<span>&#160;</span</h1>
     </div>
 
+
+    <!-- Scrolling new info test
+    <div class="fade-in">
+        <p>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen</p>
+    </div>
+
+    <div class="fade-in">
+        <p>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen</p>
+    </div>
+
+    <div class="fade-in">
+        <p>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen</p>
+    </div>
+    -->
+
+    <script src="./functions/background/scroll.js"></script>
     <script src="./functions/background/background_stars.js"></script>
     <script src="./functions/background/background_hole.js"></script>
 </body>

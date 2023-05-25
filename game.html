@@ -43,23 +43,17 @@
             <div>
                 <canvas id="myCanvasGame" style="border: 1px solid white !important"></canvas>
 
-                <div class="game_scores" id="game_points">
-                    <table>
+                <div class="game_scores">
+                    <div class="loading">
+                        <img src="/assets/loading.gif" alt="Loading">
+                    </div>
+                    <table id="game_points">
                         <tr>
-                            <th>Number of times game was played</th>
-                            <th>423 </th>
+                            <th colspan="2" rowspan="1">Number Times game was played: <br><br>sdf</th>
                         </tr>
                         <tr>
-                            <th>Name</th>
-                            <th>Score</th>
-                        </tr>
-                        <tr>
-                            <td>pepe</td>
-                            <td>123</td>
-                        </tr>
-                        <tr>
-                            <td>pepito</td>
-                            <td>345</td>
+                            <td>Name</td>
+                            <td>Score</td>
                         </tr>
                     </table>
                 </div>
@@ -68,7 +62,7 @@
     </div>
 
     <script src="./functions/game/index.js"></script>
-    <script src="./functions/apiMannagment/apiGet.js"></script>
-    <script src="./functions/apiMannagment/apiPost.js"></script>
+    <script src="./functions/game/positionsTable.js"></script>
+    <script src="./functions/game/formGame.js"></script>
 </body>
 </html>
