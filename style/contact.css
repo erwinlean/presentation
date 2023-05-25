@@ -2,9 +2,9 @@
     display: flex;
     position: relative;
     width: 100%;
+    height:min-content;
     padding: 25px;
     z-index: 300;
-    overflow: hidden;
     justify-content: center; 
 }
 .formContainer > form >h3 {
@@ -16,7 +16,6 @@ form {
     color: white;
     margin: 80px 0 0 0;
     padding: 10px;
-    overflow: hidden;
     font-family: Myriad;
     height: fit-content;
     text-shadow: white 0px 0 20px;
@@ -34,14 +33,21 @@ input[type="text"],input[type="email"],textarea {
     background-color: transparent;
     color: white;
     font-family: Myriad;
+    border-radius: 5px;
 }
 input[type="submit"] {
-    background-color: white;
-    color: black;
+    background-color: transparent;
+    color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 15px;
     cursor: pointer;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 input[type="submit"]:hover {
-    background-color: lightgray;
+    color: rgb(185, 185, 185);
+    filter: drop-shadow(0 0 10px rgb(185, 185, 185));
+}
+input[type="submit"]:active {
+    border: 1px solid rgb(185, 185, 185);
 }

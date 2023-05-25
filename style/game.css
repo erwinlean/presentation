@@ -1,25 +1,51 @@
 .bodyBackground{
-    background: url(./assets/background_stars.jpg);
-    background-repeat: repeat;
+    background: url(https://i.pinimg.com/originals/e8/f0/5f/e8f05fc05958d026a472f3fa2a284994.jpg);
+    
 }
 .canvas{
+    width: 100%;
     display: grid;
     padding: 50px;
     justify-content: center;
     margin-top: 50px;
 }
 .canvas > div{
+    width: 100%;
     display: flex;
 }
+#game_canvas > div:nth-child(1) > table{
+    border-spacing: 0px;
+}
+.points{
+    padding: 10px;
+}
 .btnGame{
+    padding: 0 10px;
     background: black;
     color: white;
     border: 1px solid white;
-    padding: 5px
+    transition: filter 0.3s ease;
 }
 .btnGame:hover{
-    color: rgb(43, 43, 43);;
+    text-decoration: line-through;
+    filter: drop-shadow(0 0 7px white);
 }
 .btnGame:active{
-    border: 1px solid rgb(43, 43, 43);
+    text-decoration: line-through;
+    filter: drop-shadow(0 0 7px grey);
+}
+.play{
+    display: flex;
+}
+.game_scores{
+    display: grid;
+}
+.game_scores > table{
+    border-collapse: collapse;
+    justify-self: right;
+}
+.game_scores > table > tr,th, td {
+    padding: 5px;
+    border: 1px solid white;
+    text-align-last: auto;
 }

@@ -25,22 +25,21 @@ function drawStars() {
   for (let i = 0; i < circles.length; i++) {
     const circle = circles[i];
 
-    // Dibujar el círculo
     // Dibujar el círculo con sombra
     context.beginPath();
     context.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
     context.fillStyle = circle.color;
-    context.shadowColor = circle.color; // Color de la sombra
-    context.shadowBlur = 10; // Desenfoque de la sombra
-    context.shadowOffsetX = 0; // Desplazamiento en el eje x de la sombra
-    context.shadowOffsetY = 0; // Desplazamiento en el eje y de la sombra
+    context.shadowColor = circle.color; 
+    context.shadowBlur = 10;  
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = 0;
     context.fill();
     context.closePath();
     // Actualizar la posición del círculo
     circle.x += circle.dx;
     circle.y += circle.dy;
-    // Comprobar los límites del lienzo
 
+    // Comprobar los límites del lienzo
     if (circle.x + circle.radius > canvas.width || circle.x - circle.radius < 0) {
       circle.dx = -circle.dx;
     }
@@ -61,10 +60,10 @@ function stars(numOfStars) {
     circle = {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      radius: Math.random() * 2 + 1 * normalizedRandomScale, // Escala el radio
-      dx: Math.random() * 0.4 - 0.2, // Velocidad en el eje x entre -0.1 y 0.1
-      dy: Math.random() * 0.4 - 0.2, // Velocidad en el eje y entre -0.1 y 0.1
-      color: randomColor, // Color aleatorio
+      radius: Math.random() * 2 + 1 * normalizedRandomScale,
+      dx: Math.random() * 0.4 - 0.2,
+      dy: Math.random() * 0.4 - 0.2,
+      color: randomColor,
     };
     circles.push(circle);
   };
@@ -81,7 +80,7 @@ function restartStars(){
   }
 };
 
-// Iniciar la animación
+// Init
 drawStars();
 stars(numCircles);
 

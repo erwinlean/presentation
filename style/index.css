@@ -23,11 +23,7 @@ a{
 a:hover{
     text-decoration: line-through;
     text-shadow: white 0px 0 22px;
-}
-a:active {
-    text-decoration: underline;
-    text-decoration-color: white;
-    outline: none;
+    filter: drop-shadow(0 0 10px white);
 }
 a:focus {
     text-decoration: underline;
@@ -121,21 +117,6 @@ li{
     from { width: 100% }
     to { width:0 }
 }
-.play{
-    display: flex;
-}
-.game_scores{
-    display: grid;
-}
-.game_scores > table{
-    border-collapse: collapse;
-    justify-self: right;
-}
-.game_scores > table > tr,th, td {
-    padding: 5px;
-    border: 1px solid white;
-    text-align-last: auto;
-}
 .restartStars{
     display: flex;
     position: relative;
@@ -149,5 +130,5 @@ li{
     overflow: hidden;
     font-family: Myriad;
     height: fit-content;
-    text-shadow: white 0px 0 20px;
+    text-shadow: grey 0px 0 8px;
 }

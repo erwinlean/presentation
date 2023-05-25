@@ -8,10 +8,21 @@ let shouldDrawCircle = false;
 let detectFunctionActivity = false;
 let circleX, circleY, tipX ,tipY ,direction, mouseX, mouseY, animationId;
 
-// Obtener referencia al canvas y establecer su ancho y altura
+// Obtener referencia al canvas y establecer su ancho y altura en % y resize
 const canvas = document.getElementById("myCanvasGame");
-canvas.width = 800;
-canvas.height = 600; 
+canvas.width = window.innerWidth * 0.7;
+canvas.height = window.innerHeight * 0.6;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth * 0.7;
+  canvas.height = window.innerHeight * 0.6;
+}
+
+// Agregar un evento para escuchar el evento de cambio de tamaño de la ventana
+window.addEventListener('resize', resizeCanvas);
+
+// Llamar a la función resizeCanvas() una vez para establecer el tamaño inicial
+resizeCanvas();
 
 // Obtener contexto 2D del canvas
 const ctx = canvas.getContext("2d");
@@ -86,8 +97,8 @@ function createSmallSquare() {
 // space cat
 let space_cat = new Image();
 let meteor = new Image();
-space_cat.src = "./style/assets/space_cat_DALLE.png"; // ver imagen por una hd
-meteor.src = "./style/assets/meteor.png";
+space_cat.src = "./assets/space_cat_DALLE.png"; // ver imagen por una hd
+meteor.src = "./assets/meteor.png";
 
 
 // Dibujar
