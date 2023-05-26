@@ -6,7 +6,7 @@ const canvas = document.getElementById("starsCanvas");
 const context = canvas.getContext("2d");
 
 // Establecer el tamaño del lienzo
-canvas.width = window.innerWidth;
+canvas.width = window.innerWidth  ;
 canvas.height = window.innerHeight;
 
 // Crear los círculos
@@ -57,32 +57,51 @@ function stars(numOfStars) {
     const randomColor = colours[Math.floor(Math.random() * colours.length)];
     const normalizedRandomScale = randomScale - (randomScale * 0.5);
 
-    circle = {
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 2 + 1 * normalizedRandomScale,
-      dx: Math.random() * 0.4 - 0.2,
-      dy: Math.random() * 0.4 - 0.2,
-      color: randomColor,
-    };
+    const deviceWidthFactor = canvas.width / window.innerWidth;
+    const deviceHeightFactor = canvas.height / window.innerHeight;
+    const speedFactor = Math.max(deviceWidthFactor, deviceHeightFactor);
+
+    if(canvas.width < 450 && canvas.height < 1150) {
+      circle = {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1 * normalizedRandomScale,
+        dx: (Math.random() * 0.8 - 0.2) * speedFactor,
+        dy: (Math.random() * 0.8 - 0.2) * speedFactor,
+        color: randomColor,
+      };
+    }else{
+      circle = {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1 * normalizedRandomScale,
+        dx: (Math.random() * 0.4 - 0.2) * speedFactor,
+        dy: (Math.random() * 0.4 - 0.2) * speedFactor,
+        color: randomColor,
+      };
+    }
+
     circles.push(circle);
   };
 };
 
+
 // Create new Stars if is wanted
 function restartStars(){
   // Create new stars
-  let newStars = 25;
+  let newStars = Math.floor(Math.random() * 21) + 15;
+  //console.log(newStars);
 
   if(circles.length <= 200){
     stars(newStars);
     //console.log(circles.length);
-  }
+  };
 };
 
 // Init
 drawStars();
 stars(numCircles);
+// alert("Width: " + canvas.width + " ||| Heigth: " + canvas.height);
 
 // If btn is needed
 btnRestartStars.onclick = restartStars;

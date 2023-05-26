@@ -2,7 +2,6 @@
 
 let restartButton = document.getElementById("restartGame");
 let actualPoints = document.getElementById("actualPoints");
-let actualLives = document.getElementById("actualLives");
 let angle = 0;
 let shouldDrawCircle = false;
 let detectFunctionActivity = false;
@@ -303,14 +302,116 @@ canvas.addEventListener("click", function(event){
   }
 });
 
+// Movil device move and shot
+// Variables para almacenar las coordenadas del toque anterior
+let lastTouchX = null;
+let lastTouchY = null;
 
+// Función para manejar el evento touchstart
+canvas.addEventListener("touchstart", function(event) {
+  event.preventDefault(); // Evitar el comportamiento predeterminado del evento táctil
+  let touch = event.touches[0];
+  lastTouchX = touch.clientX;
+  lastTouchY = touch.clientY;
+});
+
+// Función para manejar el evento touchmove
+canvas.addEventListener("touchmove", function(event) {
+  event.preventDefault(); // Evitar el comportamiento predeterminado del evento táctil
+  if (lastTouchX === null || lastTouchY === null) {
+    return;
+  }
+  let touch = event.touches[0];
+  let touchX = touch.clientX;
+  let touchY = touch.clientY;
+
+  // Calcular la diferencia en las coordenadas del toque anterior y el toque actual
+  let dx = touchX - lastTouchX;
+  let dy = touchY - lastTouchY;
+
+  // Mover el triángulo principal según la diferencia calculada
+  squareX += dx;
+  squareY += dy;
+
+  // Actualizar las coordenadas del toque anterior con las del toque actual
+  lastTouchX = touchX;
+  lastTouchY = touchY;
+});
+
+// Función para manejar el evento touchend
+canvas.addEventListener("touchend", function(event) {
+  event.preventDefault(); // Evitar el comportamiento predeterminado del evento táctil
+  lastTouchX = null;
+  lastTouchY = null;
+});
+
+// Variable para almacenar el último tiempo de toque
+let lastTouchTime = 0;
+
+// Función para manejar el evento touchend
+canvas.addEventListener("touchend", function(event) {
+  event.preventDefault(); // Evitar el comportamiento predeterminado del evento táctil
+
+  // Obtener el tiempo actual
+  let currentTime = new Date().getTime();
+
+  // Verificar si ha pasado menos de 300 milisegundos desde el último toque
+  if (currentTime - lastTouchTime < 300) {
+    // Realizar el doble toque
+    // Aquí puedes agregar la lógica que deseas ejecutar al realizar un doble toque
+    // Por ejemplo, iniciar una animación, mostrar un mensaje, etc.
+
+    // Reiniciar el tiempo de último toque
+    lastTouchTime = 0;
+  } else {
+    // No se realizó un doble toque, actualizar el tiempo de último toque
+    lastTouchTime = currentTime;
+
+    // Definir el estilo de relleno del círculo como rojo
+    circleX = tipX;
+    circleY = tipY;
+
+    //Detectar si la nave fue destruida o no, según true o false, para que pueda seguir disparando o no
+    if (detectFunctionActivity == false) {
+      shouldDrawCircle = true;
+
+      // Calcular la dirección del toque con respecto al centro del círculo gris
+      let touch = event.changedTouches[0];
+      let touchX = touch.clientX;
+      let touchY = touch.clientY;
+      let dx = touchX - tipX;
+      let dy = touchY - tipY;
+      circleList.push({ x: circleX, y: circleY });
+      direction = Math.atan2(dy, dx);
+      // Mover gradualmente el círculo en la dirección del toque hasta que llegue al borde del canvas
+      let intervalId = setInterval(function() {
+        // Calcular las nuevas coordenadas del círculo
+        circleX += Math.cos(direction) * 10;
+        circleY += Math.sin(direction) * 10;
+        // Si el círculo está en el borde del canvas, detener el intervalo
+        if (
+          circleX < 0 ||
+          circleX > canvas.width ||
+          circleY < 0 ||
+          circleY > canvas.height
+        ) {
+          clearInterval(intervalId);
+        }
+      }, 10);
+    }
+  }
+});
+
+
+
+/////////////////////////////// Init
 
 
 
 // Agregar cuadrados pequeños aleatorios cada 2 segundos
 setInterval(function() {
-  // Si existe el "triangulo" seguiran apareciendo meteoritos
-  if(detectFunctionActivity==false){
+  // Check triangle exists for create meteors or not
+  if(detectFunctionActivity==true){
     createSmallSquare();
   }
 
@@ -343,7 +444,7 @@ function drawCountdown(countdown) {
 
   // Dibujar el número en el centro del canvas
   ctx.fillText(countdown, canvas.width / 2, canvas.height / 2);
-}
+};
 
 // Función para iniciar la cuenta regresiva
 function startCountdown() {
@@ -368,10 +469,25 @@ function startCountdown() {
       }, 1000);
     }, 1000);
   }, 1000);
-}
-
+};
 
 // Comenzar la animación del canvas
 setTimeout(() => {
   startCountdown();
 }, 500);
+
+// Test width for implementing device diferences behaviour
+console.log(canvas.width, canvas.height);
+canvas.addEventListener('touchmove', function(event) {
+  // Obtener la posición del touch en el canvas
+  let rect = canvas.getBoundingClientRect();
+  let touch = event.touches[0];
+  mouseX = touch.clientX - rect.left;
+  mouseY = touch.clientY - rect.top;
+
+  // Actualizar la posición del touch en el elemento HTML
+  console.log(`Touch Position: ${mouseX}, ${mouseY}`);
+
+  // Calcular el ángulo de rotación del triángulo en base a la posición del touch
+  angle = Math.atan2(mouseY - (squareY + 1000), mouseX - (squareX + 240));
+});
