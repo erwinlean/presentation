@@ -1,4 +1,4 @@
-.bodyBackground{
+.bodyBackground, html , body{
     background: url(/assets/background_stars.jpg);
     background-repeat: repeat;
 }
@@ -63,4 +63,28 @@
     height: 75px;
     align-self: center;
     margin-left: 20px
+}
+#inputGame{
+    padding: 10px;
+    border-radius: 5px;
+    border-color: white;
+    background: transparent;
+    color: white;
+}
+#inputGame:active{
+    border-color: grey;
+}
+#submitGame{
+    padding: 9px;
+    margin-left: 5px;
+    border-color: white;
+    background: transparent;
+    border-radius: 5px;
+    color: white;
+}
+#submitGame:hover{
+    border-color: grey;
+}
+#submitGame:active{
+    border-color: white;
 }

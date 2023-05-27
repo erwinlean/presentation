@@ -3,14 +3,14 @@
 let restartButton = document.getElementById("restartGame");
 let actualPoints = document.getElementById("actualPoints");
 let angle = 0;
-let shouldDrawCircle = false;
-let detectFunctionActivity = false;
-let circleX, circleY, tipX ,tipY ,direction, mouseX, mouseY, animationId;
+let shouldDrawCircle,detectFunctionActivity = false;
+//let detectFunctionActivity = false;
+let circleX, circleY, tipX ,tipY ,direction, mouseX, mouseY, animationId, numberOfMeteors, form;
 
 // Obtener referencia al canvas y establecer su ancho y altura en % y resize
 const canvas = document.getElementById("myCanvasGame");
-canvas.width = window.innerWidth * 0.7;
-canvas.height = window.innerHeight * 0.6;
+canvas.width = window.innerWidth  ;
+canvas.height = window.innerHeight;
 
 function resizeCanvas() {
   canvas.width = window.innerWidth * 0.7;
@@ -22,6 +22,15 @@ window.addEventListener('resize', resizeCanvas);
 
 // Llamar a la función resizeCanvas() una vez para establecer el tamaño inicial
 resizeCanvas();
+
+// Depends on the size of the window, will create less or more meteors
+function numOfMeteors(){
+  if(window.innerWidth <= 768 && window.innerHeight <= 768){
+    numberOfMeteors = 350;
+  }else{
+    numberOfMeteors = 120;
+  };
+};
 
 // Obtener contexto 2D del canvas
 const ctx = canvas.getContext("2d");
@@ -39,6 +48,13 @@ restartButton.addEventListener("click", function() {
   // Detener la animación actual
   cancelAnimationFrame(animationId);
 
+  let form = document.querySelector("body > form:nth-child(6)");
+
+  // Delete form/submit from DOM after restart the game
+  if(form){
+    document.querySelector("body > form:nth-child(6)").remove();
+  };
+
   // Reiniciar las variables y listas necesarias
   smallSquares = [];
   circleList = [];
@@ -48,11 +64,14 @@ restartButton.addEventListener("click", function() {
   detectFunctionActivity = false;
   shouldDrawCircle = false;
 
+  // Reiniciar meteoritos
+  // init number of meteors depends on window size
+  numOfMeteors();
+
   // Iniciar la animación nuevamentes (cd)
   startCountdown();
 });
 
-// Función para crear cuadrados pequeños aleatorios
 // Función para crear cuadrados pequeños aleatorios
 function createSmallSquare() {
   let x, y;
@@ -179,6 +198,37 @@ function checkCollision() {
       destroyTriangle();
       // Eliminar el cuadrado pequeño de la lista
       smallSquares.splice(i, 1);
+
+      // Crear formulario para ingresar el nombre
+      form = document.createElement('form');
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.id = "inputGame";
+      input.placeholder = 'Enter your name';
+      const submitButton = document.createElement('button');
+      submitButton.id = "submitGame";
+      submitButton.type = 'submit';
+      submitButton.innerText = 'Submit';
+
+      form.appendChild(input);
+      form.appendChild(submitButton);
+
+      // Colocar el formulario en el centro de la pantalla
+      form.style.position = 'absolute';
+      form.style.top = '50%';
+      form.style.left = '50%';
+      form.style.transform = 'translate(-50%, -50%)';
+
+      // Agregar el formulario al cuerpo del documento
+      document.body.appendChild(form);
+
+      // Manejar el evento de envío del formulario
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        newGamePos();
+      });
+
       break;
     }
   }
@@ -194,7 +244,7 @@ function destroyTriangle() {
   }
 
   //console.log("Vidas actuales: " + lives)
-  actualPoints.innerHTML = `<th>Points : ${count}</th>`;
+  actualPoints.innerHTML = `<th>Points: ${count}</th>`;
 
   // Destruccion del gato espacial > ex triangulo
   ctx.beginPath();
@@ -207,7 +257,6 @@ function destroyTriangle() {
   detectFunctionActivity = true;
 }
 
-// Detectar cuando se presionan las teclas de flecha
 // Detectar cuando se presionan las teclas de flecha o WASD
 let keysPressed = {}; // variable para guardar las teclas presionadas
 
@@ -357,11 +406,6 @@ canvas.addEventListener("touchend", function(event) {
 
   // Verificar si ha pasado menos de 300 milisegundos desde el último toque
   if (currentTime - lastTouchTime < 300) {
-    // Realizar el doble toque
-    // Aquí puedes agregar la lógica que deseas ejecutar al realizar un doble toque
-    // Por ejemplo, iniciar una animación, mostrar un mensaje, etc.
-
-    // Reiniciar el tiempo de último toque
     lastTouchTime = 0;
   } else {
     // No se realizó un doble toque, actualizar el tiempo de último toque
@@ -407,17 +451,6 @@ canvas.addEventListener("touchend", function(event) {
 /////////////////////////////// Init
 
 
-
-// Agregar cuadrados pequeños aleatorios cada 2 segundos
-setInterval(function() {
-  // Check triangle exists for create meteors or not
-  if(detectFunctionActivity==true){
-    createSmallSquare();
-  }
-
-  // Check colision con meteorito, para eliminar o no  el "triangulo"
-  checkCollision();
-}, 120); //Crear mas o menos cuadrados
 
 // Función para animar el canvas
 function animate() {
@@ -470,6 +503,21 @@ function startCountdown() {
     }, 1000);
   }, 1000);
 };
+
+// init number of meteors depends on window size
+numOfMeteors();
+
+// Agregar cuadrados pequeños aleatorios cada 2 segundos
+setInterval(function() {
+  // Check triangle exists for create meteors or not
+  if(detectFunctionActivity==false){
+    createSmallSquare();
+  }
+
+  // Check colision con meteorito, para eliminar o no  el "triangulo"
+  checkCollision();
+
+}, numberOfMeteors); // Crear mas o menos cuadrados dependiendo el width y height
 
 // Comenzar la animación del canvas
 setTimeout(() => {
