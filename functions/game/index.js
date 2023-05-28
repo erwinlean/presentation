@@ -15,7 +15,7 @@ canvas.height = window.innerHeight;
 function resizeCanvas() {
   canvas.width = window.innerWidth * 0.7;
   canvas.height = window.innerHeight * 0.6;
-}
+};
 
 // Agregar un evento para escuchar el evento de cambio de tamaño de la ventana
 window.addEventListener('resize', resizeCanvas);
@@ -99,7 +99,7 @@ function createSmallSquare() {
       x = -width;
       y = Math.random() * canvas.height;
       break;
-  }
+  };
 
   let smallSquare = {
     x: x,
@@ -162,7 +162,7 @@ function draw() {
     ctx.lineTo(pointinX, pointinY);
     ctx.stroke();
   };
-}
+};
 
 // Función para revisar colisión entre el círculo y los cuadrados pequeños
 function checkCollision() {
@@ -184,8 +184,8 @@ function checkCollision() {
       // Eliminar el cuadrado pequeño (asteroide) de la lista
       smallSquares.splice(i, 1);
       count = count + 1;
-    }
-  }
+    };
+  };
 
   for (let i = 0; i < smallSquares.length; i++) {
     let smallSquare = smallSquares[i];
@@ -209,7 +209,16 @@ function checkCollision() {
       submitButton.id = "submitGame";
       submitButton.type = 'submit';
       submitButton.innerText = 'Submit';
+      const userPoints = document.createElement('p');
+      userPoints.innerText = `Your points were: ${count}`;
+      userPoints.style.border = '1px solid white';
+      userPoints.style.background = 'transparent';
+      userPoints.style.color = 'grey';
+      userPoints.style.padding = '5px';
+      userPoints.style.marginBottom = '5px';
+      userPoints.style.borderRadius = "5px";
 
+      form.appendChild(userPoints);
       form.appendChild(input);
       form.appendChild(submitButton);
 
@@ -227,12 +236,13 @@ function checkCollision() {
         event.preventDefault();
 
         newGamePos();
+        form.remove();
       });
 
       break;
-    }
-  }
-}
+    };
+  };
+};
 
 // Función para destruir el triángulo principal
 function destroyTriangle() {
@@ -241,7 +251,7 @@ function destroyTriangle() {
   while(circleList.length > 0 && smallSquares.length > 0){
     circleList.pop();
     smallSquares.pop();
-  }
+  };
 
   //console.log("Vidas actuales: " + lives)
   actualPoints.innerHTML = `<th>Points: ${count}</th>`;
@@ -255,7 +265,7 @@ function destroyTriangle() {
   squareX = -100;
   squareY = -100;
   detectFunctionActivity = true;
-}
+};
 
 // Detectar cuando se presionan las teclas de flecha o WASD
 let keysPressed = {}; // variable para guardar las teclas presionadas
@@ -276,34 +286,34 @@ setInterval(function() {
   // verificar las teclas presionadas y calcular el movimiento en consecuencia
   if (keysPressed["ArrowUp"] || keysPressed["KeyW"]) {
     dy -= speed;
-  }
+  };
   if (keysPressed["ArrowRight"] || keysPressed["KeyD"]) {
     dx += speed;
-  }
+  };
   if (keysPressed["ArrowDown"] || keysPressed["KeyS"]) {
     dy += speed;
-  }
+  };
   if (keysPressed["ArrowLeft"] || keysPressed["KeyA"]) {
     dx -= speed;
-  }
+  };
 
   // si se están presionando dos teclas de dirección, ajustar el movimiento en consecuencia
   if ((keysPressed["ArrowUp"] || keysPressed["KeyW"]) && (keysPressed["ArrowRight"] || keysPressed["KeyD"])) {
     dx *= Math.sqrt(0.5);
     dy *= Math.sqrt(0.5);
-  }
+  };
   if ((keysPressed["ArrowUp"] || keysPressed["KeyW"]) && (keysPressed["ArrowLeft"] || keysPressed["KeyA"])) {
     dx *= Math.sqrt(0.5);
     dy *= Math.sqrt(0.5);
-  }
+  };
   if ((keysPressed["ArrowDown"] || keysPressed["KeyS"]) && (keysPressed["ArrowRight"] || keysPressed["KeyD"])) {
     dx *= Math.sqrt(0.5);
     dy *= Math.sqrt(0.5);
-  }
+  };
   if ((keysPressed["ArrowDown"] || keysPressed["KeyS"]) && (keysPressed["ArrowLeft"] || keysPressed["KeyA"])) {
     dx *= Math.sqrt(0.5);
     dy *= Math.sqrt(0.5);
-  }
+  };
 
   // mover el cuadrado según el movimiento calculado
   squareX += dx;
@@ -346,7 +356,7 @@ canvas.addEventListener("click", function(event){
       // Si el círculo está en el borde del canvas, detener el intervalo
       if (circleX < 0 || circleX > canvas.width || circleY < 0 || circleY > canvas.height) {
         clearInterval(intervalId);
-      }
+      };
     }, 10);
   }
 });
@@ -442,8 +452,8 @@ canvas.addEventListener("touchend", function(event) {
           clearInterval(intervalId);
         }
       }, 10);
-    }
-  }
+    };
+  };
 });
 
 
@@ -462,7 +472,7 @@ function animate() {
 
   // Solicitar la siguiente animación
   animationId = requestAnimationFrame(animate);
-}
+};
 
 // Función para dibujar la cuenta regresiva
 function drawCountdown(countdown) {
@@ -512,7 +522,7 @@ setInterval(function() {
   // Check triangle exists for create meteors or not
   if(detectFunctionActivity==false){
     createSmallSquare();
-  }
+  };
 
   // Check colision con meteorito, para eliminar o no  el "triangulo"
   checkCollision();
@@ -525,7 +535,7 @@ setTimeout(() => {
 }, 500);
 
 // Test width for implementing device diferences behaviour
-console.log(canvas.width, canvas.height);
+//console.log(canvas.width, canvas.height);
 canvas.addEventListener('touchmove', function(event) {
   // Obtener la posición del touch en el canvas
   let rect = canvas.getBoundingClientRect();

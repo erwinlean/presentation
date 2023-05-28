@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Contact</title>
+    <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/contact.css">
     <link rel="stylesheet" href="./style/canvas.css">
@@ -18,14 +19,18 @@
                     <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="github"></a></li>
                     <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin"></a></li>
                     <li><a target="_self" href="#" id="restartStars"><img src="./assets/star_icon.png" alt="create New Stars" title="create New Stars"></a></li>
+                    <li><a><p id="starsCount">0</p> </a></li>    
                 </ul>
             </div>
 
+            <div id="expand_button" class="restartStars">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828724.png" alt="menu" title="menu"></a>
+            </div>            
             <div class="text_zone">
-                <ul>
+                <ul class="menu_items">
                     <li><a href="./index.html">About</a></li>
                     <li><a href="./assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
-                    <li><a href="#body_content">Contact</a></li>
+                    <li><a href="#">Contact</a></li>
                     <li><a href="./game.html">Play</a></li>
                 </ul>
             </div>
@@ -53,6 +58,7 @@
     </div>
 
     <script src="./functions/contact/contact.js"></script>
+    <script src="./functions/menu/header_menu.js"></script>
     <script src="./functions/background/background_stars.js"></script>
     <script src="./functions/background/background_hole.js"></script>
 </body>

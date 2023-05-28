@@ -1,3 +1,5 @@
+"use strict";
+
 window.addEventListener('wheel', debounce(revealElements, 100));
 
 let lastScrollDirection = "";

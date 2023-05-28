@@ -2,6 +2,7 @@
 
 const holeCanvas = document.getElementById('holeCanvas');
 const ctx = holeCanvas.getContext('2d');
+const domCount = document.getElementById("starsCount");
 
 holeCanvas.width = window.innerWidth   ;
 holeCanvas.height = window.innerHeight ;
@@ -12,9 +13,10 @@ const color = 'black';
 const borderWidth = 0.3;
 const borderColor = 'grey';
 
-// Position storage
+// Position Storage & count of stars eaten for the hole
 let holeX = 0;
 let holeY = 0;
+let starsDeleted = 0;
 
 function checkCollision(circle) {
     const dx = holeX - circle.x;
@@ -30,6 +32,10 @@ function removeCircle() {
         if (checkCollision(circle)) {
             circles.splice(i, 1);
             i--;
+
+            // Showing the count of starts eaten by the black hole
+            starsDeleted ++;
+            domCount.innerText = `${starsDeleted}`;
         };
     };
 };

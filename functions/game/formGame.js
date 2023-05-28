@@ -36,7 +36,7 @@ function newGamePos() {
 
     console.log(newGame);
 
-    if(typeof user.value === 'string' && user.value.length >= 2){
+    if(typeof user.value === 'string' && user.value.length >= 2 && user.value.length < 15){
         fetch(urlPost, {
             method: 'POST',
             headers: {
@@ -49,8 +49,6 @@ function newGamePos() {
             console.log(data);
 
             // Remove and actualize the new users points
-            timesPlayed.innerHTML = `Number Times played: <br><br> <strong>${apiData[0][2] +1}</strong>`;
-            form.remove();
             count = 0;
             loadDataApi();
         })
@@ -58,7 +56,7 @@ function newGamePos() {
             console.log(error);
         });
     }else{
-        alert("No ingreso Nombre");
+        alert("Unable to save that name");
     };
 };
 
