@@ -11,9 +11,9 @@ html,body{
     background: black;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     color: white;
     font-family: Myriad;
+    overflow: hidden;
 }
 a {
     text-decoration: none;
@@ -58,7 +58,6 @@ li{
 }
 .body_content{
     width: 100%;
-    overflow: hidden;
     display: grid;
 }
 .header{
@@ -162,32 +161,21 @@ li{
 .restartStars > a:hover{
     filter: drop-shadow(0 0 10px white);
 }
+#expand_button > a > img{
+    display: none;
+}
 
-/*Scroll style*/
-/*
-.visible {
-    opacity: 1;
-    transition: opacity 1s;
-}
-.fade-in.visible {
-    animation: fadeInAnimation 1s;
-}
-@keyframes fadeInAnimation {
-    from {
-        opacity: 0;
+/*RESPONSIVE: not working right now*/
+@media screen and (max-width: 700px) {
+    .text_zone .menu_items {
+        display: none;
     }
-    to {
-        opacity: 1;
+
+    .text_zone .menu_items.expanded {
+        display: block;
+    }
+    #expand_button > a > img{
+        width: 35px;
+        display: flex;
     }
 }
-.zoom-in {
-    animation: zoomAnimation 3s;
-}
-@keyframes zoomAnimation {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.2);
-    }
-}*/

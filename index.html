@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Erwin Leandro Marte</title>
+    <link rel="stylesheet" href="./style/scroll.css">
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/canvas.css">
 </head>
@@ -20,14 +21,18 @@
                 </ul>
             </div>
 
+            <div id="expand_button" class="restartStars">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828724.png" alt="menu" title="menu"></a>
+            </div>            
             <div class="text_zone">
-                <ul>
+                <ul class="menu_items">
                     <li><a href="#body_content">About</a></li>
                     <li><a href="./assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
                     <li><a href="./contact.html">Contact</a></li>
                     <li><a href="./game.html">Play</a></li>
                 </ul>
             </div>
+            
 
             <canvas id="holeCanvas" class="hole"></canvas>
             <canvas id="starsCanvas" class="stars"></canvas>
@@ -35,25 +40,28 @@
         </div>
     </div>
 
-    <div class="info" id="perfil_name">
-        <h1 class="name">Erwin Leandro Marte&nbsp&nbsp<span>&#160;</span</h1>
+    <div>
+        <div class="info " id="perfil_name">
+            <h1 class="name">Erwin Leandro Marte&nbsp&nbsp<span>&#160;</span</h1>
+        </div>
+
+        <!-- Scrolling new info test-->
+        <div class="fade-in">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Information_example_page_300px.jpg" alt="">
+        </div>
+
+        <div class="fade-in">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu4ROXE3yuFhWVLxwxaPRWbZljT7tR-r48rew7ETO3gUPyEFIXDBf4TbK9_1y8jU_TYHA&usqp=CAU" alt="">
+        </div>
+
+        <div class="fade-in">
+            <img src="https://cdn.create.vista.com/api/media/small/210780396/stock-photo-examples-icon-internet-button-white" alt="">
+        </div>
     </div>
 
+    
 
-    <!-- Scrolling new info test
-    <div class="fade-in">
-        <p>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen</p>
-    </div>
-
-    <div class="fade-in">
-        <p>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen</p>
-    </div>
-
-    <div class="fade-in">
-        <p>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen>aca va un resumen</p>
-    </div>
-    -->
-
+    <script src="./functions/menu/header_menu.js"></script>
     <script src="./functions/background/scroll.js"></script>
     <script src="./functions/background/background_stars.js"></script>
     <script src="./functions/background/background_hole.js"></script>
