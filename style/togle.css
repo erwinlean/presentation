@@ -1,0 +1,49 @@
+.languageButton {
+    text-decoration: none;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 15px;
+    width: 65px;
+    padding: 5px;
+    cursor: pointer;
+}
+.languageButton:hover {
+    filter: drop-shadow(0 0 20px white);
+    text-shadow: white 0px 0 20px;
+}
+.languageText {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    transition: color 0.3s;
+}
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.5s;
+}
+.languageButton:hover .languageText {
+    color: white;
+}
+#htmlElement[lang="es"] .circle {
+    left: calc(100% - 12px);
+}
+#htmlElement[lang="en"] .circle {
+    left: 12px;
+}
+#htmlElement[lang="es"] .languageText:first-child {
+    display: none;
+}
+#htmlElement[lang="en"] .languageText:last-child {
+    display: none;
+}

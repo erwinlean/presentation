@@ -48,11 +48,10 @@ restartButton.addEventListener("click", function() {
   // Detener la animación actual
   cancelAnimationFrame(animationId);
 
-  let form = document.querySelector("body > form:nth-child(6)");
-
   // Delete form/submit from DOM after restart the game
+  let form = document.querySelector("body > form");
   if(form){
-    document.querySelector("body > form:nth-child(6)").remove();
+    form.remove();
   };
 
   // Reiniciar las variables y listas necesarias
@@ -167,7 +166,11 @@ function draw() {
 // Función para revisar colisión entre el círculo y los cuadrados pequeños
 function checkCollision() {
   // Update points
-  actualPoints.innerHTML = `<th>Points: ${count}</th>`;
+  if(currentTogle===false){
+    actualPoints.innerHTML = `<th>Points: ${count}</th>`;
+  }else{
+    actualPoints.innerHTML = `<th>Puntos: ${count}</th>`;
+  }
 
   for (let i = 0; i < smallSquares.length; i++) {
     let smallSquare = smallSquares[i];
@@ -208,9 +211,14 @@ function checkCollision() {
       const submitButton = document.createElement('button');
       submitButton.id = "submitGame";
       submitButton.type = 'submit';
-      submitButton.innerText = 'Submit';
+      submitButton.innerText = 'Save';
       const userPoints = document.createElement('p');
       userPoints.innerText = `Your points were: ${count}`;
+      if(currentTogle===false){
+        actualPoints.innerHTML = `<th>Points: ${count}</th>`;
+      }else{
+        actualPoints.innerHTML = `<th>Puntos: ${count}</th>`;
+      };
       userPoints.style.border = '1px solid white';
       userPoints.style.background = 'transparent';
       userPoints.style.color = 'grey';
@@ -253,8 +261,13 @@ function destroyTriangle() {
     smallSquares.pop();
   };
 
-  //console.log("Vidas actuales: " + lives)
-  actualPoints.innerHTML = `<th>Points: ${count}</th>`;
+  // Current points of the game
+  if(currentTogle===false){
+    actualPoints.innerHTML = `<th>Points: ${count}</th>`;
+  }else{
+    actualPoints.innerHTML = `<th>Puntos: ${count}</th>`;
+  }
+  
 
   // Destruccion del gato espacial > ex triangulo
   ctx.beginPath();
@@ -358,7 +371,7 @@ canvas.addEventListener("click", function(event){
         clearInterval(intervalId);
       };
     }, 10);
-  }
+  };
 });
 
 // Movil device move and shot

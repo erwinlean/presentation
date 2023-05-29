@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlElement">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,7 @@
     <title>Gaming</title>
     <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
     <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/togle.css">
     <link rel="stylesheet" href="./style/game.css">
 </head>
 
@@ -23,7 +24,20 @@
 
             <div id="expand_button" class="restartStars">
                 <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828724.png" alt="menu" title="menu"></a>
-            </div>            
+            </div>       
+            
+            <ul id="languageToggle">
+                <li>
+                    <a href="#">
+                        <button class="languageButton">
+                            <span class="languageText">EN</span>
+                            <span class="circle"></span>
+                            <span class="languageText">ES</span>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+
             <div class="text_zone">
                 <ul class="menu_items">
                     <li><a href="./index.html">About</a></li>
@@ -41,7 +55,7 @@
                         <th id="actualPoints" class="points">Points: 0</th>
                     </tr>
                 </table>
-                <button id="restartGame" class="btnGame">Restart Game</button>
+                <button id="restartGame" class="btnGame">Restart</button>
             </div>
 
             <div>
@@ -53,11 +67,11 @@
                     </div>
                     <table id="game_points">
                         <tr>
-                            <th colspan="2" rowspan="1">Number Times game was played: <br><br>sdf</th>
+                            <th colspan="2" rowspan="1">Number Times game was played: <br><br></th>
                         </tr>
                         <tr>
-                            <td>Name</td>
-                            <td>Score</td>
+                            <td>Names</td>
+                            <td>Scores</td>
                         </tr>
                     </table>
                 </div>
@@ -66,6 +80,7 @@
     </div>
 
     <script src="./functions/game/index.js"></script>
+    <script src="./functions/menu/lenguajeTogle.js"></script>
     <script src="./functions/menu/header_menu.js"></script>
     <script src="./functions/game/positionsTable.js"></script>
     <script src="./functions/game/formGame.js"></script>

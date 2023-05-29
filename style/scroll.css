@@ -3,13 +3,20 @@
     transition: opacity 1s;
 }
 .fade-in{
+    z-index: 400;
     display: none;
     position: relative;
     top: -500px;
     left: 150px;
+    transition: opacity 0.7s;
+    transform: scale(1) rotateY(0deg) rotateX(0deg);
 }
 .fade-in.visible {
     animation: fadeInAnimation 1s;
+}
+.fade-in.active {
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 @keyframes fadeInAnimation {
     from {

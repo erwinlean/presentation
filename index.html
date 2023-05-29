@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlElement">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,7 @@
 
     <title>Erwin Leandro Marte</title>
     <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style/togle.css">
     <link rel="stylesheet" href="./style/scroll.css">
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/canvas.css">
@@ -25,7 +26,20 @@
 
             <div id="expand_button" class="restartStars">
                 <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828724.png" alt="menu" title="menu"></a>
-            </div>            
+            </div>         
+            
+            <ul id="languageToggle">
+                <li>
+                    <a href="#">
+                        <button class="languageButton">
+                            <span class="languageText">EN</span>
+                            <span class="circle"></span>
+                            <span class="languageText">ES</span>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+            
             <div class="text_zone">
                 <ul class="menu_items">
                     <li><a href="#body_content">About</a></li>
@@ -50,6 +64,7 @@
         <!-- Scrolling new info test-->
         <div class="fade-in">
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Information_example_page_300px.jpg" alt="">
+            <p>dskjgbhaskjhflaskijdlsakjdlñkasjdlks</p>
         </div>
 
         <div class="fade-in">
@@ -63,6 +78,7 @@
 
 
     <script src="./functions/menu/header_menu.js"></script>
+    <script src="./functions/menu/lenguajeTogle.js"></script>
     <script src="./functions/background/scroll.js"></script>
     <script src="./functions/background/background_stars.js"></script>
     <script src="./functions/background/background_hole.js"></script>

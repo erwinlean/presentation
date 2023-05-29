@@ -1,5 +1,6 @@
 "use strict";
 
+const containers = document.querySelectorAll('.fade-in');
 window.addEventListener('wheel', debounce(revealElements, 100));
 
 let lastScrollDirection = "";
@@ -90,5 +91,28 @@ function zoomParagraphs() {
     const paragraphs = document.querySelectorAll('.fade-in.visible p');
     for (let i = 0; i < paragraphs.length; i++) {
         paragraphs[i].classList.add('zoom-in');
-    }
-}
+    };
+};
+
+// Move efect for the container
+containers.forEach(container => {
+    container.addEventListener('mouseenter', function() {
+        container.classList.add('active');
+    });
+
+    container.addEventListener('mouseleave', function() {
+        container.classList.remove('active');
+    });
+
+    container.addEventListener('mousemove', function(event) {
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+        const mouseX = event.offsetX;
+        const mouseY = event.offsetY;
+
+        const rotateY = ((mouseX - containerWidth / 2) / containerWidth) * 30;
+        const rotateX = ((mouseY - containerHeight / 2) / containerHeight) * 20;
+
+        container.style.transform = `scale(1.2) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+    });
+});
