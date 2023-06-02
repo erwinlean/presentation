@@ -18,20 +18,19 @@ function lenguajeChange() {
         languageTexts[0].style.display = 'inline';
         languageTexts[1].style.display = 'none';
         togleCircle.style.left = '12px';
-        console.log(document.querySelector("#languageToggle > li > a > button > span:nth-child(1)").textContent);
 
         // Nav Lenguaje Change
-        document.querySelector("#content > div > div.text_zone > ul > li:nth-child(1) > a").innerHTML = "About me";
-        document.querySelector("#content > div > div.text_zone > ul > li:nth-child(2) > a").innerHTML = "Resume";
-        document.querySelector("#content > div > div.text_zone > ul > li:nth-child(3) > a").innerHTML = "Contact";
-        document.querySelector("#content > div > div.text_zone > ul > li:nth-child(4) > a").innerHTML = "Play";
+        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(1) > a").innerHTML = "About me";
+        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(2) > a").innerHTML = "Resume";
+        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(3) > a").innerHTML = "Contact";
+        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(4) > a").innerHTML = "Play";
     
         // Obtein the current url and traslate
         currentURL = window.location.href;
 
         // Traslate rest of the DOM
         if(currentURL.includes("index.html")){
-            console.log("index")
+            //console.log("index")
 
         }else if(currentURL.includes("contact.html")){
             document.querySelector("#contactForm > h3").innerHTML = "Contact";
@@ -52,20 +51,20 @@ function lenguajeChange() {
         languageTexts[0].style.display = 'none';
         languageTexts[1].style.display = 'inline';
         togleCircle.style.left = 'calc(100% - 12px)';
-        console.log(document.querySelector("#languageToggle > li > a > button > span:nth-child(3)").textContent);
 
         // Lenguaje Change
-        document.querySelector("#content > div > div.text_zone > ul > li:nth-child(1) > a").innerHTML = "Sobre mi";
-        document.querySelector("#content > div > div.text_zone > ul > li:nth-child(2) > a").innerHTML = "Curriculum";
-        document.querySelector("#content > div > div.text_zone > ul > li:nth-child(3) > a").innerHTML = "Contacto";
-        document.querySelector("#content > div > div.text_zone > ul > li:nth-child(4) > a").innerHTML = "Jugar";
+        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(1) > a").innerHTML = "Sobre mi";
+        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(2) > a").innerHTML = "Curriculum";
+        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(3) > a").innerHTML = "Contacto";
+        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(4) > a").innerHTML = "Jugar";
 
         // Obtein the current url and traslate
         currentURL = window.location.href;
-        console.log(currentURL);
+        //console.log(currentURL);
 
         if(currentURL.includes("index.html")){
-            console.log("index")
+            //console.log("index")
+
         }else if(currentURL.includes("contact.html")){
             document.querySelector("#contactForm > h3").innerHTML = "Contacto";
             document.querySelector("#contactForm > label:nth-child(2)").innerHTML = "Email";

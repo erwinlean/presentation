@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlElement">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact</title>
+    <link rel="shortcut icon" href="../assets/star_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/togle.css">
+    <link rel="stylesheet" href="../style/contact.css">
+    <link rel="stylesheet" href="../style/canvas.css">
+</head>
+<body>
+    <div id="content" class="body_content">
+        <div class="header">
+            <div class="networks">
+                <ul>
+                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="../assets/github.png" alt="github"></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="../assets/linkedin.png" alt="linkedin"></a></li>
+                    <li><a target="_self" href="#" id="restartStars"><img src="../assets/star_icon.png" alt="create New Stars" title="create New Stars"></a></li>
+                    <li><a><p id="starsCount">0</p> </a></li>    
+                </ul>
+            </div>
+            
+            <div class="text_zone" id="expand_button">
+                <div>
+                    <input id="menu-toggle" type="checkbox" />
+                    <label class="menu-button-container" for="menu-toggle">
+                        <div class="menu-button"></div>
+                    </label>
+                </div>
+                <ul class="menu menu_items">
+                    <li><a href="./index.html">About</a></li>
+                    <li><a href="../assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="./game.html">Play</a></li>
+                </ul>
+                        
+                        
+                <ul id="languageToggle">
+                    <li>
+                        <button class="languageButton">
+                            <span class="languageText">EN</span>
+                            <span class="circle"></span>
+                            <span class="languageText">ES</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <canvas id="holeCanvas" class="hole"></canvas>
+            <canvas id="starsCanvas" class="stars"></canvas>
+
+        </div>
+    </div>
+
+    <div class="formContainer">
+        <form id="contactForm">
+            <h3>Contact</h3>
+            <form action="enviar.php" method="POST">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                
+                <label for="mensaje">Message:</label><br>
+                <textarea id="mensaje" name="mensaje" rows="4" cols="30" required></textarea><br>
+                
+                <input type="submit" value="Send" id="sendBtn">
+            </form>
+        </form>
+    </div>
+
+    <script src="../functions/contact/contact.js"></script>
+    <script src="../functions/menu/lenguajeTogle.js"></script>
+    <script src="../functions/menu/header_menu.js"></script>
+    <script src="../functions/background/background_stars.js"></script>
+    <script src="../functions/background/background_hole.js"></script>
+</body>
+</html>

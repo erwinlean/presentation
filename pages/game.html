@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Gaming</title>
-    <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./style/index.css">
-    <link rel="stylesheet" href="./style/togle.css">
-    <link rel="stylesheet" href="./style/game.css">
+    <link rel="shortcut icon" href="../assets/star_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/togle.css">
+    <link rel="stylesheet" href="../style/game.css">
 </head>
 
 <body class="bodyBackground">
@@ -17,33 +17,34 @@
         <div class="header">
             <div class="networks">
                 <ul>
-                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="github"></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin"></a></li>
+                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="../assets/github.png" alt="github"></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="../assets/linkedin.png" alt="linkedin"></a></li>
                 </ul>
             </div>
-
-            <div id="expand_button" class="restartStars">
-                <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828724.png" alt="menu" title="menu"></a>
-            </div>       
             
-            <ul id="languageToggle">
-                <li>
-                    <a href="#">
+            <div class="text_zone" id="expand_button">
+                <div>
+                    <input id="menu-toggle" type="checkbox" />
+                    <label class="menu-button-container" for="menu-toggle">
+                        <div class="menu-button"></div>
+                    </label>
+                </div>
+                <ul class="menu menu_items">
+                    <li><a href="./index.html">About</a></li>
+                    <li><a href="../assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="#">Play</a></li>
+                </ul>
+            
+            
+                <ul id="languageToggle">
+                    <li>
                         <button class="languageButton">
                             <span class="languageText">EN</span>
                             <span class="circle"></span>
                             <span class="languageText">ES</span>
                         </button>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="text_zone">
-                <ul class="menu_items">
-                    <li><a href="./index.html">About</a></li>
-                    <li><a href="./assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
-                    <li><a href="#">Play</a></li>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -63,7 +64,7 @@
 
                 <div class="game_scores">
                     <div class="loading">
-                        <img src="/assets/loading.gif" alt="Loading">
+                        <img src="../assets/loading.gif" alt="Loading">
                     </div>
                     <table id="game_points">
                         <tr>
@@ -79,10 +80,10 @@
         </div>
     </div>
 
-    <script src="./functions/game/index.js"></script>
-    <script src="./functions/menu/lenguajeTogle.js"></script>
-    <script src="./functions/menu/header_menu.js"></script>
-    <script src="./functions/game/positionsTable.js"></script>
-    <script src="./functions/game/formGame.js"></script>
+    <script src="../functions/game/index.js"></script>
+    <script src="../functions/menu/lenguajeTogle.js"></script>
+    <script src="../functions/menu/header_menu.js"></script>
+    <script src="../functions/game/positionsTable.js"></script>
+    <script src="../functions/game/formGame.js"></script>
 </body>
 </html>
