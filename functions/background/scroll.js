@@ -1,6 +1,6 @@
 "use strict";
 
-const containers = document.querySelectorAll('.fade-in');
+const containers = document.querySelectorAll('.tech_images');
 window.addEventListener('wheel', debounce(revealElements, 100));
 
 let lastScrollDirection = "";
@@ -46,7 +46,7 @@ function revealElements() {
             //console.log(elementInView);
 
             lastElementInView.style.display = "none";
-            elementInView.style.display = "flex";
+            elementInView.style.display = "grid";
 
             const elementTop = elementInView.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
@@ -66,7 +66,7 @@ function revealElements() {
             let lastElementInView = fadeElements[positionOfList - 1];
     
             elementInView.style.display = "none";
-            lastElementInView.style.display = "flex";
+            lastElementInView.style.display = "grid";
             lastElementInView.classList.remove('visible');
     
             const elementTop = lastElementInView.getBoundingClientRect().top;
@@ -110,9 +110,9 @@ containers.forEach(container => {
         const mouseX = event.offsetX;
         const mouseY = event.offsetY;
 
-        const rotateY = ((mouseX - containerWidth / 2) / containerWidth) * 30;
-        const rotateX = ((mouseY - containerHeight / 2) / containerHeight) * 20;
+        const rotateY = ((mouseX - containerWidth / 2) / containerWidth) * 60;
+        const rotateX = ((mouseY - containerHeight / 2) / containerHeight) * 40;
 
-        container.style.transform = `scale(1.2) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+        container.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
     });
 });

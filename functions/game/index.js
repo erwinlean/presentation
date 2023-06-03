@@ -114,8 +114,8 @@ function createSmallSquare() {
 // space cat
 let space_cat = new Image();
 let meteor = new Image();
-space_cat.src = "./assets/space_cat_DALLE.png"; // ver imagen por una hd
-meteor.src = "./assets/meteor.png";
+space_cat.src = "../assets/space_cat_DALLE.png"; // ver imagen por una hd
+meteor.src = "../assets/meteor.png";
 
 
 // Dibujar
