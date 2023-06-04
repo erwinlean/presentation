@@ -25,7 +25,7 @@ resizeCanvas();
 
 // Depends on the size of the window, will create less or more meteors
 function numOfMeteors(){
-  if(window.innerWidth <= 768 && window.innerHeight <= 768){
+  if(window.innerWidth <= 768 || window.innerHeight <= 768){
     numberOfMeteors = 350;
   }else{
     numberOfMeteors = 120;
@@ -183,10 +183,10 @@ function checkCollision() {
       smallSquare.height * smallSquare.height
     ) / 2;
 
-    if (distance < 3 + collisionRadius) {
+    if (distance < 15 + collisionRadius) { // Colision eliminar asteroide con el laser
       // Eliminar el cuadrado pequeño (asteroide) de la lista
       smallSquares.splice(i, 1);
-      count = count + 1;
+      count = count + 1;a
     };
   };
 
@@ -196,7 +196,7 @@ function checkCollision() {
     let dy = tipY - (smallSquare.y + smallSquare.height / 2);
     let distance = Math.sqrt(dx * dx + dy * dy);
 
-    if (distance < 20 + smallSquare.width / 2 || distance < 20 + smallSquare.height / 2) {
+    if (distance < 25 + smallSquare.width / 2 || distance < 25 + smallSquare.height / 2) { // Colision eliminar gato
       // Colisión detectada, eliminar nave
       destroyTriangle();
       // Eliminar el cuadrado pequeño de la lista
@@ -378,6 +378,7 @@ canvas.addEventListener("click", function(event){
 // Variables para almacenar las coordenadas del toque anterior
 let lastTouchX = null;
 let lastTouchY = null;
+let lastTouchTime;
 
 // Función para manejar el evento touchstart
 canvas.addEventListener("touchstart", function(event) {
@@ -415,14 +416,6 @@ canvas.addEventListener("touchend", function(event) {
   event.preventDefault(); // Evitar el comportamiento predeterminado del evento táctil
   lastTouchX = null;
   lastTouchY = null;
-});
-
-// Variable para almacenar el último tiempo de toque
-let lastTouchTime = 0;
-
-// Función para manejar el evento touchend
-canvas.addEventListener("touchend", function(event) {
-  event.preventDefault(); // Evitar el comportamiento predeterminado del evento táctil
 
   // Obtener el tiempo actual
   let currentTime = new Date().getTime();
@@ -446,8 +439,11 @@ canvas.addEventListener("touchend", function(event) {
       let touch = event.changedTouches[0];
       let touchX = touch.clientX;
       let touchY = touch.clientY;
-      let dx = touchX - tipX;
-      let dy = touchY - tipY;
+      let rect = canvas.getBoundingClientRect(); // Obtener el rectángulo del canvas para ajustar las coordenadas
+      let canvasX = touchX - rect.left;
+      let canvasY = touchY - rect.top;
+      let dx = canvasX - tipX;
+      let dy = canvasY - tipY;
       circleList.push({ x: circleX, y: circleY });
       direction = Math.atan2(dy, dx);
       // Mover gradualmente el círculo en la dirección del toque hasta que llegue al borde del canvas
@@ -465,9 +461,10 @@ canvas.addEventListener("touchend", function(event) {
           clearInterval(intervalId);
         }
       }, 10);
-    };
-  };
+    }
+  }
 });
+
 
 
 
@@ -557,7 +554,7 @@ canvas.addEventListener('touchmove', function(event) {
   mouseY = touch.clientY - rect.top;
 
   // Actualizar la posición del touch en el elemento HTML
-  console.log(`Touch Position: ${mouseX}, ${mouseY}`);
+  //console.log(`Touch Position: ${mouseX}, ${mouseY}`);
 
   // Calcular el ángulo de rotación del triángulo en base a la posición del touch
   angle = Math.atan2(mouseY - (squareY + 1000), mouseX - (squareX + 240));

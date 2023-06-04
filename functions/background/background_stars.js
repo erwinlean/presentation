@@ -8,7 +8,7 @@ const context = canvas.getContext("2d");
 // Establecer el tamaño del lienzo
 canvas.width = window.innerWidth  ;
 canvas.height = window.innerHeight;
-console.log(window.innerWidth, window.innerHeight);
+//console.log(window.innerWidth, window.innerHeight);
 
 // Crear los círculos
 const circles = [];

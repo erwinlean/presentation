@@ -2,6 +2,9 @@
 
 const containers = document.querySelectorAll('.tech_images');
 window.addEventListener('wheel', debounce(revealElements, 100));
+window.addEventListener('touchstart', handleTouchStart, false);
+window.addEventListener('touchmove', handleTouchMove, false);
+window.addEventListener('touchend', handleTouchEnd, false);
 
 let lastScrollDirection = "";
 let positionOfList = 0;
@@ -32,6 +35,28 @@ window.addEventListener("wheel", function(event) {
         lastScrollDirection = "up";
     }
 });
+
+let touchStartY = 0;
+let touchEndY = 0;
+
+function handleTouchStart(event) {
+    touchStartY = event.touches[0].clientY;
+}
+
+function handleTouchMove(event) {
+    touchEndY = event.touches[0].clientY;
+}
+
+function handleTouchEnd() {
+    if (touchStartY < touchEndY) {
+        // Movimiento hacia abajo
+        lastScrollDirection = "down";
+    } else {
+        // Movimiento hacia arriba
+        lastScrollDirection = "up";
+    }
+    revealElements();
+}
 
 function revealElements() {
     let fadeElements = elements;
