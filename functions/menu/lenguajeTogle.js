@@ -20,10 +20,10 @@ function lenguajeChange() {
         togleCircle.style.left = '12px';
 
         // Nav Lenguaje Change
-        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(1) > a").innerHTML = "About me";
-        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(2) > a").innerHTML = "Resume";
-        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(3) > a").innerHTML = "Contact";
-        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(4) > a").innerHTML = "Play";
+        document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(1) > a").innerHTML = "About me";
+        document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(2) > a").innerHTML = "Resume";
+        document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(3) > a").innerHTML = "Contact";
+        document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(4) > a").innerHTML = "Play";
     
         // Obtein the current url and traslate
         currentURL = window.location.href;
@@ -53,10 +53,10 @@ function lenguajeChange() {
         togleCircle.style.left = 'calc(100% - 12px)';
 
         // Lenguaje Change
-        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(1) > a").innerHTML = "Sobre mi";
-        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(2) > a").innerHTML = "Curriculum";
-        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(3) > a").innerHTML = "Contacto";
-        document.querySelector("#expand_button > ul.menu.menu_items.expanded > li:nth-child(4) > a").innerHTML = "Jugar";
+        document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(1) > a").innerHTML = "Sobre mi";
+        document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(2) > a").innerHTML = "Curriculum";
+        document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(3) > a").innerHTML = "Contacto";
+        document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(4) > a").innerHTML = "Jugar";
 
         // Obtein the current url and traslate
         currentURL = window.location.href;

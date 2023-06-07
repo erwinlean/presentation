@@ -37,6 +37,9 @@ input[type="text"],input[type="email"],textarea {
     font-family: Myriad;
     border-radius: 5px;
 }
+textarea{
+    min-height: 150px;
+}
 input[type="submit"] {
     background-color: transparent;
     color: white;
@@ -55,6 +58,9 @@ input[type="submit"]:active {
 }
 @media screen and (max-width: 699px) {
     body > div.formContainer {
-        margin-top: 100px;
+        margin-top: 70px;
+    }
+    form{
+        margin: 0 0 0 0;
     }
 }
