@@ -186,7 +186,7 @@ function checkCollision() {
     if (distance < 15 + collisionRadius) { // Colision eliminar asteroide con el laser
       // Eliminar el cuadrado pequeño (asteroide) de la lista
       smallSquares.splice(i, 1);
-      count = count + 1;a
+      count = count + 1;
     };
   };
 
