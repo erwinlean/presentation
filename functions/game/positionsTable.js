@@ -58,7 +58,7 @@ async function loadDataApi() {
 };  
 
 function lenChange() {
-    console.log(apiData);
+    //console.log(apiData);
 
     if (clicked === true) {
         timesPlayed.innerHTML = `Number Times played: <br><br> <strong>${apiData[0][2]}</strong>`;

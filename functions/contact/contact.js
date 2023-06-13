@@ -1,6 +1,7 @@
 "use strict";
 
 const submit = document.getElementById("sendBtn");
+const url_api = "http://127.0.0.1:8080/api/mailer";
 
 function formPost(event) {
 
@@ -8,28 +9,33 @@ function formPost(event) {
 
     // values
     let form = document.getElementById("contactForm");
-    let formData = new FormData(form); 
+    let email = form.email.value;
+    let nombre = form.nombre.value;
+    let mensaje = form.mensaje.value;  
 
-    formData.forEach(function(value, key) {
-        console.log(key, value);
-    });
+    let formData = { email, nombre, mensaje };
+
+    console.log(JSON.stringify(formData));
 
     // Realiza la solicitud POST a la URL de la API
-    //fetch("url_api", {
-    //    method: "POST",
-    //    body: formData
-    //})
-    //.then(function(response) {
-    //    if (response.ok) {
-    //        alert("¡Formulario enviado!");
-    //        form.reset();
-    //    } else {
-    //        alert("Error al enviar el formulario.");
-    //    }
-    //})
-    //.catch(function(error) {
-    //    alert("Error en la solicitud: " + error.message);
-    //});
+    fetch(url_api, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(function(response) {
+        if (response.ok) {
+            alert("¡Formulario enviado!");
+            form.reset();
+        } else {
+            alert("Error al enviar el formulario.");
+        }
+    })
+    .catch(function(error) {
+        alert("Error en la solicitud: " + error.message);
+    });
 };
 
-submit.onclick = formPost;
+submit.addEventListener("click", formPost);

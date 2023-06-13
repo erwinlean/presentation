@@ -34,8 +34,8 @@ function lenguajeChange() {
 
         }else if(currentURL.includes("contact.html")){
             document.querySelector("#contactForm > h3").innerHTML = "Contact";
-            document.querySelector("#contactForm > label:nth-child(2)").innerHTML = "Email";
-            document.querySelector("#contactForm > label:nth-child(5)").innerHTML = "Message";
+            document.querySelector("#contactForm > label:nth-child(4)").innerHTML = "Name";
+            document.querySelector("#contactForm > label:nth-child(6)").innerHTML = "Message";
             document.querySelector("#sendBtn").value = "Send";
 
         }else if(currentURL.includes("game.html")){
@@ -67,8 +67,8 @@ function lenguajeChange() {
 
         }else if(currentURL.includes("contact.html")){
             document.querySelector("#contactForm > h3").innerHTML = "Contacto";
-            document.querySelector("#contactForm > label:nth-child(2)").innerHTML = "Email";
-            document.querySelector("#contactForm > label:nth-child(5)").innerHTML = "Mensaje";
+            document.querySelector("#contactForm > label:nth-child(4)").innerHTML = "Nombre";
+            document.querySelector("#contactForm > label:nth-child(6)").innerHTML = "Mensaje";
             document.querySelector("#sendBtn").value = "Enviar";
         
         }else if(currentURL.includes("game.html")){
