@@ -40,11 +40,14 @@ function lenguajeChange() {
 
         }else if(currentURL.includes("game.html")){
             document.querySelector("#restartGame").innerHTML = "Restart";
-
+            document.querySelector("#game_start").innerHTML = "Start";
+            document.querySelector("body > div.music-buttons > p").innerHTML = "Music";
         };
 
     }else{
-        htmlElement.lang = 'es';
+        if(htmlElement.lang){
+            htmlElement.lang = 'es';
+        }
         currentTogle = true;
 
         languageButton.classList.add('active');
@@ -73,6 +76,8 @@ function lenguajeChange() {
         
         }else if(currentURL.includes("game.html")){
             document.querySelector("#restartGame").innerHTML = "Reiniciar";
+            document.querySelector("#game_start").innerHTML = "Comenzar";
+            document.querySelector("body > div.music-buttons > p").innerHTML = "Musica";
         };        
     };
 };

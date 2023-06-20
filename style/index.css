@@ -106,10 +106,7 @@ li{
     transition: filter 0.3s ease;
 }
 .networks > ul > li > a > img:hover {
-    transform: scale(1.05);
-}
-.networks > ul > li:last-child > a > img:hover {
-    transform: scale(1.50);
+    transform: scale(1.1);
 }
 #content > div > div.networks > ul > li:nth-child(4){
     align-self: center;

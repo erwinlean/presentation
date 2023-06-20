@@ -88,6 +88,29 @@
 #submitGame:active{
     border-color: white;
 }
+.start-container{
+    display:flex;
+    position: absolute;
+    top: 50%;
+    left: 39%;
+    width: auto;
+}
+.start-game{
+    background-color: transparent;
+    padding: 5px;
+    width: 100px;
+    height: 60px;
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 15px;
+}
+.start-game:hover{
+    color: rgb(183, 183, 183);
+    border-color: rgb(215, 215, 215);
+    filter: drop-shadow(0 0 7px white);
+}
 @media screen and (max-width: 699px) {
     .canvas > div{
         display: grid;

@@ -1,19 +1,36 @@
 "use strict";
 
+// Conjunto para almacenar las URLs de los scripts agregados
+const scriptSet = new Set();
+
 function loadPage(page) {
-  fetch(`./pages/${page}.html`)
+  const path = (page === 'index') ? 'index.html' : `pages/${page}.html`;
+
+  fetch(`../${path}`)
     .then(response => response.text())
     .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const newBody = doc.body.innerHTML;
+
       const app = document.getElementById('app');
-      app.innerHTML = html;
-      // Load Files
-      const scriptTags = app.getElementsByTagName('script');
+      app.innerHTML = newBody;
+
+      // Eliminar los scripts existentes en el app div
+      const existingScripts = app.getElementsByTagName('script');
+      while (existingScripts.length > 0) {
+        existingScripts[0].parentNode.removeChild(existingScripts[0]);
+      }
+
+      const scriptTags = doc.getElementsByTagName('script');
       for (let i = 0; i < scriptTags.length; i++) {
         const scriptTag = document.createElement('script');
         scriptTag.src = scriptTags[i].src;
-        document.body.appendChild(scriptTag);
+        app.appendChild(scriptTag);
+        scriptSet.add(scriptTag.src); // Agregar la URL del script al conjunto
       }
-      const linkTags = app.getElementsByTagName('link');
+
+      const linkTags = doc.getElementsByTagName('link');
       for (let i = 0; i < linkTags.length; i++) {
         const linkTag = document.createElement('link');
         linkTag.href = linkTags[i].href;
@@ -29,19 +46,35 @@ function handleRoute() {
 
   switch (path) {
     case '/':
-      loadPage('index');
-      break;
+    case '/index':
+        loadPage("main");
+        break;
+    case '/main':
     case '/contact':
-      loadPage('contact');
-      break;
     case '/game':
-      loadPage('game');
+      loadPage(path.slice(1));
       break;
     default:
-      loadPage('index');
+      loadPage('main');
       break;
   }
 }
+
+function navigateTo(path) {
+  history.pushState(null, null, path);
+  handleRoute();
+}
+
+function handleClick(event) {
+  event.preventDefault();
+  const path = event.target.getAttribute('href');
+  navigateTo(path);
+}
+
+const links = document.querySelectorAll('a');
+links.forEach(link => {
+  link.addEventListener('click', handleClick);
+});
 
 window.addEventListener('DOMContentLoaded', handleRoute);
 window.addEventListener('popstate', handleRoute);

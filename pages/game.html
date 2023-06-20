@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/togle.css">
     <link rel="stylesheet" href="../style/game.css">
+    <link rel="stylesheet" href="../style/musicBtn.css">
 </head>
 
 <body class="bodyBackground">
@@ -30,7 +31,7 @@
                     </label>
                 </div>
                 <ul class="menu menu_items">
-                    <li><a href="../pages/index.html">About</a></li>
+                    <li><a href="../index.html">About</a></li>
                     <li><a href="../assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
                     <li><a href="../pages/contact.html">Contact</a></li>
                     <li><a href="#">Play</a></li>
@@ -80,10 +81,22 @@
         </div>
     </div>
 
-    <script src="../functions/game/index.js"></script>
+    <div class="start-container">
+        <button class="start-game" id="game_start">Start</button>
+    </div>
+
+    <div class="music-buttons">
+        <p>Music</p>
+        <audio id="music-player" loop src="../assets/Music/game.mp3"></audio>
+        <button id="play-pause-button"></button>
+    </div>
+    
+
     <script src="../functions/menu/lenguajeTogle.js"></script>
+    <script src="../functions/game/index.js"></script>
     <script src="../functions/menu/header_menu.js"></script>
     <script src="../functions/game/positionsTable.js"></script>
     <script src="../functions/game/formGame.js"></script>
+    <script src="../functions//game/music.js"></script>
 </body>
 </html>

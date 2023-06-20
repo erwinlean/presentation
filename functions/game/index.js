@@ -1,7 +1,7 @@
 "use strict";
 
-let restartButton = document.getElementById("restartGame");
-let actualPoints = document.getElementById("actualPoints");
+const restartButton = document.getElementById("restartGame");
+const actualPoints = document.getElementById("actualPoints");
 let angle = 0;
 let shouldDrawCircle,detectFunctionActivity = false;
 //let detectFunctionActivity = false;
@@ -232,8 +232,8 @@ function checkCollision() {
 
       // Colocar el formulario en el centro de la pantalla
       form.style.position = 'absolute';
-      form.style.top = '50%';
-      form.style.left = '50%';
+      form.style.top = '54%';
+      form.style.left = '42%';
       form.style.transform = 'translate(-50%, -50%)';
 
       // Agregar el formulario al cuerpo del documento
@@ -527,23 +527,6 @@ function startCountdown() {
 // init number of meteors depends on window size
 numOfMeteors();
 
-// Agregar cuadrados pequeños aleatorios cada 2 segundos
-setInterval(function() {
-  // Check triangle exists for create meteors or not
-  if(detectFunctionActivity==false){
-    createSmallSquare();
-  };
-
-  // Check colision con meteorito, para eliminar o no  el "triangulo"
-  checkCollision();
-
-}, numberOfMeteors); // Crear mas o menos cuadrados dependiendo el width y height
-
-// Comenzar la animación del canvas
-setTimeout(() => {
-  startCountdown();
-}, 500);
-
 // Test width for implementing device diferences behaviour
 //console.log(canvas.width, canvas.height);
 canvas.addEventListener('touchmove', function(event) {
@@ -559,3 +542,32 @@ canvas.addEventListener('touchmove', function(event) {
   // Calcular el ángulo de rotación del triángulo en base a la posición del touch
   angle = Math.atan2(mouseY - (squareY + 1000), mouseX - (squareX + 240));
 });
+
+//Start the game
+const startGameButton = document.getElementById("game_start");
+const musicPlayer = document.getElementById("music-player");
+const startContainer = document.querySelector(".start-container");
+const musicContainer = document.querySelector("music-buttons");
+
+// Function to start the game
+function start() {
+  // Play the music
+  musicPlayer.play();
+
+  startContainer.style.display = "none";
+  startCountdown();
+
+  // Agregar cuadrados pequeños aleatorios cada 2 segundos (meteoritos)
+  setInterval(function() {
+    // Check triangle exists for create meteors or not
+    if(detectFunctionActivity==false){
+      createSmallSquare();
+    };
+  
+    // Check colision con meteorito, para eliminar o no  el "triangulo"
+    checkCollision();
+  
+  }, numberOfMeteors); // Crear mas o menos cuadrados dependiendo el width y height
+};
+
+startGameButton.addEventListener("click", start);
