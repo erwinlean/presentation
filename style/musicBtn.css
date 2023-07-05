@@ -8,10 +8,10 @@
     z-index: 9999;
 }
 .music-buttons p {
-    font-size: 7px;
+    font-size: 10px;
     position: absolute;
-    top: -2px;
-    left: 16px;
+    top: -5px;
+    left: 11px;
 }
 .music-buttons p {
     filter: drop-shadow(0 0 10px white);

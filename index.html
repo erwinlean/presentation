@@ -4,15 +4,132 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js"></script>
+
     <title>Erwin Leandro Marte</title>
-    <script src="./functions/router/routes.js"></script>
-    <link rel="shortcut icon" href="../assets/star_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../style/togle.css">
-    <link rel="stylesheet" href="../style/scroll.css">
-    <link rel="stylesheet" href="../style/index.css">
-    <link rel="stylesheet" href="../style/canvas.css">
+    <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style/togle.css">
+    <link rel="stylesheet" href="./style/scroll.css">
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/canvas.css">
+    <link rel="stylesheet" href="./style/chatbot.css">
 </head>
 <body>
-    <div id="app"></div>
+    <div id="content" class="body_content">
+        <div class="header">
+            <div class="networks">
+                <ul>
+                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="github" title="github"></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin" title="linkedin"></a></li>
+                    <li><a target="_self" href="#" id="restartStars"><img src="./assets/star_icon.png" alt="create New Stars" title="create New Stars"></a></li>
+                    <li><a><p id="starsCount">0</p> </a></li>    
+                </ul>
+            </div>
+            
+            <div class="text_zone" id="expand_button">
+                <div>
+                    <input id="menu-toggle" type="checkbox" />
+                    <label class="menu-button-container" for="menu-toggle">
+                        <div class="menu-button"></div>
+                    </label>
+                </div>
+                <ul class="menu menu_items">
+                    <li><a href="#">About</a></li>
+                    <li><a href="./assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="./game.html">Play</a></li>
+                </ul>
+
+
+                <ul id="languageToggle">
+                    <li>
+                        <button class="languageButton">
+                            <span class="languageText">EN</span>
+                            <span class="circle"></span>
+                            <span class="languageText">ES</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <canvas id="holeCanvas" class="hole"></canvas>
+            <canvas id="starsCanvas" class="stars"></canvas>
+
+        </div>
+
+
+        <div>
+            <!-- Scrolling new info test-->
+            <div>
+                <div class="info " id="perfil_name">
+                    <h1 class="name">Erwin Leandro Marte&nbsp&nbsp<span>&#160;</span</h1>
+                </div>
+            
+                <!-- Scrolling new info test-->
+                <div class="fade-in typing">
+                    <p>Soy un programador en crecimiento con experiencia en diferentes tecnologías. Me especializo en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Angular), también tengo conocimientos básicos Electron & Ionic. Además, manejo PHP, Linux, Docker y otras herramientas esenciales de programación.</p>
+                    <p>Actualmente, me encuentro trabajando como Software Engineer Jr. en Criteria Online. Mi rol se centra en la creación de conectores bidireccionales mediante API entre sistemas como ERP, PIM, DAM y eCommerce. Mi objetivo es asegurar una comunicación fluida y eficiente entre estas plataformas para facilitar la gestión de datos y mejorar la experiencia del usuario.</p>
+                    <p>Estoy comprometido con seguir aprendiendo y adquiriendo nuevas habilidades en el mundo de la programación para crecer profesionalmente y aportar soluciones innovadoras en cada proyecto en el que participo.</p>
+                </div>
+                
+                <div class="fade-in">
+                    <p>Technologies & Tools</p>
+                    <div>
+                        <img class="tech_images" src="./assets/Logos/Nodejs.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Javascript.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Angular.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Electron.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Express.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Ionic.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Php.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Linux.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Docker.png" alt="">
+                    </div>
+                    <div>
+                        <img class="tech_images" src="./assets/Logos/Html.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/CSS.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Postman.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/MySQL.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/MongoDB.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Git.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/GithUb.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/VirtualBox.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/vmWare.png" alt="">
+                    </div>
+                </div>
+            
+                <div class="fade-in">
+                    <p>Hola, soy un desarrollador de software y me fascina sumergirme en el mundo de la tecnología y la programación. Siempre estoy dispuesto a aprender y mejorar en lo que hago.</p>
+                    <p>Cuando no estoy frente a la computadora, me encanta pasar tiempo al aire libre, especialmente en la playa. El surf es deporte favorito y en cual me da paz, disfruto montando las olas y sintiendo esa conexión única con el mar. También adoro la sensación del sol y la arena entre mis pies.</p>
+                    <p>Además de los deportes acuáticos, los videojuegos son una de mis grandes pasatiempos. Me encanta sumergirme en estos.</p>
+                    <p>Cuando necesito relajarme, me sumerjo en el mundo de las series de televisión. Disfruto de series como "Malcolm in the middle", "E.R. Emergencias", "Friends", "Rick and Morty", entre otras.</p>
+                    <p>Los animales me encantan, especialmente los gatos, ocupan un lugar especial en mi corazón y cuento con dos de ellos, junto con una perra. Siempre encuentro un poco de paz y felicidad cuando estoy cerca de ellos.</p>
+                    <br>
+                    <p>En resumen, soy un desarrollador de software, apasionada por el surf, la playa, los videojuegos, la programación (si de nuevo), las series de televisión y los gatos (y perros). Asi disfruto mi vida, dia a dia.</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <p class="chat-bot-hello">Hello</p>
+    <img class="space_cat_chat" src="./assets/space_cat_DALLE.png" alt="space cat">
+    <div class="chatbot-container hidden" id="chatbot">
+        <div class="chatbot-header" >
+            <span class="icon">▼</span>Hello
+        </div>
+        <div class="chatbot-content" id="chatbotContent">
+            <input type="text" id="inputMessage" placeholder="Write your messange" />
+            <button>Send</button>
+        </div>
+    </div>
+
+    <script src="./functions/menu/header_menu.js"></script>
+    <script src="./functions/menu/lenguajeTogle.js"></script>
+    <script src="./functions/background/scroll.js"></script>
+    <script src="./functions/background/background_stars.js"></script>
+    <script src="./functions/background/background_hole.js"></script>
+    <script src="./functions/chatbot/chat.js"></script>
 </body>
 </html>

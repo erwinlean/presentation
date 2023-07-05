@@ -1,7 +1,7 @@
 "use strict";
 
 //const baseUrl = 'https://sore-erin-goldfish-tutu.cyclic.app';
-const baseUrl = 'http://127.0.0.1:8080';
+const baseUrl = 'http://localhost:8080';
 const endpoint = '/api/game/';
 const methodDel = "deleteUser/";
 const usernameToDelete = "";

@@ -4,7 +4,7 @@
 const scriptSet = new Set();
 
 function loadPage(page) {
-  const path = (page === 'index') ? 'index.html' : `pages/${page}.html`;
+  const path = (page === 'index') ? 'index.html' : `${page}.html`;
 
   fetch(`../${path}`)
     .then(response => response.text())
@@ -67,7 +67,7 @@ function navigateTo(path) {
 
 function handleClick(event) {
   event.preventDefault();
-  const path = event.target.getAttribute('href');
+  const path = event.target.getAttribute('href').slice(1);
   navigateTo(path);
 }
 

@@ -25,6 +25,18 @@ function lenguajeChange() {
         document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(3) > a").innerHTML = "Contact";
         document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(4) > a").innerHTML = "Play";
     
+        let chat_header= document.querySelector("#chatbot > div.chatbot-header");
+        let chat_p     = document.querySelector("body > p");
+        let chat_input = document.querySelector("#inputMessage");
+        let chat_btn   = document.querySelector("#chatbotContent > button");
+
+        if(chat_header){
+            chat_header.innerHTML = '<span class="icon">▼</span> Hello';
+            chat_p.textContent = "Hello";
+            chat_input.placeholder = "Write your message";
+            chat_btn.innerHTML = "Send";
+        };
+
         // Obtein the current url and traslate
         currentURL = window.location.href;
 
@@ -60,6 +72,18 @@ function lenguajeChange() {
         document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(2) > a").innerHTML = "Curriculum";
         document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(3) > a").innerHTML = "Contacto";
         document.querySelector("#expand_button > ul.menu.menu_items > li:nth-child(4) > a").innerHTML = "Jugar";
+
+        let chat_header= document.querySelector("#chatbot > div.chatbot-header");
+        let chat_p     = document.querySelector("body > p");
+        let chat_input = document.querySelector("#inputMessage");
+        let chat_btn   = document.querySelector("#chatbotContent > button");
+
+        if(chat_header){
+            chat_header.innerHTML = '<span class="icon">▼</span> Hola';
+            chat_p.textContent = "Hola";
+            chat_input.placeholder = "Escribi tu mensaje";
+            chat_btn.innerHTML = "Enviar";
+        };
 
         // Obtein the current url and traslate
         currentURL = window.location.href;

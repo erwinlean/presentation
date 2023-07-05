@@ -9,14 +9,18 @@ loadingContainer.style.display = 'flex';
 table.style.display = "none";
 let timesPlayed, apiData;
 let clicked = false;
+//const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/game/";
+const url = "http://localhost:8080/api/game";
 
 // GET all game data
 async function loadDataApi() {
     timesPlayed = document.querySelector("#game_points > tbody > tr:nth-child(1) > th");
 
-    fetch('https://sore-erin-goldfish-tutu.cyclic.app/api/game/')
+    fetch(`${url}`)
     .then(response => response.json())
     .then(data => {
+        console.log(data[1]);
+
         // Sort points
         data.sort(function(a, b) {
             return b[1] - a[1];
@@ -36,18 +40,20 @@ async function loadDataApi() {
 
         // Show only first 10 items
         const slicedData = data.slice(0, 10);
-
         slicedData.forEach(function(data) {
             let row = document.createElement("tr");
-
-            for (let i = 0; i < data.length - 1; i++) {
-                let cell = document.createElement("td");
-                cell.textContent = data[i];
-                row.appendChild(cell);
-            };
-
+        
+            let nameCell = document.createElement("td");
+            nameCell.textContent = data[0].usersName;
+            row.appendChild(nameCell);
+        
+            let scoreCell = document.createElement("td");
+            scoreCell.textContent = data[1].gamePoints;
+            row.appendChild(scoreCell);
+        
             table.appendChild(row);
         });
+        
 
         table.style.display = 'table';
         loadingContainer.style.display = 'none';

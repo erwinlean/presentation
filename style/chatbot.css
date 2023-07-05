@@ -11,6 +11,12 @@
     cursor: pointer;
     transform: rotateY(180deg);
 }
+#chatbot > div.chatbot-header{
+    display: flex;
+}
+#chatbotContent > button{
+    margin: 10px 0;
+}
 .chat-bot-hello{
     position: fixed;
     z-index: 350;
@@ -32,7 +38,7 @@
     position: fixed;
     z-index: 340;
     top: 66%;
-    right: 75px;
+    right: 80px;
     width: 240px;
     height: auto;
     min-height: 250px;

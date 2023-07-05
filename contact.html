@@ -5,21 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js"></script>
+
     <title>Contact</title>
-    <link rel="shortcut icon" href="../assets/star_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../style/index.css">
-    <link rel="stylesheet" href="../style/togle.css">
-    <link rel="stylesheet" href="../style/contact.css">
-    <link rel="stylesheet" href="../style/canvas.css">
+    <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/togle.css">
+    <link rel="stylesheet" href="./style/contact.css">
+    <link rel="stylesheet" href="./style/canvas.css">
+    <link rel="stylesheet" href="./style/chatbot.css">
 </head>
 <body>
     <div id="content" class="body_content">
         <div class="header">
             <div class="networks">
                 <ul>
-                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="../assets/github.png" alt="github"></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="../assets/linkedin.png" alt="linkedin"></a></li>
-                    <li><a target="_self" href="#" id="restartStars"><img src="../assets/star_icon.png" alt="create New Stars" title="create New Stars"></a></li>
+                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="github"></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin"></a></li>
+                    <li><a target="_self" href="#" id="restartStars"><img src="./assets/star_icon.png" alt="create New Stars" title="create New Stars"></a></li>
                     <li><a><p id="starsCount">0</p> </a></li>    
                 </ul>
             </div>
@@ -33,9 +36,9 @@
                 </div>
                 <ul class="menu menu_items">
                     <li><a href="./index.html">About</a></li>
-                    <li><a href="../assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
+                    <li><a href="./assets/Curriculum actualizado- ERWIN MARTE.pdf" target="_blank">Resume</a></li>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="../pages/game.html">Play</a></li>
+                    <li><a href="./game.html">Play</a></li>
                 </ul>
                         
                         
@@ -73,10 +76,23 @@
         </form>
     </div>
 
-    <script src="../functions/contact/contact.js"></script>
-    <script src="../functions/menu/lenguajeTogle.js"></script>
-    <script src="../functions/menu/header_menu.js"></script>
-    <script src="../functions/background/background_stars.js"></script>
-    <script src="../functions/background/background_hole.js"></script>
+    <p class="chat-bot-hello">Hello</p>
+    <img class="space_cat_chat" src="./assets/space_cat_DALLE.png" alt="space cat">
+    <div class="chatbot-container hidden" id="chatbot">
+        <div class="chatbot-header" >
+            <span class="icon">▼</span>Hello
+        </div>
+        <div class="chatbot-content" id="chatbotContent">
+            <input type="text" id="inputMessage" placeholder="Write your messange" />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="./functions/contact/contact.js"></script>
+    <script src="./functions/menu/lenguajeTogle.js"></script>
+    <script src="./functions/menu/header_menu.js"></script>
+    <script src="./functions/background/background_stars.js"></script>
+    <script src="./functions/background/background_hole.js"></script>
+    <script src="./functions/chatbot/chat.js"></script>
 </body>
 </html>
