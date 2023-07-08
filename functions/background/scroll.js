@@ -1,6 +1,7 @@
 "use strict";
 
 const containers = document.querySelectorAll('.tech_images');
+const chatCheck= document.querySelector("#chatbot");
 window.addEventListener('wheel', debounce(revealElements, 100));
 window.addEventListener('touchstart', handleTouchStart, false);
 window.addEventListener('touchmove', handleTouchMove, false);
@@ -28,10 +29,8 @@ function debounce(callback, delay) {
 // Detectar dirección del desplazamiento
 window.addEventListener("wheel", function(event) {
     if (event.deltaY > 0) {
-        // Scroll hacia abajo
         lastScrollDirection = "down";
     } else {
-        // Scroll hacia arriba
         lastScrollDirection = "up";
     }
 });
@@ -49,64 +48,66 @@ function handleTouchMove(event) {
 
 function handleTouchEnd() {
     if (touchStartY < touchEndY) {
-        // Movimiento hacia abajo
         lastScrollDirection = "down";
     } else {
-        // Movimiento hacia arriba
         lastScrollDirection = "up";
     }
     revealElements();
-}
+};
 
 function revealElements() {
-    let fadeElements = elements;
+    let currentDisplay = chatCheck.style.display;
 
-    if (lastScrollDirection === "down") {
-        //console.log("scrollDown");
+    if(currentDisplay == "" || currentDisplay == "none") {
+        let fadeElements = elements;
 
-        if (positionOfList < fadeElements.length - 1) {
-            let lastElementInView = fadeElements[positionOfList];
-            let elementInView = fadeElements[positionOfList + 1];
-
-            //console.log(elementInView);
-
-            lastElementInView.style.display = "none";
-            elementInView.style.display = "grid";
-
-            const elementTop = elementInView.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (elementTop < windowHeight) {
-                elementInView.classList.add('visible');
-            } else {
-                elementInView.style.display = "none";
-            }
-
-            positionOfList++;
-        }
-    } else if (lastScrollDirection === "up") {
-        //console.log("scrollUp");
-
-        if (positionOfList > 0) {
-            let elementInView = fadeElements[positionOfList];
-            let lastElementInView = fadeElements[positionOfList - 1];
-    
-            elementInView.style.display = "none";
-            lastElementInView.style.display = "grid";
-            lastElementInView.classList.remove('visible');
-    
-            const elementTop = lastElementInView.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (elementTop < windowHeight) {
-                lastElementInView.classList.add('visible');
-                const paragraphs = lastElementInView.querySelectorAll('p');
-                for (let i = 0; i < paragraphs.length; i++) {
-                    paragraphs[i].classList.add('zoom-in');
+        if (lastScrollDirection === "down") {
+            //console.log("scrollDown");
+        
+            if (positionOfList < fadeElements.length - 1) {
+                let lastElementInView = fadeElements[positionOfList];
+                let elementInView = fadeElements[positionOfList + 1];
+            
+                //console.log(elementInView);
+            
+                lastElementInView.style.display = "none";
+                elementInView.style.display = "grid";
+            
+                const elementTop = elementInView.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight) {
+                    elementInView.classList.add('visible');
+                } else {
+                    elementInView.style.display = "none";
                 }
+            
+                positionOfList++;
             }
-            positionOfList--;
+        } else if (lastScrollDirection === "up") {
+            //console.log("scrollUp");
+        
+            if (positionOfList > 0) {
+                let elementInView = fadeElements[positionOfList];
+                let lastElementInView = fadeElements[positionOfList - 1];
+            
+                elementInView.style.display = "none";
+                lastElementInView.style.display = "grid";
+                lastElementInView.classList.remove('visible');
+            
+                const elementTop = lastElementInView.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight) {
+                    lastElementInView.classList.add('visible');
+                    const paragraphs = lastElementInView.querySelectorAll('p');
+                    for (let i = 0; i < paragraphs.length; i++) {
+                        paragraphs[i].classList.add('zoom-in');
+                    }
+                }
+                positionOfList--;
+            }
         }
-    }
-}
+    };
+};
 
 window.addEventListener('DOMContentLoaded', function () {
     setTimeout(zoomParagraphs, 3000);

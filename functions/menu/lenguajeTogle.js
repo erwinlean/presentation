@@ -28,7 +28,7 @@ function lenguajeChange() {
         let chat_header= document.querySelector("#chatbot > div.chatbot-header");
         let chat_p     = document.querySelector("body > p");
         let chat_input = document.querySelector("#inputMessage");
-        let chat_btn   = document.querySelector("#chatbotContent > button");
+        let chat_btn   = document.querySelector("#chatbotContent > div > button");
 
         if(chat_header){
             chat_header.innerHTML = '<span class="icon">▼</span> Hello';
@@ -76,7 +76,7 @@ function lenguajeChange() {
         let chat_header= document.querySelector("#chatbot > div.chatbot-header");
         let chat_p     = document.querySelector("body > p");
         let chat_input = document.querySelector("#inputMessage");
-        let chat_btn   = document.querySelector("#chatbotContent > button");
+        let chat_btn   = document.querySelector("#chatbotContent > div > button");
 
         if(chat_header){
             chat_header.innerHTML = '<span class="icon">▼</span> Hola';
