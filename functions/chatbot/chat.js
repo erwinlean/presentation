@@ -8,6 +8,7 @@ const hello_cat = document.querySelector("body > p");
 const cat = document.querySelector("body > img");
 const span_min = document.querySelector("#chatbot > div.chatbot-header > span");
 const button_chat = document.querySelector("#chatbotContent > div > button");
+let msgCount = 0;
 
 function toggleChatbot() {
     chatbotContent.style.display = chatbotContent.style.display === "none" ? "block" : "none";
@@ -25,37 +26,45 @@ function toggleChatbot() {
 
 // Socket - chatbot
 socket.on('connect', () => {
-    console.log('Conexión establecida con el servidor');
+    //console.log('Conexión establecida con el servidor');
 });
 
 function sendMessage() {
     const message = inputMessage.value.trim();
+
     if (message !== "") {
+        if(msgCount < 10){
+            
+            //console.log("Sending:", message);
+            //console.log("message count: " + msgCount);
+            msgCount ++;
+            socket.emit('chat message', message);
 
-        console.log("Sending:", message);
-        socket.emit('chat message', message);
+            inputMessage.value = "";
 
-        inputMessage.value = "";
+            const sentContainer = document.createElement('div');
+            sentContainer.classList.add('received_container');
+            chatbotContent.appendChild(sentContainer);
 
-        const sentContainer = document.createElement('div');
-        sentContainer.classList.add('received_container');
-        chatbotContent.appendChild(sentContainer);
+            const userIconElement = document.createElement('img');
+            userIconElement.classList.add("chatPerson");
+            userIconElement.src = '../assets/chat_person.png';
+            userIconElement.alt = 'chat person Icon';
+            sentContainer.appendChild(userIconElement);
 
-        const userIconElement = document.createElement('img');
-        userIconElement.classList.add("chatPerson");
-        userIconElement.src = '../assets/chat_person.png';
-        userIconElement.alt = 'chat person Icon';
-        sentContainer.appendChild(userIconElement);
-
-        const sendMsg = document.createElement('div');
-        sendMsg.classList.add('sent');
-        sendMsg.textContent = message;
-        sentContainer.appendChild(sendMsg);
-    }
+            const sendMsg = document.createElement('div');
+            sendMsg.classList.add('sent');
+            sendMsg.textContent = message;
+            sentContainer.appendChild(sendMsg);
+        }else{
+            
+            console.log("limite de 10 mensaje a la ia (no implementada aun");
+        };;
+    };
 };
 
 socket.on('chat message', (message) => {
-    console.log('Mensaje recibido:', message);
+    //console.log('Mensaje recibido:', message);
 
     const receiverContainer = document.createElement('div');
     receiverContainer.classList.add('received_container');

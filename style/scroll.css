@@ -10,6 +10,7 @@
     top: -700px;
     transition: opacity 0.7s;
     transform: rotateY(0deg) rotateX(0deg);
+    justify-content: center;
 }
 .fade-in.visible {
     animation: fadeInAnimation 1s;
@@ -23,7 +24,7 @@
     margin: 10px 20% 10px 20%;
     text-align: justify;
     line-height: 22px;
-    background-color: rgba(128, 128, 128, 0.5);
+    justify-content: center;
     border-radius: 10px;
 }
 @keyframes blink-caret {
@@ -59,4 +60,29 @@ body > div > div > p{
 }
 .tech_images{
     width: 72px;
+}
+
+#content > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2){
+    width: 100%;
+    text-align: -webkit-center;
+    padding: 5% 15%;
+}
+#content > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(3){
+    width: 100%;
+    text-align: -webkit-center;
+    padding: 5% 15%;
+}
+#content > div:nth-child(2) > div > div:nth-child(4){
+    text-align-last: center;
+}
+#content > div:nth-child(2) > div > div.fade-in.typing.visible > img{
+    justify-self: center;
+    margin-bottom: 50px;
+}
+#content > div:nth-child(2) > div > div:nth-child(3) > img{
+    justify-self: center;
+    margin-bottom: 50px;
+}
+#content > div:nth-child(2) > div > div:nth-child(4) > p{
+    margin-bottom: 60px;
 }
