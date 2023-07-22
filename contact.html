@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="./style/contact.css">
     <link rel="stylesheet" href="./style/canvas.css">
     <link rel="stylesheet" href="./style/chatbot.css">
+
+    <!--Token-->
+    <script src="./functions/token/getToken.js"></script>
 </head>
 <body>
     <div id="content" class="body_content">
@@ -83,8 +86,10 @@
             <span class="icon">▼</span>Hello
         </div>
         <div class="chatbot-content" id="chatbotContent">
-            <input type="text" id="inputMessage" placeholder="Write your messange" />
-            <button onclick="sendMessage()">Send</button>
+            <div>
+                <input type="text" id="inputMessage" placeholder="Write your message" />
+                <button>Send</button>
+            </div>
         </div>
     </div>
 

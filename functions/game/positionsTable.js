@@ -9,17 +9,22 @@ loadingContainer.style.display = 'flex';
 table.style.display = "none";
 let timesPlayed, apiData;
 let clicked = false;
-//const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/game/";
-const url = "http://localhost:8080/api/game";
+const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/game/";
+//const url = "http://localhost:8080/api/game";
 
 // GET all game data
 async function loadDataApi() {
     timesPlayed = document.querySelector("#game_points > tbody > tr:nth-child(1) > th");
 
-    fetch(`${url}`)
+    // token
+    const token = localStorage.getItem('accessToken');
+    const headers = {
+        'Authorization': `Bearer ${token}`
+    };
+
+    fetch(url, { headers })
     .then(response => response.json())
     .then(data => {
-        console.log(data[1]);
 
         // Sort points
         data.sort(function(a, b) {

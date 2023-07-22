@@ -1,6 +1,6 @@
 "use strict";
-
-const socket = io('http://localhost:8080/');
+//const socket = io('http://localhost:8080');
+const socket = io('https://sore-erin-goldfish-tutu.cyclic.app/');
 const chatbot = document.getElementById('chatbot');
 const chatbotContent = document.getElementById('chatbotContent');
 const inputMessage = document.getElementById('inputMessage');
@@ -33,12 +33,13 @@ function sendMessage() {
     const message = inputMessage.value.trim();
 
     if (message !== "") {
-        if(msgCount < 10){
+        if(msgCount < 5){
             
             //console.log("Sending:", message);
             //console.log("message count: " + msgCount);
             msgCount ++;
-            socket.emit('chat message', message);
+            localStorage.setItem('msgCount', msgCount);
+            //socket.emit('chat message', message);
 
             inputMessage.value = "";
 
@@ -56,15 +57,72 @@ function sendMessage() {
             sendMsg.classList.add('sent');
             sendMsg.textContent = message;
             sentContainer.appendChild(sendMsg);
+
+            // Loading inc msg from backend
+            const loadingChat = document.createElement('img');
+            loadingChat.id = "loading_chat";
+            loadingChat.src = "./assets/loading.gif";
+            loadingChat.style.display = "flex";
+            chatbotContent.appendChild(loadingChat);
         }else{
+
+            let allMsgSent = document.querySelectorAll(".sent");
+            let allMsgReceived = document.querySelectorAll(".received");
             
-            console.log("limite de 10 mensaje a la ia (no implementada aun");
+            console.log(allMsgSent, allMsgReceived);
+        
+            // Guardar los mensajes enviados y recibidos en un arreglo
+            let messages;
+
+            allMsgSent.forEach((msg) => {
+                messages = messages + msg.textContent;
+            });
+            allMsgReceived.forEach((msg) => {
+                messages = messages + msg.textContent;
+            });
+        
+            // Realizar el POST al backend
+            const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/chat";
+            //const url = "http://localhost:8080/api/chat";
+            const data = { message: messages };
+
+            const token = localStorage.getItem('accessToken');
+
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res => {
+                if (res.ok) {
+                    console.log("Mensajes enviados al backend.");
+                } else {
+                    console.log("Error al enviar los mensajes al backend.");
+                };
+            })
+            .catch(err => {
+                console.log("Error en la solicitud POST:", err);
+                console.log(err);
+            });
+        
+            alert("Límite de 5 mensajes.");
         };;
     };
 };
 
 socket.on('chat message', (message) => {
     //console.log('Mensaje recibido:', message);
+
+    let removeLoading = document.getElementById("loading_chat");
+    removeLoading.remove();
+
+    const chatData = JSON.parse(localStorage.getItem('chatData')) || [];
+    chatData.push({ message, response: message });
+    localStorage.setItem('chatData', JSON.stringify(chatData));
+    console.log(chatData);
 
     const receiverContainer = document.createElement('div');
     receiverContainer.classList.add('received_container');
@@ -82,8 +140,7 @@ socket.on('chat message', (message) => {
     receiverContainer.appendChild(userIconElement)
 });
 
-// init chat and connections
-// chat
+// Init
 hello_cat.onclick = toggleChatbot;
 hello_cat.ontouchstart = toggleChatbot;
 cat.onclick = toggleChatbot;
@@ -100,3 +157,46 @@ inputMessage.addEventListener("keydown", function(event) {
         sendMessage();
     };
 });
+
+// Show chat if exist from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const chatData = JSON.parse(localStorage.getItem('chatData'));
+    if (chatData) {
+        chatData.forEach((data) => {
+            const { message, response } = data;
+
+            const sentContainer = document.createElement('div');
+            sentContainer.classList.add('received_container');
+            chatbotContent.appendChild(sentContainer);
+
+            const userIconElement = document.createElement('img');
+            userIconElement.classList.add("chatPerson");
+            userIconElement.src = '../assets/chat_person.png';
+            userIconElement.alt = 'chat person Icon';
+            sentContainer.appendChild(userIconElement);
+
+            const sendMsg = document.createElement('div');
+            sendMsg.classList.add('sent');
+            sendMsg.textContent = message;
+            sentContainer.appendChild(sendMsg);
+
+            const receiverContainer = document.createElement('div');
+            receiverContainer.classList.add('received_container');
+            chatbotContent.appendChild(receiverContainer);
+
+            const receivedMsg = document.createElement('div');
+            receivedMsg.classList.add('received');
+            receivedMsg.textContent = response;
+            receiverContainer.appendChild(receivedMsg);
+
+            const catIconElement = document.createElement('img');
+            catIconElement.classList.add("catbot");
+            catIconElement.src = '../assets/chat_catbot.png';
+            catIconElement.alt = 'catbot Icon';
+            receiverContainer.appendChild(catIconElement);
+        });
+    }
+});
+
+
+msgCount = parseInt(localStorage.getItem('msgCount')) || 0;

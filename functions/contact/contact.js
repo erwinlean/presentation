@@ -1,7 +1,7 @@
 "use strict";
 
 const submit = document.getElementById("sendBtn");
-const url_api = "http://127.0.0.1:8080/api/mailer";
+const url_api = "https://sore-erin-goldfish-tutu.cyclic.app/api/mailer";
 
 function formPost(event) {
 
