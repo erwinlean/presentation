@@ -3,6 +3,7 @@
     position: relative;
     width: 100%;
     height:min-content;
+    margin-top: 50px;
     padding: 25px;
     z-index: 300;
     justify-content: center; 
@@ -16,7 +17,6 @@ form {
     width: 50%;
     background: transparent;
     color: white;
-    margin: 80px 0 0 0;
     padding: 10px;
     font-family: Myriad;
     height: fit-content;
@@ -37,9 +37,6 @@ input[type="text"],input[type="email"],textarea {
     font-family: Myriad;
     border-radius: 5px;
 }
-textarea{
-    min-height: 150px;
-}
 input[type="submit"] {
     background-color: transparent;
     color: white;
@@ -56,12 +53,30 @@ input[type="submit"]:hover {
 input[type="submit"]:active {
     border: 1px solid rgb(185, 185, 185);
 }
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 899px){
     body > div.formContainer {
-        margin-top: 110px;
+        margin-top: 0px;
     }
     form{
         z-index: 250;
+        width: 40% !important;
         margin: 0px 0 0 0;
+    }
+    label{
+        margin-bottom: 8px;
+    }
+    textarea{
+        min-height: 80px;
+    }
+    #sendBtn{
+        padding: 2px 8.5px;
+    }
+    .formContainer > form >h3 {
+        padding-bottom: 10px;
+    }
+}
+@media screen and (min-height: 750px){
+    body > div.formContainer{
+        margin-top: 200px !important;
     }
 }

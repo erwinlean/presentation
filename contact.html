@@ -7,13 +7,26 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js"></script>
 
-    <title>Contact</title>
+    <title>Erwin Leandro Marte Contact - Web Developer Portfolio</title>
+    <link rel="icon" type="image/png" href="./assets/Logos/stars_16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="./assets/Logos/stars_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/Logos/stars_180.png">
     <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
+
+    <meta name="description" content="Soy un programador en crecimiento con experiencia en diferentes tecnologías. Especializado en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Angular), además de PHP, Linux, Docker y otras herramientas esenciales de programación. Actualmente, trabajando como Software Engineer Jr. en Criteria Online. Mi objetivo es aportar soluciones innovadoras en cada proyecto en el que participo.">
+    <meta name="keywords" content="web developer, programador, JavaScript, Node.js, Express, Angular, PHP, Linux, Docker, portfolio">
+    <meta name="author" content="Erwin Leandro Marte">
+    <link rel="canonical" href="https://test-porfolio.netlify.app/">
+    <meta name="robots" content="index, follow">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="Erwin Leandro Marte - Portfolio Web Developer">
+
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/togle.css">
     <link rel="stylesheet" href="./style/contact.css">
     <link rel="stylesheet" href="./style/canvas.css">
     <link rel="stylesheet" href="./style/chatbot.css">
+    <link rel="stylesheet" href="./style/alert.css">
 
     <!--Token-->
     <script src="./functions/token/getToken.js"></script>
@@ -23,8 +36,8 @@
         <div class="header">
             <div class="networks">
                 <ul>
-                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="github"></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin"></a></li>
+                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="Github" title="Github"></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin" title="LinkedIn"></a></li>
                     <li><a target="_self" href="#" id="restartStars"><img src="./assets/star_icon.png" alt="create New Stars" title="create New Stars"></a></li>
                     <li><a><p id="starsCount">0</p> </a></li>    
                 </ul>
@@ -79,19 +92,21 @@
         </form>
     </div>
 
-    <p class="chat-bot-hello">Hello</p>
-    <img class="space_cat_chat" src="./assets/space_cat_DALLE.png" alt="space cat">
+    <p class="chat-bot-hello">Hello there!</p>
+    <img class="space_cat_chat" src="./assets/space_cat_DALLE.png" alt="Space cat chat" title="Space cat chat">
     <div class="chatbot-container hidden" id="chatbot">
         <div class="chatbot-header" >
-            <span class="icon">▼</span>Hello
+            <span class="icon">▼</span>Hey ask me!
         </div>
         <div class="chatbot-content" id="chatbotContent">
             <div>
-                <input type="text" id="inputMessage" placeholder="Write your message" />
+                <input type="text" id="inputMessage" placeholder="Write your message"/>
                 <button>Send</button>
             </div>
         </div>
     </div>
+
+    <audio id="hello_not" src="./assets/Music/notification.mp3"></audio>
 
     <script src="./functions/contact/contact.js"></script>
     <script src="./functions/menu/lenguajeTogle.js"></script>
@@ -99,5 +114,6 @@
     <script src="./functions/background/background_stars.js"></script>
     <script src="./functions/background/background_hole.js"></script>
     <script src="./functions/chatbot/chat.js"></script>
+    <script src="./functions/chatbot/hiUser.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 "use strict";
 
 const holeCanvas = document.getElementById('holeCanvas');
-const ctx = holeCanvas.getContext('2d');
+const canvasContext = holeCanvas.getContext('2d');
 const domCount = document.getElementById("starsCount");
 
 holeCanvas.width = window.innerWidth   ;
@@ -41,24 +41,24 @@ function removeCircle() {
 };
 
 function drawHole() {
-    ctx.clearRect(0, 0, holeCanvas.width, holeCanvas.height);
+    canvasContext.clearRect(0, 0, holeCanvas.width, holeCanvas.height);
 
     // draw circle border
-    ctx.strokeStyle = borderColor;
-    ctx.lineWidth = borderWidth;
-    ctx.shadowBlur = 30;
-    ctx.shadowColor = 'gray';
-    ctx.beginPath();
-    ctx.arc(holeX, holeY, radius, 0, Math.PI * 2);
-    ctx.closePath();
-    ctx.stroke();
+    canvasContext.strokeStyle = borderColor;
+    canvasContext.lineWidth = borderWidth;
+    canvasContext.shadowBlur = 30;
+    canvasContext.shadowColor = 'gray';
+    canvasContext.beginPath();
+    canvasContext.arc(holeX, holeY, radius, 0, Math.PI * 2);
+    canvasContext.closePath();
+    canvasContext.stroke();
 
     // Draw perse
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.arc(holeX, holeY, radius, 0, Math.PI * 2);
-    ctx.closePath();
-    ctx.fill();
+    canvasContext.fillStyle = color;
+    canvasContext.beginPath();
+    canvasContext.arc(holeX, holeY, radius, 0, Math.PI * 2);
+    canvasContext.closePath();
+    canvasContext.fill();
 };
 
 // Update position of the mouse

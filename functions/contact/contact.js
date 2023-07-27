@@ -1,11 +1,34 @@
 "use strict";
 
 const submit = document.getElementById("sendBtn");
-const url_api = "https://sore-erin-goldfish-tutu.cyclic.app/api/mailer";
+const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/mailer";
+//const url = 'http://localhost:8080/api/mailer';
+
+function createCustomAlert(message, onAccept) {
+    const alertContainer = document.createElement("div");
+    alertContainer.classList.add("alert-container");
+
+    const alertBox = document.createElement("div");
+    alertBox.classList.add("alert-box");
+    alertBox.textContent = message;
+
+    const acceptButton = document.createElement("button");
+    acceptButton.textContent = "Aceptar";
+    acceptButton.addEventListener("click", function() {
+        document.body.removeChild(alertContainer);
+        onAccept();
+    });
+
+    alertBox.appendChild(acceptButton);
+    alertContainer.appendChild(alertBox);
+    document.body.appendChild(alertContainer);
+};
 
 function formPost(event) {
 
     event.preventDefault();
+
+    const token = localStorage.getItem('accessToken');
 
     // values
     let form = document.getElementById("contactForm");
@@ -15,26 +38,29 @@ function formPost(event) {
 
     let formData = { email, nombre, mensaje };
 
-    console.log(JSON.stringify(formData));
+    //console.log(JSON.stringify(formData));
 
     // Realiza la solicitud POST a la URL de la API
-    fetch(url_api, {
+    fetch(url, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(formData)
     })
     .then(function(response) {
         if (response.ok) {
-            alert("¡Formulario enviado!");
-            form.reset();
+            createCustomAlert("¡Formulario enviado!", function() {
+                form.reset();
+            });
         } else {
-            alert("Error al enviar el formulario.");
-        }
+            createCustomAlert("Error al enviar el formulario.", function() {
+            });
+        };
     })
     .catch(function(error) {
-        alert("Error en la solicitud: " + error.message);
+        createCustomAlert("Error en la solicitud: " + error.message)
     });
 };
 

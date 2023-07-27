@@ -1,0 +1,26 @@
+.alert-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 12%;
+    width: 80%;
+    height: 100%;
+    z-index: 400 !important;
+    background-color: rgba(0, 0, 0, 0.5);
+}  
+.alert-box {
+    padding: 20px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+}  
+body > div.alert-container > div > button{
+    padding: 5px;
+    margin: 10px;
+    background-color: black;
+    border-color: white;
+    border-radius: 5px;
+    color: white;
+}

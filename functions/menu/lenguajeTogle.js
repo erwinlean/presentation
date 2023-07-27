@@ -31,8 +31,8 @@ function lenguajeChange() {
         let chat_btn   = document.querySelector("#chatbotContent > div > button");
 
         if(chat_header){
-            chat_header.innerHTML = '<span class="icon">▼</span> Hello';
-            chat_p.textContent = "Hello";
+            chat_header.innerHTML = '<span class="icon">▼</span> Hey ask me!';
+            chat_p.textContent = "Hello there!";
             chat_input.placeholder = "Write your message";
             chat_btn.innerHTML = "Send";
         };
@@ -79,8 +79,8 @@ function lenguajeChange() {
         let chat_btn   = document.querySelector("#chatbotContent > div > button");
 
         if(chat_header){
-            chat_header.innerHTML = '<span class="icon">▼</span> Hola';
-            chat_p.textContent = "Hola";
+            chat_header.innerHTML = '<span class="icon">▼</span> ¡Hey preguntame!';
+            chat_p.textContent = "¡Hola!";
             chat_input.placeholder = "Escribi tu mensaje";
             chat_btn.innerHTML = "Enviar";
         };

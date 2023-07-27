@@ -31,6 +31,11 @@ function numOfMeteors(){
     numberOfMeteors = 120;
   };
 };
+// more meteors:
+function increaseMeteors() {
+  numberOfMeteors += 50;
+};
+
 
 // Obtener contexto 2D del canvas
 const ctx = canvas.getContext("2d");
@@ -114,7 +119,7 @@ function createSmallSquare() {
 // space cat
 let space_cat = new Image();
 let meteor = new Image();
-space_cat.src = "../assets/space_cat_DALLE.png"; // ver imagen por una hd
+space_cat.src = "../assets/cat_ship.png";
 meteor.src = "../assets/meteor.png";
 
 
@@ -546,8 +551,24 @@ canvas.addEventListener('touchmove', function(event) {
 //Start the game
 const startGameButton = document.getElementById("game_start");
 const musicPlayer = document.getElementById("music-player");
-const startContainer = document.querySelector(".start-container");
+const startContainer = document.querySelector("body > div.start-container");
 const musicContainer = document.querySelector("music-buttons");
+const gameCanvas = document.querySelector("#myCanvasGame");
+
+// Start button at the center of the canvas
+function positionStart() {
+  
+  const rect = gameCanvas.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2 - startContainer.offsetWidth / 2;;
+  const centerY = rect.top + rect.height / 2 - startContainer.offsetHeight / 2;;
+
+  //console.log(centerX, centerY)
+
+  // Set the element position
+  startContainer.style.left = `${centerX}px`;
+  startContainer.style.top = `${centerY}px`; 
+};
+positionStart();
 
 // Function to start the game
 function start() {
@@ -555,6 +576,7 @@ function start() {
   musicPlayer.play();
 
   startContainer.style.display = "none";
+
   startCountdown();
 
   // Agregar cuadrados pequeños aleatorios cada 2 segundos (meteoritos)
@@ -566,6 +588,9 @@ function start() {
   
     // Check colision con meteorito, para eliminar o no  el "triangulo"
     checkCollision();
+
+    // Increase meteors every 5 seconds
+    setInterval(increaseMeteors, 5000);
   
   }, numberOfMeteors); // Crear mas o menos cuadrados dependiendo el width y height
 };

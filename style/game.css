@@ -91,9 +91,7 @@
 .start-container{
     display:flex;
     position: absolute;
-    top: 50%;
-    left: 39%;
-    width: auto;
+    z-index: 320;
 }
 .start-game{
     background-color: transparent;

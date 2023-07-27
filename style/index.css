@@ -167,7 +167,7 @@ li{
 #menu-toggle {
     display: none;
 }
-/*RESPONSIVE: not working right now*/
+/*RESPONSIVE:*/
 @media only screen and (max-width: 815px) and (min-width: 700px){
     .text_zone{
         margin-left: 0px;
@@ -178,7 +178,7 @@ li{
         place-self: center;
     }
 }
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 750px) {
     .header{
         width: 100%;
     }
@@ -213,19 +213,21 @@ li{
         display: none;
         background-color: transparent;
     }
-    
     .text_zone .menu_items.expanded {
         display: flex;
         flex-direction: column;
         position: absolute;
         top: 10px;
         right: 0;
+        margin-top: 50%;
         width: 100%;
         justify-content: flex-start;
         align-items: flex-end;
         background-color: transparent;
     }
-    
+    #content.body_content > .header .text_zone ul li a {
+        font-size: 30px;
+    }
     #expand_button > div{
         z-index: 300;
         background-color: transparent;
@@ -341,6 +343,17 @@ li{
         color: white;
         background-color: transparent;
     }
+
+    /*Decoration hover*/
+    #content.body_content > .header .text_zone ul li a:hover {
+        filter: drop-shadow(0 0 20px white);
+    }
+    #content.body_content > .header .text_zone ul li a:hover::after {
+        left: -13px;
+        bottom: 13px;
+        width: 150%;
+        opacity: 0.9;
+    }
 }
 /*@media screen and (max-width: 450px) {*/
 /*    #expand_button > ul.menu.menu_items.expanded > li{*/
@@ -352,7 +365,7 @@ li{
 /*        */
 /*    }*/
 /*}*/
-@media screen and (max-width: 485px) {
+@media screen and (max-width: 485px) { 
     #perfil_name > h1 {
         font-size: 2em;
         bottom: 125px;

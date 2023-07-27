@@ -7,13 +7,26 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js"></script>
 
-    <title>Erwin Leandro Marte</title>
+    <title>Erwin Leandro Marte - Web Developer Portfolio</title>
+    <link rel="icon" type="image/png" href="./assets/Logos/stars_16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="./assets/Logos/stars_32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/Logos/stars_180.png">
     <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
+
+    <meta name="description" content="Soy un programador en crecimiento con experiencia en diferentes tecnologías. Especializado en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Angular), además de PHP, Linux, Docker y otras herramientas esenciales de programación. Actualmente, trabajando como Software Engineer Jr. en Criteria Online. Mi objetivo es aportar soluciones innovadoras en cada proyecto en el que participo.">
+    <meta name="keywords" content="web developer, programador, JavaScript, Node.js, Express, Angular, PHP, Linux, Docker, portfolio">
+    <meta name="author" content="Erwin Leandro Marte">
+    <link rel="canonical" href="https://test-porfolio.netlify.app/">
+    <meta name="robots" content="index, follow">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="Erwin Leandro Marte - Portfolio Web Developer">
+    
     <link rel="stylesheet" href="./style/togle.css">
     <link rel="stylesheet" href="./style/scroll.css">
     <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/canvas.css">
     <link rel="stylesheet" href="./style/chatbot.css">
+    <link rel="stylesheet" href="./style/contact.css">
 
     <!--Token-->
     <script src="./functions/token/getToken.js"></script>
@@ -23,8 +36,8 @@
         <div class="header">
             <div class="networks">
                 <ul>
-                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="github" title="github"></a></li>
-                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin" title="linkedin"></a></li>
+                    <li><a target="_blank" href="https://github.com/erwinlean"><img src="./assets/github.png" alt="Github" title="Github"></a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/erwinmarte"><img src="./assets/linkedin.png" alt="linkedin" title="LinkedIn"></a></li>
                     <li><a target="_self" href="#" id="restartStars"><img src="./assets/star_icon.png" alt="create New Stars" title="create New Stars"></a></li>
                     <li><a><p id="starsCount">0</p> </a></li>    
                 </ul>
@@ -72,54 +85,41 @@
                 <!-- Scrolling new info test-->
                 <div class="fade-in typing">
                     <img class="tech_images" src="./assets/me.png" alt="myself">
-                    <p>Soy un programador en crecimiento con experiencia en diferentes tecnologías. Me especializo en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Angular), también tengo conocimientos básicos Electron & Ionic. Además, manejo PHP, Linux, Docker y otras herramientas esenciales de programación.</p>
+                    <p>Programador en crecimiento con experiencia en diferentes tecnologías. Me especializo en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Angular), también tengo conocimientos básicos Electron & Ionic. Además, manejo PHP, Linux, Docker y otras herramientas esenciales de programación.</p>
                     <p>Actualmente, me encuentro trabajando como Software Engineer Jr. en Criteria Online. Mi rol se centra en la creación de conectores bidireccionales mediante API entre sistemas como ERP, PIM, DAM y eCommerce. Mi objetivo es asegurar una comunicación fluida y eficiente entre estas plataformas para facilitar la gestión de datos y mejorar la experiencia del usuario.</p>
                     <p>Estoy comprometido con seguir aprendiendo y adquiriendo nuevas habilidades en el mundo de la programación para crecer profesionalmente y aportar soluciones innovadoras en cada proyecto en el que participo.</p>
-                </div>
-            
-                <div class="fade-in">
-                    <img class="tech_images" src="./assets/me.png" alt="myself">
-                    <p>Hola, soy un desarrollador de software y me fascina sumergirme en el mundo de la tecnología y la programación. Siempre estoy dispuesto a aprender y mejorar en lo que hago.</p>
-                    <p>Cuando no estoy frente a la computadora, me encanta pasar tiempo al aire libre, especialmente en la playa. El surf es deporte favorito y en cual me da paz, disfruto montando las olas y sintiendo esa conexión única con el mar. También adoro la sensación del sol y la arena entre mis pies.</p>
-                    <p>Además de los deportes acuáticos, los videojuegos son una de mis grandes pasatiempos. Me encanta sumergirme en estos.</p>
-                    <p>Cuando necesito relajarme, me sumerjo en el mundo de las series de televisión. Disfruto de series como "Malcolm in the middle", "E.R. Emergencias", "Friends", "Rick and Morty", entre otras.</p>
-                    <p>Los animales me encantan, especialmente los gatos, ocupan un lugar especial en mi corazón y cuento con dos de ellos, junto con una perra. Siempre encuentro un poco de paz y felicidad cuando estoy cerca de ellos.</p>
                 </div>
                 
                 <div class="fade-in">
                     <p>Technologies & Tools</p>
                     <div>
-                        <img class="tech_images" src="./assets/Logos/Nodejs.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Javascript.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Angular.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Electron.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Express.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Ionic.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Php.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Linux.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Docker.png" alt="">
-                    </div>
-                    <div>
-                        <img class="tech_images" src="./assets/Logos/Html.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/CSS.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Postman.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/MySQL.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/MongoDB.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/Git.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/GithUb.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/VirtualBox.png" alt="">
-                        <img class="tech_images" src="./assets/Logos/vmWare.png" alt="">
+                        <img class="tech_images" src="./assets/Logos/Nodejs.png" alt="Nodejs icon" title="Nodejs icon">
+                        <img class="tech_images" src="./assets/Logos/Javascript.png" alt="Javascript icon" title="Javascript icon">
+                        <img class="tech_images" src="./assets/Logos/Angular.png" alt="Angular icon" title="Angular icon">
+                        <img class="tech_images" src="./assets/Logos/Electron.png" alt="Electron icon" title="Electron icon">
+                        <img class="tech_images" src="./assets/Logos/Express.png" alt="Express icon" title="Express icon">
+                        <img class="tech_images" src="./assets/Logos/Ionic.png" alt="Ionic icon" title="Ionic icon">
+                        <img class="tech_images" src="./assets/Logos/Php.png" alt="Php icon" title="Php icon">
+                        <img class="tech_images" src="./assets/Logos/Linux.png" alt="Linux icon" title="Linux icon">
+                        <img class="tech_images" src="./assets/Logos/Docker.png" alt="Docker icon" title="Docker icon">
+                        <img class="tech_images" src="./assets/Logos/Html.png" alt="HTML icon" title="HTML icon">
+                        <img class="tech_images" src="./assets/Logos/CSS.png" alt="Css icon" title="Css icon">
+                        <img class="tech_images" src="./assets/Logos/Postman.png" alt="Postman icon" title="Postman icon">
+                        <img class="tech_images" src="./assets/Logos/MySQL.png" alt="MySQL icon" title="MySQL icon">
+                        <img class="tech_images" src="./assets/Logos/MongoDB.png" alt="MongoDB icon" title="MongoDB icon">
+                        <img class="tech_images" src="./assets/Logos/Git.png" alt="Git icon" title="Git icon">
+                        <img class="tech_images" src="./assets/Logos/GithUb.png" alt="GitHub icon" title="GitHub icon">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <p class="chat-bot-hello">Hello</p>
-    <img class="space_cat_chat" src="./assets/space_cat_DALLE.png" alt="space cat">
+    <p class="chat-bot-hello">Hello there!</p>
+    <img class="space_cat_chat" src="./assets/space_cat_DALLE.png" alt="Space cat chat" title="Space cat chat">
     <div class="chatbot-container hidden" id="chatbot">
         <div class="chatbot-header" >
-            <span class="icon">▼</span>Hello
+            <span class="icon">▼</span>Hey ask me!
         </div>
         <div class="chatbot-content" id="chatbotContent">
             <div>
@@ -129,11 +129,14 @@
         </div>
     </div>
 
+    <audio id="hello_not" src="./assets/Music/notification.mp3"></audio>
+
     <script src="./functions/menu/header_menu.js"></script>
     <script src="./functions/menu/lenguajeTogle.js"></script>
     <script src="./functions/background/scroll.js"></script>
     <script src="./functions/background/background_stars.js"></script>
     <script src="./functions/background/background_hole.js"></script>
     <script src="./functions/chatbot/chat.js"></script>
+    <script src="./functions/chatbot/hiUser.js"></script>
 </body>
 </html>

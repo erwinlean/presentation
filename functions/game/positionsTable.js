@@ -9,8 +9,8 @@ loadingContainer.style.display = 'flex';
 table.style.display = "none";
 let timesPlayed, apiData;
 let clicked = false;
-const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/game/";
-//const url = "http://localhost:8080/api/game";
+const url_game = "https://sore-erin-goldfish-tutu.cyclic.app/api/game/";
+//const url_game = "http://localhost:8080/api/game";
 
 // GET all game data
 async function loadDataApi() {
@@ -22,7 +22,7 @@ async function loadDataApi() {
         'Authorization': `Bearer ${token}`
     };
 
-    fetch(url, { headers })
+    fetch(url_game, { headers })
     .then(response => response.json())
     .then(data => {
 

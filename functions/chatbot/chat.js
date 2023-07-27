@@ -1,6 +1,7 @@
 "use strict";
+
 //const socket = io('http://localhost:8080');
-const socket = io('https://sore-erin-goldfish-tutu.cyclic.app/');
+const socket = io('https://sore-erin-goldfish-tutu.cyclic.app');
 const chatbot = document.getElementById('chatbot');
 const chatbotContent = document.getElementById('chatbotContent');
 const inputMessage = document.getElementById('inputMessage');
@@ -10,7 +11,9 @@ const span_min = document.querySelector("#chatbot > div.chatbot-header > span");
 const button_chat = document.querySelector("#chatbotContent > div > button");
 let msgCount = 0;
 
-function toggleChatbot() {
+function toggleChatbot(event) {
+    event.preventDefault();
+
     chatbotContent.style.display = chatbotContent.style.display === "none" ? "block" : "none";
 
     if (chatbot.style.display === "none") {
@@ -22,6 +25,8 @@ function toggleChatbot() {
         chatbot.style.display = "none";
         hello_cat.style.display = "block";
     };
+
+    
 };
 
 // Socket - chatbot
@@ -30,7 +35,7 @@ socket.on('connect', () => {
 });
 
 function sendMessage() {
-    const message = inputMessage.value.trim();
+    const message = inputMessage.value;
 
     if (message !== "") {
         if(msgCount < 5){
@@ -39,7 +44,7 @@ function sendMessage() {
             //console.log("message count: " + msgCount);
             msgCount ++;
             localStorage.setItem('msgCount', msgCount);
-            //socket.emit('chat message', message);
+            socket.emit('chat message', message);
 
             inputMessage.value = "";
 
@@ -69,7 +74,7 @@ function sendMessage() {
             let allMsgSent = document.querySelectorAll(".sent");
             let allMsgReceived = document.querySelectorAll(".received");
             
-            console.log(allMsgSent, allMsgReceived);
+            //console.log(allMsgSent, allMsgReceived);
         
             // Guardar los mensajes enviados y recibidos en un arreglo
             let messages;
@@ -82,8 +87,8 @@ function sendMessage() {
             });
         
             // Realizar el POST al backend
-            const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/chat";
-            //const url = "http://localhost:8080/api/chat";
+            //const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/chat";
+            const url = "http://localhost:8080/api/chat";
             const data = { message: messages };
 
             const token = localStorage.getItem('accessToken');
@@ -98,17 +103,18 @@ function sendMessage() {
             })
             .then(res => {
                 if (res.ok) {
-                    console.log("Mensajes enviados al backend.");
+                    //console.log("Mensajes enviados al backend.");
                 } else {
-                    console.log("Error al enviar los mensajes al backend.");
+                    //console.log("Error al enviar los mensajes al backend.");
                 };
             })
             .catch(err => {
-                console.log("Error en la solicitud POST:", err);
-                console.log(err);
+                //console.log("Error en la solicitud POST:", err);
+                //console.log(err);
             });
-        
-            alert("Límite de 5 mensajes.");
+
+            createCustomAlert(`Limit reach, contact for more information.`, function() {
+            });
         };;
     };
 };
@@ -122,7 +128,7 @@ socket.on('chat message', (message) => {
     const chatData = JSON.parse(localStorage.getItem('chatData')) || [];
     chatData.push({ message, response: message });
     localStorage.setItem('chatData', JSON.stringify(chatData));
-    console.log(chatData);
+    //console.log(chatData);
 
     const receiverContainer = document.createElement('div');
     receiverContainer.classList.add('received_container');

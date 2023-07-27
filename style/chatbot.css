@@ -17,11 +17,10 @@
 .chat-bot-hello{
     position: fixed;
     z-index: 350;
-    top: 88%;
-    padding: 3px;
+    bottom: 10%;
+    padding: 5px;
     text-align: center;
     right: 80px;
-    width: 75px;
     height: auto;
     background-color: transparent;
     border-radius: 10px;
@@ -29,16 +28,22 @@
     border-radius: 10px;
     border: 1px solid white;
     cursor: pointer;
+    opacity: 0;
+    transition: opacity 1s ease;
+
+}
+.appear {
+    opacity: 1;
+    transform: translateY(0);
 }
 .chatbot-container {
     display: none;
     position: fixed;
     z-index: 340;
-    bottom: 100px;
+    bottom: 10%;
     right: 85px;
     width: 240px;
-    height: auto;
-    min-height: 250px;
+    height: 260px;
     background-color: transparent;
     border-radius: 10px;
     overflow: hidden;
@@ -61,10 +66,10 @@
 #chatbotContent{
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 150px;
+    height: 150px;
     font-weight: normal;
     border-bottom: 1px solid grey;
-    min-height: 150px;
+    height: 150px;
 }
 .chatbot-content {
     padding: 10px;
@@ -81,6 +86,7 @@
     color: white;
     background: transparent;
     padding: 4px;
+    height: 32px;
     border-top: 1px solid white;
     border-left: 1px solid white;
     border-bottom: 1px solid grey;
@@ -158,4 +164,127 @@
     display: none;
     position: absolute;
     left: 150px;
+}
+@media screen and (max-width: 1200px){
+    #contactForm{
+        width: 40% !important;
+    }
+    .formContainer{
+        margin-top: 100px;
+        padding: 10px;
+    }
+    .chatbot-container{
+        height: 180px;
+        width: 190px;
+    }
+    .chatbot-header{
+        padding: 4px
+    }
+    #chatbotContent{
+        height: 110px;
+    }
+    #chatbotContent > div{
+        padding: 3px;
+    }
+    #chatbotContent > div:nth-child(1){
+        right: 0px;
+        bottom: -13px;
+    }
+    #inputMessage{
+        width: 75%;
+        height: 25px;
+    }
+    #chatbotContent > div > button{
+        height: 25px;
+    }
+    .sent{
+        font-size: 10px;
+    }
+    .received_container{
+        font-size: 10px;
+    }
+}
+/*movile*/
+@media only screen and (max-width: 699px) and (min-width: 426px){
+    .formContainer{
+        padding: 10px;
+    }
+    .chatbot-container{
+        height: 180px;
+        width: 190px;
+    }
+    .chatbot-header{
+        padding: 4px
+    }
+    #chatbotContent{
+        height: 110px;
+    }
+    #chatbotContent > div{
+        padding: 3px;
+    }
+    #chatbotContent > div:nth-child(1){
+        right: 0px;
+        bottom: -13px;
+    }
+    #inputMessage{
+        width: 75%;
+        height: 25px;
+    }
+    #chatbotContent > div > button{
+        height: 25px;
+    }
+    .sent{
+        font-size: 10px;
+    }
+    .received_container{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 425px) {
+    .formContainer{
+        padding: 10px;
+    }
+    .chatbot-container{
+        height: 180px;
+        width: 190px;
+    }
+    .chatbot-header{
+        padding: 2px
+    }
+    #chatbotContent{
+        height: 65px;
+    }
+    #chatbotContent > div{
+        padding: 3px;
+    }
+    #chatbotContent > div:nth-child(1){
+        right: 0px;
+        bottom: -13px;
+    }
+    #inputMessage{
+        width: 75%;
+        height: 19px;
+    }
+    #chatbotContent > div > button{
+        height: 19px;
+        padding: 2px;
+    }
+    .sent{
+        font-size: 10px;
+    }
+    .received_container{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .chatbot-container{
+        height: 120px;
+        width: 35%;
+    }
+    .sent{
+        font-size: 10px;
+    }
+    .received_container{
+        font-size: 10px;
+    }
 }

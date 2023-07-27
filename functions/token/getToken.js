@@ -1,11 +1,20 @@
 "use strict";
 
 async function getAndSaveToken() {
-    const url = "https://sore-erin-goldfish-tutu.cyclic.app/";
-    const get_token = "api/index";
+    const url = 'https://sore-erin-goldfish-tutu.cyclic.app/';
+    //const url = 'http://localhost:8080/api/token';
 
     try {
-        const response = await fetch('' + get_token, {
+        let token = localStorage.getItem('accessToken');
+
+        if (token) {
+            const expirationDate = localStorage.getItem('tokenExpiration');
+            if (expirationDate && Date.now() < parseInt(expirationDate)) {
+                return;
+            };
+        };
+
+        const response = await fetch(url, {
             method: 'POST',
         });
 
@@ -14,18 +23,25 @@ async function getAndSaveToken() {
         };
 
         const data = await response.json();
-        const token = data.token;
+        token = data.token;
 
         if (token) {
-            const tokenFromLocalStorage = localStorage.getItem('accessToken');
-            if (!tokenFromLocalStorage) {
-                localStorage.setItem('accessToken', token);
-            };
-        };
+            localStorage.setItem('accessToken', token);
 
-    }catch (error) {
-        console.error('Error al obtener el token:', error.message);
+            // Calc token time
+            const expirationTime = 2 * 60 * 60 * 1000;
+            const expirationDate = Date.now() + expirationTime;
+            localStorage.setItem('tokenExpiration', expirationDate);
+        } else {
+            throw new Error('La respuesta del servidor no contiene un token válido');
+        };
+    } catch (error) {
+        console.error('Error al obtener o guardar el token:', error.message);
     };
 };
 
-getAndSaveToken();  
+
+getAndSaveToken();
+
+// Renoval token
+setInterval(getAndSaveToken, 2 * 60 * 60 * 1000);

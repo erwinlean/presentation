@@ -1,13 +1,7 @@
 "use strict";
 
-const baseUrl = 'https://sore-erin-goldfish-tutu.cyclic.app';
-//const baseUrl = 'http://localhost:8080';
-const endpoint = '/api/game/';
-const methodDel = "deleteUser/";
-const usernameToDelete = "";
-const methodPost = "add";
-const urlDel = baseUrl + endpoint + methodDel + usernameToDelete;
-const urlPost = baseUrl + endpoint + methodPost;
+const url = 'https://sore-erin-goldfish-tutu.cyclic.app/api/game/add';
+//const url = 'http://localhost:8080/api/game/add';
 
 let submit = document.querySelector("body > form > button");
 let user, newGame;
@@ -30,9 +24,10 @@ function newGamePos() {
     };
 
     const token = localStorage.getItem('accessToken');
+    //console.log(token);
 
     if(typeof user.value === 'string' && user.value.length >= 2 && user.value.length < 15){
-        fetch(urlPost, {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,7 +37,7 @@ function newGamePos() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            //console.log(data);
 
             // Remove and actualize the new users points
             count = 0;

@@ -51,41 +51,47 @@ function handleTouchEnd() {
         lastScrollDirection = "down";
     } else {
         lastScrollDirection = "up";
-    }
+    };
     revealElements();
 };
 
 function revealElements() {
     let currentDisplay = chatCheck.style.display;
 
-    if(currentDisplay == "" || currentDisplay == "none") {
+    if (currentDisplay === "" || currentDisplay === "none") {
         let fadeElements = elements;
+        const totalElements = fadeElements.length;
 
         if (lastScrollDirection === "down") {
-            //console.log("scrollDown");
-        
-            if (positionOfList < fadeElements.length - 1) {
+            if (positionOfList < totalElements - 1) {
                 let lastElementInView = fadeElements[positionOfList];
                 let elementInView = fadeElements[positionOfList + 1];
-            
-                //console.log(elementInView);
-            
+
                 lastElementInView.style.display = "none";
                 elementInView.style.display = "grid";
-            
+
                 const elementTop = elementInView.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
                 if (elementTop < windowHeight) {
                     elementInView.classList.add('visible');
                 } else {
                     elementInView.style.display = "none";
-                }
-            
+                };
+
                 positionOfList++;
-            }
-        } else if (lastScrollDirection === "up") {
-            //console.log("scrollUp");
+            } else {
+
+                let lastElementInView = fadeElements[positionOfList];
+                let firstElementInView = fadeElements[0];
+
+                lastElementInView.style.display = "none";
+                firstElementInView.style.display = "grid";
+                firstElementInView.classList.add('visible');
+                
+                positionOfList = 0;
+            };
         
+        } else if (lastScrollDirection === "up") {
             if (positionOfList > 0) {
                 let elementInView = fadeElements[positionOfList];
                 let lastElementInView = fadeElements[positionOfList - 1];
@@ -101,13 +107,33 @@ function revealElements() {
                     const paragraphs = lastElementInView.querySelectorAll('p');
                     for (let i = 0; i < paragraphs.length; i++) {
                         paragraphs[i].classList.add('zoom-in');
-                    }
-                }
+                    };
+                };
                 positionOfList--;
-            }
-        }
+            } else {
+                let elementInView = fadeElements[positionOfList];
+                let lastElementInView = fadeElements[totalElements - 1];
+
+                elementInView.style.display = "none";
+                lastElementInView.style.display = "grid";
+                lastElementInView.classList.add('visible');
+                
+                const elementTop = lastElementInView.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight) {
+                    lastElementInView.classList.add('visible');
+                    const paragraphs = lastElementInView.querySelectorAll('p');
+                    for (let i = 0; i < paragraphs.length; i++) {
+                        paragraphs[i].classList.add('zoom-in');
+                    };
+                };
+
+                positionOfList = totalElements - 1;
+            };
+        };
     };
 };
+
 
 window.addEventListener('DOMContentLoaded', function () {
     setTimeout(zoomParagraphs, 3000);
@@ -120,7 +146,7 @@ function zoomParagraphs() {
     };
 };
 
-// Move efect for the container
+// Move efect for the container & hover
 containers.forEach(container => {
     container.addEventListener('mouseenter', function() {
         container.classList.add('active');
@@ -140,5 +166,12 @@ containers.forEach(container => {
         const rotateX = ((mouseY - containerHeight / 2) / containerHeight) * 40;
 
         container.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+    });
+    
+    container.addEventListener("mouseover", function() {
+        container.style.filter = "none";
+    });
+    container.addEventListener("mouseout", function() {
+        container.style.filter = "grayscale(100%)";
     });
 });
