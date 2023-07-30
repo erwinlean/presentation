@@ -1,7 +1,7 @@
 "use strict";
 
-//const socket = io('http://localhost:8080');
-const socket = io('https://sore-erin-goldfish-tutu.cyclic.app');
+const socket = io('http://localhost:8080');
+//const socket = io('https://sore-erin-goldfish-tutu.cyclic.app');
 const chatbot = document.getElementById('chatbot');
 const chatbotContent = document.getElementById('chatbotContent');
 const inputMessage = document.getElementById('inputMessage');
@@ -66,7 +66,7 @@ function sendMessage() {
             // Loading inc msg from backend
             const loadingChat = document.createElement('img');
             loadingChat.id = "loading_chat";
-            loadingChat.src = "./assets/loading.gif";
+            loadingChat.src = "./assets/loadingPoint.gif";
             loadingChat.style.display = "flex";
             chatbotContent.appendChild(loadingChat);
         }else{
@@ -87,8 +87,8 @@ function sendMessage() {
             });
         
             // Realizar el POST al backend
-            //const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/chat";
-            const url = "http://localhost:8080/api/chat";
+            const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/chat";
+            //const url = "http://localhost:8080/api/chat";
             const data = { message: messages };
 
             const token = localStorage.getItem('accessToken');

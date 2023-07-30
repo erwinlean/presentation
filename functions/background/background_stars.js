@@ -12,7 +12,7 @@ canvas.height = window.innerHeight;
 
 // Crear los círculos
 const circles = [];
-const numCircles = 100;
+const numCircles = 400; // Initial numbers of stars
 const scales = [1.15, 3, 2, 4, 3, 2.25, 1.50, 1.75, 0.5, 0.30, 0.25, 2.75, 3.2, 1.3, 2.35, 2.05, 0.2, 0.6, 0.9, 1.9, 2.7, 4, 3.05, 0.79, 2.58, 0.37, 1.82, 1.42, 2.22, 0.46];
 const colours = [ "#FFFFFF", "#0A1776", "#071158", "#090D58", "#000158", "#FFA500", "#132BDF", "#FFFF00", "#808080", "#071158", "#090D58", "#000158", "#1C2B58", "#132BDF", "#808080", "#071158", "#090D58", "#000158", "#1C2B58", "#39A6B2", "#FFFFFF", "#FFFFFF"];
 let circle;
@@ -87,7 +87,7 @@ function stars(numOfStars) {
 
 
 // Create new Stars if is wanted
-function restartStars(){
+function addStars(){
   // Create new stars
   let newStars = Math.floor(Math.random() * 21) + 15;
   //console.log(newStars);
@@ -104,4 +104,4 @@ stars(numCircles);
 // alert("Width: " + canvas.width + " ||| Heigth: " + canvas.height);
 
 // If btn is needed
-btnRestartStars.onclick = restartStars;
+btnRestartStars.onclick = addStars;
