@@ -2,7 +2,6 @@
 
 async function getAndSaveToken() {
     const url = 'https://erwin-porfolio.onrender.com/api/token';
-    //const url = 'http://localhost:8080/api/token';
 
     try {
         let token = localStorage.getItem('accessToken');

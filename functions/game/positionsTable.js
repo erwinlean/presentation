@@ -10,7 +10,6 @@ table.style.display = "none";
 let timesPlayed, apiData;
 let clicked = false;
 const url_game = "https://erwin-porfolio.onrender.com/api/game/";
-//const url_game = "http://localhost:8080/api/game";
 
 // GET all game data
 async function loadDataApi() {

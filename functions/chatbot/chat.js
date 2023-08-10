@@ -1,8 +1,6 @@
 "use strict";
 
-//const socket = io('http://localhost:8080');
 const socket = io('https://erwin-porfolio.onrender.com/');
-//const socket = io('ws://sore-erin-goldfish-tutu.cyclic.app');
 const chatbot = document.getElementById('chatbot');
 const chatbotContent = document.getElementById('chatbotContent');
 const inputMessage = document.getElementById('inputMessage');
@@ -88,7 +86,7 @@ function sendMessage() {
             });
         
             // Realizar el POST al backend
-            const url = "https://sore-erin-goldfish-tutu.cyclic.app/api/chat";
+            const url = "https://erwin-porfolio.onrender.com/api/chat";
             //const url = "http://localhost:8080/api/chat";
             const data = { message: messages };
 
