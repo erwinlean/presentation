@@ -2,15 +2,40 @@
     opacity: 1;
     transition: opacity 1s;
 }
+#content > div:nth-child(2){
+    text-align: -webkit-center;
+    text-align: center;
+}
 .fade-in{
+    min-height: 700px;
     justify-content: center;
-    z-index: 400;
-    display: none;
-    position: relative;
-    top: -780px;
+    z-index: 200;
+    width: 70%;
+    display: inline-grid;
     transition: opacity 0.7s;
     transform: rotateY(0deg) rotateX(0deg);
     justify-content: center;
+    position: relative;
+}
+#content > div:nth-child(2) > div.fade-in.typing > div{
+    text-align: left;
+    border: 1px solid #92CAE1;
+    border-radius: 10px;
+    padding: 20px;
+    background: transparent; 
+    filter: grayscale(100%); 
+    transition: background 1.5s ease, filter 1.5s ease; 
+    transition: color 1.5s ease, filter 1.5s ease;
+}
+#content > div:nth-child(2) > div.fade-in.typing > div:hover {
+        background: #92cbe1b5;
+        color: black;
+        filter: none;
+    }
+#content > div:nth-child(2) > div.fade-in.typing > img{
+    place-self: center;
+    border-radius: 15px;
+    width: 100px;
 }
 .fade-in.visible {
     animation: fadeInAnimation 1s;
@@ -20,13 +45,18 @@
     opacity: 1;
     transition: opacity 0.5s;
 }
+#content > div:nth-child(2) > div.fade-in.typing > div > p{
+    font-size: 10px;
+}
 .fade-in > p {
     justify-self: center;
     margin: 10px 20% 10px 20%;
     text-align: justify;
     line-height: 22px;
+    align-self: end;
     justify-content: center;
     border-radius: 10px;
+    z-index: 350;
 }
 @keyframes blink-caret {
     from, to { border-color: transparent; }
@@ -40,19 +70,12 @@
         opacity: 1;
     }
 }
-/*
-.zoom-in {
-    animation: zoomAnimation 3s;
+#content > div:nth-child(2) > div.fade-in.typing{
+    display: flex;
+    align-items: center;
+    margin-top: -220px !important;
+    margin: 0 15%;
 }
-@keyframes zoomAnimation {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.2);
-    }
-}
-*/
 
 /*Images mannagment*/
 body > div > div > p{
@@ -63,39 +86,40 @@ body > div > div > p{
 }
 .tech_images{
     margin: 10px;
-    width: 72px;
+    width: 80px;
     filter: grayscale(100%);
     transition: filter 0.3s ease 0s;
+    z-index: 350;
 }
 
-#content > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(2){
+#content > div:nth-child(2) > div:nth-child(3) > div:nth-child(2){
+    width: 100%;
+    text-align: -webkit-center;
+    padding: 0 15%;
+}
+#content > div:nth-child(2) > div:nth-child(3) > div:nth-child(3){
     width: 100%;
     text-align: -webkit-center;
     padding: 5% 15%;
 }
-#content > div:nth-child(2) > div > div:nth-child(3) > div:nth-child(3){
-    width: 100%;
-    text-align: -webkit-center;
-    padding: 5% 15%;
-}
-#content > div:nth-child(2) > div > div:nth-child(4){
+#content > div:nth-child(2) > div:nth-child(4){
     text-align-last: center;
 }
-#content > div:nth-child(2) > div > div.fade-in.typing.visible > img{
+#content > div:nth-child(2) > div.fade-in.typing.visible > img{
     justify-self: center;
     margin-bottom: 50px;
 }
-#content > div:nth-child(2) > div > div:nth-child(3) > img{
+#content > div:nth-child(2) > div:nth-child(3) > img{
     justify-self: center;
     margin-bottom: 50px;
 }
-#content > div:nth-child(2) > div > div:nth-child(4) > p{
+#content > div:nth-child(2) > div:nth-child(4) > p{
     margin-bottom: 60px;
 }
 @media screen and (max-height: 840px) { 
     .tech_images{
         margin: 4px;
-        width: 32px;
+        width: 45px;
     }
     .fade-in > p {
         font-size: 10px;
@@ -103,11 +127,5 @@ body > div > div > p{
     }
     #content > div:nth-child(2) > div > div:nth-child(3){
         margin-top: 80px;
-    }
-    .fade-in{
-        top: -850px;
-    }
-    .info{
-        margin-top: 10px !important;
     }
 }

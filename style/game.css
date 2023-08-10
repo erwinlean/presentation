@@ -18,6 +18,8 @@
     border-spacing: 0px;
 }
 #myCanvasGame{
+    border-bottom-right-radius: 5px;
+    /*border-top-right-radius: 5px;*/
     border-bottom-left-radius: 5px;
 }
 .points{
@@ -75,7 +77,6 @@
 }
 #submitGame{
     padding: 9px;
-    margin-left: 5px;
     border-color: white;
     background: transparent;
     border-radius: 5px;
@@ -126,5 +127,19 @@
     }
     .canvas{
         margin-top: 100px;
+    }
+    .points{
+        border-top-right-radius: 5px;
+    }
+    .btnGame{
+        border-radius: 0;
+    }
+    #myCanvasGame{
+        border-radius: 0px;
+    }
+}
+@media screen and (max-height: 640px) {
+    .game_scores{
+        max-height: 250px;
     }
 }

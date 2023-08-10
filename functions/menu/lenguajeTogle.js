@@ -53,7 +53,11 @@ function lenguajeChange() {
         }else if(currentURL.includes("game.html")){
             document.querySelector("#restartGame").innerHTML = "Restart";
             document.querySelector("#game_start").innerHTML = "Start";
-            document.querySelector("body > div.music-buttons > p").innerHTML = "Music";
+            if(document.querySelector("#submitGame")){
+                document.querySelector("body > form > p").innerHTML = `Your points were: ${count}`;
+                document.querySelector("#inputGame").placeholder = "Insert your name";
+                document.querySelector("#submitGame").innerHTML = "Save";
+            };
         };
 
     }else{
@@ -101,7 +105,12 @@ function lenguajeChange() {
         }else if(currentURL.includes("game.html")){
             document.querySelector("#restartGame").innerHTML = "Reiniciar";
             document.querySelector("#game_start").innerHTML = "Comenzar";
-            document.querySelector("body > div.music-buttons > p").innerHTML = "Musica";
+            if(document.querySelector("#submitGame")){
+                document.querySelector("body > form > p").innerHTML = `Tus puntos fueron: ${count}`;
+                document.querySelector("#inputGame").placeholder = "Inserte su nombre";
+                document.querySelector("#submitGame").innerHTML = "Guardar";
+
+            };
         };        
     };
 };

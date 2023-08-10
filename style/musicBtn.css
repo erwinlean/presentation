@@ -1,36 +1,39 @@
 .music-buttons {
     display:block;
-    position: fixed;
+    position: absolute;
     bottom: 20px;
-    right: 15px;
+    left: 8px;
     display: block;
     align-items: center;
     z-index: 9999;
 }
-.music-buttons p {
-    font-size: 10px;
-    position: absolute;
-    top: -5px;
-    left: 11px;
-}
-.music-buttons p {
-    filter: drop-shadow(0 0 10px white);
-}
 .music-buttons button {
     display: flex;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     border: none;
     background-color: transparent;
     cursor: pointer;
     margin: 5px;
     background-size: cover;
-    background-image: url('../assets/play.png');
-}
-.music-buttons button.stop {
-    background-image: url('../assets/stop.png');
+    background-image: url('../assets/auriculares.png');
 }
 .music-buttons button:hover{
     filter: drop-shadow(0 0 10px white);
+    transform: scale(1.1);
+}
+@media screen and (max-width: 750px) {
+    .music-buttons{
+        position: absolute;
+        bottom: 25px;
+        left: 98px;
+    }
+}
+@media screen and (max-width: 699px) {
+    .music-buttons{
+        position: absolute;
+        top: 146.5% !important;
+        left: 98px;
+    }
 }

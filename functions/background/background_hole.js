@@ -4,8 +4,8 @@ const holeCanvas = document.getElementById('holeCanvas');
 const canvasContext = holeCanvas.getContext('2d');
 const domCount = document.getElementById("starsCount");
 
-holeCanvas.width = window.innerWidth   ;
-holeCanvas.height = window.innerHeight ;
+holeCanvas.width =  document.documentElement.scrollWidth;
+holeCanvas.height = document.documentElement.scrollHeight;
 
 // Circle properties
 const radius = 20;
@@ -64,7 +64,7 @@ function drawHole() {
 // Update position of the mouse
 function updateHolePositionMouse(event) {
     const mouseX = event.clientX;
-    const mouseY = event.clientY;
+    const mouseY = event.clientY + window.scrollY;;
 
     updateHolePosition(mouseX, mouseY);
 };
@@ -74,7 +74,7 @@ function updateHolePositionTouch(event) {
     //event.preventDefault();
 
     const touchX = event.targetTouches[0].clientX;
-    const touchY = event.targetTouches[0].clientY;
+    const touchY = event.targetTouches[0].clientY + window.scrollY;;
 
     updateHolePosition(touchX, touchY);
 };

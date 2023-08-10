@@ -1,12 +1,13 @@
 "use strict";
 
-const socket = io('http://localhost:8080');
-//const socket = io('https://sore-erin-goldfish-tutu.cyclic.app');
+//const socket = io('http://localhost:8080');
+const socket = io('https://erwin-porfolio.onrender.com/');
+//const socket = io('ws://sore-erin-goldfish-tutu.cyclic.app');
 const chatbot = document.getElementById('chatbot');
 const chatbotContent = document.getElementById('chatbotContent');
 const inputMessage = document.getElementById('inputMessage');
 const hello_cat = document.querySelector("body > p");
-const cat = document.querySelector("body > img");
+const cat = document.querySelector("body > img")
 const span_min = document.querySelector("#chatbot > div.chatbot-header > span");
 const button_chat = document.querySelector("#chatbotContent > div > button");
 let msgCount = 0;
@@ -146,14 +147,6 @@ socket.on('chat message', (message) => {
     receiverContainer.appendChild(userIconElement)
 });
 
-// Init
-hello_cat.onclick = toggleChatbot;
-hello_cat.ontouchstart = toggleChatbot;
-cat.onclick = toggleChatbot;
-cat.ontouchstart = toggleChatbot;
-span_min.onclick = toggleChatbot;
-span_min.ontouchstart = toggleChatbot;
-
 // Msges
 button_chat.addEventListener("click", sendMessage);
 button_chat.addEventListener("touchstart", sendMessage);
@@ -206,3 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 msgCount = parseInt(localStorage.getItem('msgCount')) || 0;
+// Init
+hello_cat.onclick = toggleChatbot;
+hello_cat.ontouchstart = toggleChatbot;
+cat.onclick = toggleChatbot;
+cat.ontouchstart = toggleChatbot;
+span_min.onclick = toggleChatbot;
+span_min.ontouchstart = toggleChatbot;

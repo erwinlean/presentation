@@ -13,7 +13,7 @@ html,body{
     padding: 0;
     color: white;
     font-family: Myriad;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 a {
     text-decoration: none;
@@ -27,6 +27,9 @@ a {
     text-decoration: none;
     text-shadow: white 0px 0 20px;
     z-index: 350;
+}
+#content > div.header > div.networks > ul > li:nth-child(3){
+    z-index: 500 !important;
 }
 #content.body_content > .header .text_zone ul li a::after {
     content: '';
@@ -107,6 +110,7 @@ li{
 }
 .networks > ul > li > a > img:hover {
     transform: scale(1.1);
+    filter: drop-shadow(0 0 10px white);
 }
 #content > div > div.networks > ul > li:nth-child(4){
     align-self: center;
@@ -201,13 +205,6 @@ li{
         width: 35px;
         display: flex;
     }
-    .networks{
-        position: absolute;
-        left: 10px;
-    }
-    #content > div > div.networks{
-        top: 90%;
-    }
     /*Expand menu*/
     .text_zone .menu_items {
         display: none;
@@ -241,6 +238,7 @@ li{
     .networks {
         position: absolute;
         top: 90%;
+        z-index: 999;
     }
     
     .menu {

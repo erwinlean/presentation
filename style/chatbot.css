@@ -22,7 +22,7 @@
     text-align: center;
     right: 80px;
     height: auto;
-    background-color: transparent;
+    background-color: black;
     border-radius: 10px;
     overflow: hidden;
     border-radius: 10px;
@@ -44,21 +44,21 @@
     right: 85px;
     width: 240px;
     height: 360px;
-    background-color: transparent;
+    background-color: black;
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid white;
 }
 .chatbot-header {
     border-bottom: 1px solid white;
-    background-color: transparent;
+    background-color: black;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 14px;
 }
 .chatbot-header:hover {
-    background-color: transparent;
+    background-color: black;
 }
 .chatbot-header .icon {
     display: inline-block;
@@ -70,12 +70,12 @@
     height: 235px;
     font-weight: normal;
     border-bottom: 1px solid grey;
-    font-size: 18px;
+    font-size: 14px;
 }
 .chatbot-content {
     padding: 10px;
     display: none;
-    font-size: 18px;
+    font-size: 14px;
 }
 #chatbotContent > div:nth-child(1){
     display: flex;
@@ -86,7 +86,7 @@
 }
 #chatbotContent > div > button{
     color: white;
-    background: transparent;
+    background: black;
     padding: 4px;
     height: 32px;
     border-top: 1px solid white;
@@ -104,13 +104,13 @@
 #inputMessage{
     height: 32px;
     border: 1px solid white;
-    background: transparent;
+    background: black;
     padding: 5px;
     border-radius: 5px;
     color:white;
     width: 160px;
     margin-right: 5px;
-    font-size: 18px;
+    font-size: 14px;
 }
 .sent{
     border: 0.5px solid grey;
@@ -120,11 +120,11 @@
     margin-left: 10px;
     padding: 4px 6px;
     width: 90%;
-    font-size: 18px;
+    font-size: 14px;
     word-wrap: break-word;
 }
 .received{
-    font-size: 18px;
+    font-size: 14px;
     border: 0.5px solid white;
     color: grey;
     margin: 10px 0;

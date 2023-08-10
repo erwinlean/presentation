@@ -2,6 +2,11 @@
 
 const restartButton = document.getElementById("restartGame");
 const actualPoints = document.getElementById("actualPoints");
+const startGameButton = document.getElementById("game_start");
+const musicPlayer = document.getElementById("music-player");
+const startContainer = document.querySelector("body > div.start-container");
+const musicContainer = document.querySelector("music-buttons");
+const gameCanvas = document.querySelector("#myCanvasGame");
 let angle = 0;
 let shouldDrawCircle,detectFunctionActivity = false;
 //let detectFunctionActivity = false;
@@ -40,8 +45,10 @@ function increaseMeteors() {
 // Obtener contexto 2D del canvas
 const ctx = canvas.getContext("2d");
 // Definir la posición inicial del cuadrado principal
-let squareX = 250;
-let squareY = 250;
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+let squareX = centerX;
+let squareY = centerY;
 // Definir una lista vacía para almacenar los cuadrados pequeños
 let smallSquares = [];
 //circulo
@@ -50,30 +57,37 @@ let circleList = [];
 let count = 0;
 
 restartButton.addEventListener("click", function() {
-  // Detener la animación actual
-  cancelAnimationFrame(animationId);
 
-  // Delete form/submit from DOM after restart the game
-  let form = document.querySelector("body > form");
-  if(form){
-    form.remove();
+  const checkStartBtn = document.querySelector("body > div.start-container");
+
+  if(checkStartBtn.style.display == "none"){
+    // Detener la animación actual
+    cancelAnimationFrame(animationId);
+
+    // Delete form/submit from DOM after restart the game
+    let form = document.querySelector("body > form");
+    if(form){
+      form.remove();
+    };
+
+    // Reiniciar las variables y listas necesarias
+    smallSquares = [];
+    circleList = [];
+    count = 0;
+    squareX = centerX;
+    squareY = centerX;
+    detectFunctionActivity = false;
+    shouldDrawCircle = false;
+
+    // Reiniciar meteoritos
+    // init number of meteors depends on window size
+    numOfMeteors();
+
+    // Iniciar la animación nuevamentes (cd)
+    startCountdown();
+  }else{
+    return;
   };
-
-  // Reiniciar las variables y listas necesarias
-  smallSquares = [];
-  circleList = [];
-  count = 0;
-  squareX = 250;
-  squareY = 250;
-  detectFunctionActivity = false;
-  shouldDrawCircle = false;
-
-  // Reiniciar meteoritos
-  // init number of meteors depends on window size
-  numOfMeteors();
-
-  // Iniciar la animación nuevamentes (cd)
-  startCountdown();
 });
 
 // Función para crear cuadrados pequeños aleatorios
@@ -125,13 +139,18 @@ meteor.src = "../assets/meteor.png";
 
 // Dibujar
 function draw() {
-  // Dibujar el triángulo principal
+  
   // Calcular la posición de la punta del triángulo
-  tipX = squareX + 25 + 20 * Math.cos(angle);
-  tipY = squareY + 25 + 20 * Math.sin(angle);
+  tipX = squareX   + 25 + 20 * Math.cos(angle);
+  tipY = squareY  + 25 + 20 * Math.sin(angle);
   ctx.translate(tipX, tipY);
   ctx.rotate(angle + Math.PI / 2);
-  ctx.drawImage(space_cat, -95, -40, 120 , 135); // manejar el tamaño de la imagen aca > y de donde dispara
+
+  // Dibujar el triángulo principal en el centro del canvas
+  const imageWidth = 120;
+  const imageHeight = 135;
+
+  ctx.drawImage(space_cat, -60, -90, imageWidth, imageHeight);  // manejar el tamaño de la imagen aca > y de donde dispara
   ctx.rotate(-angle - Math.PI / 2);
   ctx.translate(-tipX, -tipY);
   
@@ -166,7 +185,24 @@ function draw() {
     ctx.lineTo(pointinX, pointinY);
     ctx.stroke();
   };
+
 };
+
+function simulateClick(x, y) {
+  const clickEvent = new MouseEvent("click", {
+    clientX: x,
+    clientY: y,
+    view: window,
+    bubbles: true,
+    cancelable: true,
+    button: 0
+  });
+
+  canvas.dispatchEvent(clickEvent);
+};
+
+// Ejemplo: Simular un clic en el centro del canvas
+simulateClick(centerX, centerY);
 
 // Función para revisar colisión entre el círculo y los cuadrados pequeños
 function checkCollision() {
@@ -207,51 +243,7 @@ function checkCollision() {
       // Eliminar el cuadrado pequeño de la lista
       smallSquares.splice(i, 1);
 
-      // Crear formulario para ingresar el nombre
-      form = document.createElement('form');
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.id = "inputGame";
-      input.placeholder = 'Enter your name';
-      const submitButton = document.createElement('button');
-      submitButton.id = "submitGame";
-      submitButton.type = 'submit';
-      submitButton.innerText = 'Save';
-      const userPoints = document.createElement('p');
-      userPoints.innerText = `Your points were: ${count}`;
-      if(currentTogle===false){
-        actualPoints.innerHTML = `<th>Points: ${count}</th>`;
-      }else{
-        actualPoints.innerHTML = `<th>Puntos: ${count}</th>`;
-      };
-      userPoints.style.border = '1px solid white';
-      userPoints.style.background = 'transparent';
-      userPoints.style.color = 'grey';
-      userPoints.style.padding = '5px';
-      userPoints.style.marginBottom = '5px';
-      userPoints.style.borderRadius = "5px";
-
-      form.appendChild(userPoints);
-      form.appendChild(input);
-      form.appendChild(submitButton);
-
-      // Colocar el formulario en el centro de la pantalla
-      form.style.position = 'absolute';
-      form.style.top = '54%';
-      form.style.left = '42%';
-      form.style.transform = 'translate(-50%, -50%)';
-
-      // Agregar el formulario al cuerpo del documento
-      document.body.appendChild(form);
-
-      // Manejar el evento de envío del formulario
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        newGamePos();
-        form.remove();
-      });
-
+      createForm()
       break;
     };
   };
@@ -470,7 +462,56 @@ canvas.addEventListener("touchend", function(event) {
   }
 });
 
+// Create form when dies
+function createForm(){
+  form = document.createElement('form');
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.id = "inputGame";
+  input.placeholder = 'Insert your name';
+  const submitButton = document.createElement('button');
+  submitButton.id = "submitGame";
+  submitButton.type = 'submit';
+  submitButton.innerText = 'Save';
+  const userPoints = document.createElement('p');
+  userPoints.innerText = `Your points were: ${count}`;
+  if(currentTogle===false){
+    actualPoints.innerHTML = `<th>Points: ${count}</th>`;
+  }else{
+    actualPoints.innerHTML = `<th>Puntos: ${count}</th>`;
+  };
+  userPoints.style.border = '1px solid white';
+  userPoints.style.background = 'transparent';
+  userPoints.style.color = 'grey';
+  userPoints.style.padding = '5px';
+  userPoints.style.marginBottom = '5px';
+  userPoints.style.borderRadius = "5px";
 
+  form.appendChild(userPoints);
+  form.appendChild(input);
+  form.appendChild(submitButton);
+
+  const rect = gameCanvas.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2 - form.offsetWidth / 2;;
+  const centerY = rect.top + rect.height / 2 - form.offsetHeight / 2;;
+
+  // Colocar el formulario en el centro de la pantalla
+  form.style.left = `${centerX}px`;
+  form.style.top = `${centerY}px`; 
+  form.style.position = 'absolute';
+  form.style.transform = 'translate(-50%, -50%)';
+
+  // Agregar el formulario al cuerpo del documento
+  document.body.appendChild(form);
+
+  // Manejar el evento de envío del formulario
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    newGamePos();
+    form.remove();
+  });
+};
 
 
 /////////////////////////////// Init
@@ -548,27 +589,40 @@ canvas.addEventListener('touchmove', function(event) {
   angle = Math.atan2(mouseY - (squareY + 1000), mouseX - (squareX + 240));
 });
 
-//Start the game
-const startGameButton = document.getElementById("game_start");
-const musicPlayer = document.getElementById("music-player");
-const startContainer = document.querySelector("body > div.start-container");
-const musicContainer = document.querySelector("music-buttons");
-const gameCanvas = document.querySelector("#myCanvasGame");
-
 // Start button at the center of the canvas
 function positionStart() {
   
-  const rect = gameCanvas.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2 - startContainer.offsetWidth / 2;;
-  const centerY = rect.top + rect.height / 2 - startContainer.offsetHeight / 2;;
+    const rect = gameCanvas.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2 - startContainer.offsetWidth / 2;;
+    const centerY = rect.top + rect.height / 2 - startContainer.offsetHeight / 2;;
 
-  //console.log(centerX, centerY)
+    //console.log(centerX, centerY)
+    const form = document.querySelector("body > form");
 
-  // Set the element position
-  startContainer.style.left = `${centerX}px`;
-  startContainer.style.top = `${centerY}px`; 
+    // Set the element position
+    startContainer.style.left = `${centerX}px`;
+    startContainer.style.top = `${centerY}px`; 
+
+    if(form){
+      form.style.left = `${centerX}px`;
+      form.style.top = `${centerY}px`; 
+    };
 };
 positionStart();
+
+function handleMutation(mutationsList, observer) {
+    positionStart();
+};
+
+const observer = new MutationObserver(handleMutation);
+const observerOptions = {
+    attributes: true,
+    childList: false,
+    subtree: false,
+};
+
+// Start observing the gameCanvas element for changes in size
+observer.observe(gameCanvas, observerOptions);
 
 // Function to start the game
 function start() {

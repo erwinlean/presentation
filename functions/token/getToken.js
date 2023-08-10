@@ -1,7 +1,7 @@
 "use strict";
 
 async function getAndSaveToken() {
-    const url = 'https://sore-erin-goldfish-tutu.cyclic.app/api/token';
+    const url = 'https://erwin-porfolio.onrender.com/api/token';
     //const url = 'http://localhost:8080/api/token';
 
     try {

@@ -5,16 +5,14 @@ const btnRestartStars = document.getElementById("restartStars")
 const canvas = document.getElementById("starsCanvas");
 const context = canvas.getContext("2d");
 
-// Establecer el tamaño del lienzo
-canvas.width = window.innerWidth  ;
-canvas.height = window.innerHeight;
-//console.log(window.innerWidth, window.innerHeight);
+canvas.width =  document.documentElement.scrollWidth;
+canvas.height = document.documentElement.scrollHeight;
 
 // Crear los círculos
 const circles = [];
-const numCircles = 400; // Initial numbers of stars
 const scales = [1.15, 3, 2, 4, 3, 2.25, 1.50, 1.75, 0.5, 0.30, 0.25, 2.75, 3.2, 1.3, 2.35, 2.05, 0.2, 0.6, 0.9, 1.9, 2.7, 4, 3.05, 0.79, 2.58, 0.37, 1.82, 1.42, 2.22, 0.46];
 const colours = [ "#FFFFFF", "#0A1776", "#071158", "#090D58", "#000158", "#FFA500", "#132BDF", "#FFFF00", "#808080", "#071158", "#090D58", "#000158", "#1C2B58", "#132BDF", "#808080", "#071158", "#090D58", "#000158", "#1C2B58", "#39A6B2", "#FFFFFF", "#FFFFFF"];
+let numCircles = 150; // Initial numbers of stars
 let circle;
 
 // Función para dibujar los círculos en el lienzo
@@ -92,15 +90,28 @@ function addStars(){
   let newStars = Math.floor(Math.random() * 21) + 15;
   //console.log(newStars);
 
-  if(circles.length <= 200){
-    stars(newStars);
-    //console.log(circles.length);
-  };
+  if(!window.location.href.includes("contact.html")){
+    if(circles.length <= 300){
+      stars(newStars);
+      //console.log(circles.length);
+    };
+  }else{
+    if(circles.length <= 200){
+      stars(newStars);
+      //console.log(circles.length);
+    };
+  }
 };
 
 // Init
 drawStars();
-stars(numCircles);
+
+if(!window.location.href.includes("contact.html")){
+  stars(220);
+}else{
+  stars(150);
+};
+
 // alert("Width: " + canvas.width + " ||| Heigth: " + canvas.height);
 
 // If btn is needed

@@ -1,18 +1,12 @@
-.hole{
-    width: 100vw;
+.hole {
     position: absolute;
     right: 0px;
     top: 0px;
-    z-index: -15;
-    height: auto;
-    max-height: 1200px;
+    z-index: -150;
 }
-.stars{
-    width: 100vw;
+.stars {
     position: absolute;
     right: 0px;
     top: 0px;
-    z-index: -10;
-    height: auto;
-    max-height: 1200px;
+    z-index: -100;
 }

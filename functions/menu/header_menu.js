@@ -44,3 +44,18 @@ menuToggle.addEventListener('click', function() {
     // Actualize
     menuExpanded = !menuExpanded;
 });
+
+// Put header sub-menu at bottom
+function updatePosition() {
+    const networksDiv = document.querySelector('.networks');
+    const windowHeight = document.documentElement.scrollHeight;
+
+    //if (window.innerWidth <= 360 && window.innerHeight >= 640) {
+    if(!window.location.href.includes("contact.html")){
+        const newTopPosition = windowHeight -networksDiv.clientHeight;
+        networksDiv.style.top = `${newTopPosition}px`;
+    };
+};
+
+window.addEventListener('load', updatePosition);
+window.addEventListener('resize', updatePosition);
