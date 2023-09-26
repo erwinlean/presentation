@@ -30,6 +30,8 @@
 
     <!--Token-->
     <script src="./functions/token/getToken.js"></script>
+    <!--Map-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0wvMxwfO-ebZBsi37JMvBHidTKdm_jhE&callback=iniciarMap" async defer></script>
 </head>
 <body>
     <div id="content" class="body_content">
@@ -80,7 +82,7 @@
             <h3>Contact</h3>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required autocomplete="email">
 
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" required>
@@ -90,6 +92,8 @@
 
             <input type="submit" value="Send" id="sendBtn">
         </form>
+
+        <div class="map-container" id="map"></div>
     </div>
 
     <p class="chat-bot-hello"> Hello there! </p>
@@ -106,6 +110,11 @@
         </div>
     </div>
 
+    <div id="mapModal" class="map-modal">
+        <span class="close">&times;</span>
+        <img class="modal-img" id="mapImg" src="./assets/cat_ship.png">
+    </div>
+
     <audio id="hello_not" src="./assets/Music/notification.mp3"></audio>
 
     <script src="./functions/contact/contact.js"></script>
@@ -115,5 +124,6 @@
     <script src="./functions/background/background_hole.js"></script>
     <script src="./functions/chatbot/chat.js"></script>
     <script src="./functions/chatbot/hiUser.js"></script>
+    <script src="./functions/maps/map.js"></script>
 </body>
 </html>

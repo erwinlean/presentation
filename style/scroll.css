@@ -17,21 +17,21 @@
     justify-content: center;
     position: relative;
 }
+#content > div:nth-child(2) > div.fade-in.typing > h3{
+    width: 320px !important;
+}
 #content > div:nth-child(2) > div.fade-in.typing > div{
     text-align: left;
-    border: 1px solid #92CAE1;
     border-radius: 10px;
     padding: 20px;
+    text-align: justify;
     background: transparent; 
-    filter: grayscale(100%); 
-    transition: background 1.5s ease, filter 1.5s ease; 
-    transition: color 1.5s ease, filter 1.5s ease;
+    filter: grayscale(100%);
 }
-#content > div:nth-child(2) > div.fade-in.typing > div:hover {
-        background: #92cbe1b5;
-        color: black;
-        filter: none;
-    }
+#content > div:nth-child(2) > div.fade-in.typing > div > p{
+    /*opacity: 0;*/
+}
+
 #content > div:nth-child(2) > div.fade-in.typing > img{
     place-self: center;
     border-radius: 15px;
@@ -44,9 +44,6 @@
 .fade-in.active {
     opacity: 1;
     transition: opacity 0.5s;
-}
-#content > div:nth-child(2) > div.fade-in.typing > div > p{
-    font-size: 10px;
 }
 .fade-in > p {
     justify-self: center;

@@ -3,11 +3,17 @@
 const menuToggle = document.getElementById('menu-toggle');
 const menu = document.querySelector('.menu');
 let menuExpanded = false;
+let currentDisplay;
+let formBody;
+
+if (window.location.href.includes("contact")) {
+    formBody = document.querySelector("body > div.formContainer");
+    currentDisplay = window.getComputedStyle(formBody).display;
+};
 
 menuToggle.addEventListener('click', function() {
     menu.classList.toggle('expanded');
 
-    const formBody = document.querySelector("body > div.formContainer");
     const indexBody = document.querySelector("#content > div:nth-child(2)");
     const gameBody = document.querySelector("#game_canvas");
     const musicBtn = document.querySelector(".music-buttons");
@@ -25,7 +31,7 @@ menuToggle.addEventListener('click', function() {
 
     if (menuExpanded) {
         if (formBody) {
-            formBody.style.zIndex = 300;
+            formBody.style.display = `${currentDisplay}`;
         } else if (indexBody) {
             indexBody.style.zIndex = 300;
         } else if (gameBody) {
@@ -33,7 +39,7 @@ menuToggle.addEventListener('click', function() {
         };
     } else {
         if (formBody) {
-            formBody.style.zIndex = -1;
+            formBody.style.display = `none`;
         } else if (indexBody) {
             indexBody.style.zIndex = -1;
         } else if (gameBody) {
@@ -41,16 +47,13 @@ menuToggle.addEventListener('click', function() {
         };
     };
 
-    // Actualize
     menuExpanded = !menuExpanded;
 });
 
-// Put header sub-menu at bottom
 function updatePosition() {
     const networksDiv = document.querySelector('.networks');
     const windowHeight = document.documentElement.scrollHeight;
 
-    //if (window.innerWidth <= 360 && window.innerHeight >= 640) {
     if(!window.location.href.includes("contact.html")){
         const newTopPosition = windowHeight -networksDiv.clientHeight;
         networksDiv.style.top = `${newTopPosition}px`;

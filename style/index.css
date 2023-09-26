@@ -123,30 +123,38 @@ li{
     display: flex;
     margin-top: 80px;
 }
-.name{
+.name {
+    background-color: transparent;
+    z-index: 300;
     bottom: 100px;
     align-self: center;
     font-size: 2.5em;
-    position: relative; 
-	float: left;
+    position: relative;
+    float: left;
+    left: 50%;
     margin-top: -20%;
-    margin-left: 20%;
+    transform: translateX(-50%);
     text-align: center;
 }
+
 .name > span {
-    z-index: 150;
-    position:absolute;
-    right:0;
-    z-index: 0;
-    width:0;
+    position: absolute;
+    right: 0;
+    width: 0;
     background: black;
     border-left: 1px solid white;
-    animation: write 4s steps(30) infinite alternate;
+    animation: write 7s steps(60) forwards;
 }
+
 @keyframes write {
-    from { width: 100% }
-    to { width:0 }
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
 }
+
 .restartStars{
     display: flex;
     position: relative;
@@ -177,12 +185,18 @@ li{
         margin-left: 0px;
         
     }
+    #scrollToPerfil{
+        margin-bottom: 22.5px;
+    }
     #languageToggle{
         margin-left: -25px;
         place-self: center;
     }
 }
 @media screen and (max-width: 750px) {
+    #scrollToPerfil{
+        margin-bottom: 22.5px;
+    }
     .header{
         width: 100%;
     }
@@ -239,6 +253,7 @@ li{
         position: absolute;
         top: 90%;
         z-index: 999;
+        margin-left: 10px;
     }
     
     .menu {
@@ -368,10 +383,35 @@ li{
         font-size: 2em;
         bottom: 125px;
     }
+    #scrollToPerfil{
+        margin-bottom: 22.5px;
+    }
 }
 @media screen and (max-width: 388px) {
     #perfil_name > h1 {
         font-size: 1.6em;
         bottom: 125px;
     }
+    #scrollToPerfil{
+        margin-bottom: 22.5px;
+    }
+}
+/* Icon to header*/
+#scrollToPerfil {
+    position: fixed;
+    z-index: 320;
+    background-color: transparent;
+    width: 25px;
+    height: 25px;
+    bottom: 0;
+    left: 0;
+}
+#scrollToPerfil > button {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+}
+#scrollToPerfil > button > img {
+    width: 100%;
+    cursor: pointer;
 }

@@ -177,13 +177,6 @@
     left: 140px;
 }
 @media screen and (max-width: 1200px){
-    #contactForm{
-        width: 40% !important;
-    }
-    .formContainer{
-        margin-top: 100px;
-        padding: 10px;
-    }
     .chatbot-container{
         height: 180px;
         width: 190px;
@@ -217,9 +210,6 @@
 }
 /*movile*/
 @media only screen and (max-width: 699px) and (min-width: 426px){
-    .formContainer{
-        padding: 10px;
-    }
     .chatbot-container{
         height: 180px;
         width: 190px;

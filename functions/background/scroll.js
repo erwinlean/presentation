@@ -2,6 +2,8 @@
 
 const containers = document.querySelectorAll('.tech_images');
 const chatCheck= document.querySelector("#chatbot");
+
+/* Not in current use, scroll effects */
 //window.addEventListener('wheel', debounce(revealElements, 100));
 //window.addEventListener('touchstart', handleTouchStart, false);
 //window.addEventListener('touchmove', handleTouchMove, false);
@@ -173,5 +175,42 @@ containers.forEach(container => {
     });
     container.addEventListener("mouseout", function() {
         container.style.filter = "grayscale(100%)";
+    });
+});
+
+setTimeout(() => {
+    document.querySelector("#perfil_name > h1 > span").style.display = "none";
+}, 7000);
+
+/* Scroll betben zones function in the index body */
+document.addEventListener('DOMContentLoaded', function () {
+    const sectionsContainer = document.getElementById("sections-container");
+    const sections = sectionsContainer.querySelectorAll("div[id^='section']");
+    let currentSectionIndex = 0;
+    let scrolling = false;
+
+    function scrollToSection(index) {
+        scrolling = true;
+        sections[index].scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+            scrolling = false;
+        }, 1000); // Ajusta el tiempo de espera según tu preferencia
+    }
+
+    window.addEventListener('wheel', function (e) {
+        if (scrolling) return;
+        if (e.deltaY > 0) {
+            // Desplazamiento hacia abajo
+            if (currentSectionIndex < sections.length - 1) {
+                currentSectionIndex++;
+                scrollToSection(currentSectionIndex);
+            }
+        } else if (e.deltaY < 0) {
+            // Desplazamiento hacia arriba
+            if (currentSectionIndex > 0) {
+                currentSectionIndex--;
+                scrollToSection(currentSectionIndex);
+            }
+        }
     });
 });

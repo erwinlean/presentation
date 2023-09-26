@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="./style/canvas.css">
     <link rel="stylesheet" href="./style/chatbot.css">
     <link rel="stylesheet" href="./style/contact.css">
-    <link rel="stylesheet" href="./style/detailes.css">
 
     <!--Token-->
     <script src="./functions/token/getToken.js"></script>
@@ -76,24 +75,27 @@
         </div>
 
 
-        
-        <!-- Scrolling new info test-->
-        <div>
+
+        <div id="scroll-container">
+            <!-- Section one -->
             <div class="info " id="perfil_name">
                 <h1 class="name">Erwin Leandro Marte&nbsp&nbsp<span>&#160;</span</h1>
             </div>
         
-            <!-- Scrolling new info test-->
-            <div class="fade-in typing">
-                <img class="tech_images" src="./assets/me.jpg" alt="myself">
-                <div>                
-                    <p>Programador en crecimiento con experiencia en diferentes tecnologías. Me especializo en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Angular), también tengo conocimientos básicos Electron & Ionic. Además, manejo PHP, Linux, Docker y otras herramientas esenciales de programación.</p>
-                    <p>Actualmente, me encuentro trabajando como Software Engineer Jr. en Criteria Online. Mi rol se centra en la creación de conectores bidireccionales mediante API entre sistemas como ERP, PIM, DAM y eCommerce. Mi objetivo es asegurar una comunicación fluida y eficiente entre estas plataformas para facilitar la gestión de datos y mejorar la experiencia del usuario.</p>
-                    <p>Estoy comprometido con seguir aprendiendo y adquiriendo nuevas habilidades en el mundo de la programación para crecer profesionalmente y aportar soluciones innovadoras en cada proyecto en el que participo.</p>
+            <!-- Section two -->
+            <div class="fade-in typing" id="about_me">
+                <div>            
+                    <h3>About me</h3>   
+                    <br> 
+                    <!-- Those paragraph complete with function in index/body.js -->
+                    <p></p>
+                    <p></p>
+                    <p></p>
                 </div>
             </div>
             
-            <div class="fade-in">
+            <!-- Section three -->
+            <div class="fade-in" id="technologies">
                 <p>Technologies & Tools</p>
                 <div>
                     <img class="tech_images" src="./assets/Logos/Nodejs.png" alt="Nodejs icon" title="Nodejs icon">
@@ -107,11 +109,8 @@
                     <img class="tech_images" src="./assets/Logos/Docker.png" alt="Docker icon" title="Docker icon">
                     <img class="tech_images" src="./assets/Logos/Html.png" alt="HTML icon" title="HTML icon">
                     <img class="tech_images" src="./assets/Logos/CSS.png" alt="Css icon" title="Css icon">
-                    <img class="tech_images" src="./assets/Logos/Postman.png" alt="Postman icon" title="Postman icon">
                     <img class="tech_images" src="./assets/Logos/MySQL.png" alt="MySQL icon" title="MySQL icon">
                     <img class="tech_images" src="./assets/Logos/MongoDB.png" alt="MongoDB icon" title="MongoDB icon">
-                    <img class="tech_images" src="./assets/Logos/Git.png" alt="Git icon" title="Git icon">
-                    <img class="tech_images" src="./assets/Logos/GithUb.png" alt="GitHub icon" title="GitHub icon">
                 </div>
             </div>
         </div>
@@ -132,9 +131,11 @@
     </div>
 
     <audio id="hello_not" src="./assets/Music/notification.mp3"></audio>
-    <a href="#" id="scrollToPerfil"></a>
+
+    <a href="#" id="scrollToPerfil"><button><img src="./assets/toHeader.png" alt="To header" title="To header"></button></a>
 
     <script src="./functions/menu/header_menu.js"></script>
+    <script src="./functions/index/body.js"></script>
     <script src="./functions/menu/lenguajeTogle.js"></script>
     <script src="./functions/background/scroll.js"></script>
     <script src="./functions/background/background_stars.js"></script>

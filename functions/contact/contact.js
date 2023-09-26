@@ -2,7 +2,8 @@
 
 const submit = document.getElementById("sendBtn");
 
-const url = "https://erwin-porfolio.onrender.com/api/mailer";
+//const url = "https://erwin-porfolio.onrender.com/api/mailer";
+const url = "http://localhost:8080/api/mailer";
 
 function createCustomAlert(message, onAccept) {
     const alertContainer = document.createElement("div");
