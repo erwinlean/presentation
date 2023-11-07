@@ -184,8 +184,11 @@ setTimeout(() => {
 
 /* Scroll betben zones function in the index body */
 document.addEventListener('DOMContentLoaded', function () {
-    const sectionsContainer = document.getElementById("sections-container");
-    const sections = sectionsContainer.querySelectorAll("div[id^='section']");
+
+    const oneSection = document.getElementById("perfil_name");
+    const twoSection = document.getElementById("about_me");
+    const thirdSection = document.getElementById("technologies");
+    const sections = [oneSection, twoSection, thirdSection];
     let currentSectionIndex = 0;
     let scrolling = false;
 
@@ -195,22 +198,24 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             scrolling = false;
         }, 1000); // Ajusta el tiempo de espera según tu preferencia
-    }
+    };
 
     window.addEventListener('wheel', function (e) {
-        if (scrolling) return;
-        if (e.deltaY > 0) {
+        //if (scrolling) return;
+        console.log("scroll");
+
+        if (e.deltaY > 150) {
             // Desplazamiento hacia abajo
             if (currentSectionIndex < sections.length - 1) {
                 currentSectionIndex++;
                 scrollToSection(currentSectionIndex);
-            }
+            };
         } else if (e.deltaY < 0) {
             // Desplazamiento hacia arriba
             if (currentSectionIndex > 0) {
                 currentSectionIndex--;
                 scrollToSection(currentSectionIndex);
-            }
-        }
+            };
+        };
     });
 });

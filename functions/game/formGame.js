@@ -1,7 +1,7 @@
 "use strict";
 
-//const url = 'https://erwin-porfolio.onrender.com/api/game/add';
-const url = 'http://localhost:8080/api/game/add';
+const url = 'https://erwin-porfolio.onrender.com/api/game/add';
+//const url = 'http://localhost:8080/api/game/add';
 
 let submit = document.querySelector("body > form > button");
 let user, newGame;

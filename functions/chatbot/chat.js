@@ -87,8 +87,8 @@ function sendMessage() {
             });
         
             // Realizar el POST al backend
-            //const url = "https://erwin-porfolio.onrender.com/api/chat";
-            const url = "http://localhost:8080/api/chat";
+            const url = "https://erwin-porfolio.onrender.com/api/chat";
+            //const url = "http://localhost:8080/api/chat";
             const data = { message: messages };
 
             const token = localStorage.getItem('accessToken');
