@@ -15,7 +15,7 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin: 5px;
+    margin: 10px 15px;
     background-size: cover;
     background-image: url('../assets/auriculares.png');
 }

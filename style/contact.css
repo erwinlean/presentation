@@ -99,9 +99,13 @@ input[type="submit"]:active {
 }
 
 @media screen and (max-width: 899px){
+    
     body > div.formContainer {
         margin-top: 25px;
         display: grid;
+    }
+    .formContainer{
+        margin-top: 140px !important;
     }
     form{
         width: 350px;

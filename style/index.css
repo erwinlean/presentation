@@ -251,7 +251,7 @@ li{
     
     .networks {
         position: absolute;
-        top: 90%;
+        top: 150%;
         z-index: 999;
         margin-left: 10px;
     }

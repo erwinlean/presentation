@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('wheel', function (e) {
         //if (scrolling) return;
-        console.log("scroll");
+        //console.log("scroll");
 
         if (e.deltaY > 150) {
             // Desplazamiento hacia abajo
