@@ -1,8 +1,8 @@
 "use strict";
 
 async function getAndSaveToken() {
-    //const url = 'https://erwin-porfolio.onrender.com/api/token';
-    const url = 'http://localhost:8080/api/token';
+    const url = 'https://presentation-backend-erwinlean.4.us-1.fl0.io/api/token';
+    //const url = 'http://localhost:8080/api/token';
 
     try {
         let token = localStorage.getItem('accessToken');
