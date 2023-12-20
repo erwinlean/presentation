@@ -649,4 +649,29 @@ function start() {
   }, numberOfMeteors); // Crear mas o menos cuadrados dependiendo el width y height
 };
 
+// alert of the game is under dev
+function createCustomAlert(message, onAccept) {
+  const alertContainer = document.createElement("div");
+  alertContainer.classList.add("alert-container");
+  
+  const alertBox = document.createElement("div");
+  alertBox.classList.add("alert-box");
+  alertBox.textContent = message;
+  
+  const acceptButton = document.createElement("button");
+  acceptButton.textContent = "Aceptar";
+  acceptButton.addEventListener("click", function() {
+      document.body.removeChild(alertContainer);
+      onAccept();
+  });
+  
+  alertBox.appendChild(acceptButton);
+  alertContainer.appendChild(alertBox);
+  document.body.appendChild(alertContainer);
+};
+
+createCustomAlert(`The game is under maintenance. Still you can play!`, function() {
+});
+
+// Init game
 startGameButton.addEventListener("click", start);

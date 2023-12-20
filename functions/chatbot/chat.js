@@ -11,6 +11,26 @@ const span_min = document.querySelector("#chatbot > div.chatbot-header > span");
 const button_chat = document.querySelector("#chatbotContent > div > button");
 let msgCount = 0;
 
+function createCustomAlert(message, onAccept) {
+    const alertContainer = document.createElement("div");
+    alertContainer.classList.add("alert-container");
+    
+    const alertBox = document.createElement("div");
+    alertBox.classList.add("alert-box");
+    alertBox.textContent = message;
+    
+    const acceptButton = document.createElement("button");
+    acceptButton.textContent = "Aceptar";
+    acceptButton.addEventListener("click", function() {
+        document.body.removeChild(alertContainer);
+        onAccept();
+    });
+    
+    alertBox.appendChild(acceptButton);
+    alertContainer.appendChild(alertBox);
+    document.body.appendChild(alertContainer);
+};
+
 function toggleChatbot(event) {
     event.preventDefault();
 

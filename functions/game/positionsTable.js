@@ -26,9 +26,9 @@ async function loadDataApi() {
     .then(response => response.json())
     .then(data => {
 
-        // Sort points
+        // Sort points based on gamePoints property
         data.sort(function(a, b) {
-            return b[1] - a[1];
+            return b[1].gamePoints - a[1].gamePoints;
         });
         
         apiData = data;
@@ -45,15 +45,15 @@ async function loadDataApi() {
 
         // Show only first 10 items
         const slicedData = data.slice(0, 10);
-        slicedData.forEach(function(data) {
+        slicedData.forEach(function(item) {
             let row = document.createElement("tr");
         
             let nameCell = document.createElement("td");
-            nameCell.textContent = data[0].usersName;
+            nameCell.textContent = item[0].usersName;
             row.appendChild(nameCell);
         
             let scoreCell = document.createElement("td");
-            scoreCell.textContent = data[1].gamePoints;
+            scoreCell.textContent = item[1].gamePoints;
             row.appendChild(scoreCell);
         
             table.appendChild(row);
@@ -66,7 +66,7 @@ async function loadDataApi() {
     .catch(error => {
         console.log(error);
     });
-};  
+};
 
 function lenChange() {
     //console.log(apiData);
