@@ -13,4 +13,4 @@ function hello() {
     }, 2000);
 };
 
-hello();
+//hello();

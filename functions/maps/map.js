@@ -133,10 +133,10 @@ const darkMapStyles = [
         ]
     }
 ];
-
+//https://www.google.com/maps/place/52100+Arezzo/@43.425505,11.8668486,12z/data=!3m1!4b1!4m6!3m5!1s0x132bed72f3fda815:0xf846f1b18734dc08!8m2!3d43.4632839!4d11.8796336!16zL20vMHBiamc?entry=ttu
 /* Map */
 function iniciarMap() {
-    var coord = { lat: -38.0814312, lng: -57.5428474 };
+    var coord = { lat: 43.425505, lng: 11.8668486 };
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: coord,

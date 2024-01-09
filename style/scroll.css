@@ -7,7 +7,7 @@
     text-align: center;
 }
 .fade-in{
-    min-height: 700px;
+    min-height: 500px;
     justify-content: center;
     z-index: 200;
     width: 70%;
@@ -70,7 +70,7 @@
 #content > div:nth-child(2) > div.fade-in.typing{
     display: flex;
     align-items: center;
-    margin-top: -220px !important;
+    margin-top: -320px !important;
     margin: 0 15%;
 }
 

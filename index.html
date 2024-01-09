@@ -11,14 +11,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/Logos/stars_180.png">
     <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
 
-    <meta name="description" content="Soy un programador en crecimiento con experiencia en diferentes tecnologías. Especializado en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Angular), además de PHP, Linux, Docker y otras herramientas esenciales de programación. Actualmente, trabajando como Software Engineer Jr. en Criteria Online. Mi objetivo es aportar soluciones innovadoras en cada proyecto en el que participo.">
-    <meta name="keywords" content="web developer, programador, JavaScript, Node.js, Express, Angular, PHP, Linux, Docker, portfolio">
+    <meta name="description" content="Soy un programador en crecimiento con experiencia en diferentes tecnologías. Especializado en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Svelte), además de PHP, Linux, Docker y otras herramientas esenciales de programación. Actualmente, trabajando como Software Engineer Jr. en Criteria Online. Mi objetivo es aportar soluciones innovadoras en cada proyecto en el que participo.">
+    <meta name="keywords" content="web developer, programador, JavaScript, Node.js, Express, Svelte, Rust, PHP, Linux, Docker, portfolio.">
     <meta name="author" content="Erwin Leandro Marte">
     <link rel="canonical" href="https://test-porfolio.netlify.app/">
     <meta name="robots" content="index, follow">
     <meta property="og:image" content="">
     <meta property="og:description" content="Erwin Leandro Marte - Portfolio Web Developer">
-    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/960gs/0.12/960.min.css">
+
     <link rel="stylesheet" href="./style/togle.css">
     <link rel="stylesheet" href="./style/scroll.css">
     <link rel="stylesheet" href="./style/index.css">
@@ -26,6 +27,7 @@
     <link rel="stylesheet" href="./style/chatbot.css">
     <link rel="stylesheet" href="./style/contact.css">
     <link rel="stylesheet" href="./style/alert.css">
+    <link rel="stylesheet" href="./style/projects.css">
 
     <!--Token-->
     <script src="./functions/token/getToken.js"></script>
@@ -112,8 +114,45 @@
                     <img class="tech_images" src="./assets/Logos/MongoDB.png" alt="MongoDB icon" title="MongoDB icon">
                 </div>
             </div>
+
+            <!-- Section four  -->
+            <div class="content">
+                <div class="container_12">
+                  <div class="grid_4">
+                    <div class="box4 mb1 mb0 maxheight projects">
+                      <img class="img-projects" src="./assets/projects/estufas_rocket.jpg" alt="Estufas rocket" title="Estufas rocket">
+                      <div class="text2"><a href="https://estufasrocket.netlify.app/" target="_blank" class="translate" data-translation-key="estufas-rocket">Landing page Estufas rocket</a></div>
+                      <p class="translate" data-translation-key="estufas-rocket-description">Creación de una landing page para Estufas Rocket MDQ. Promociónando las construcciones ecológicas en barro. Tanto hornos, estufas, como casas con elementos naturales.</p>
+                    </div>
+                  </div>
+                  <div class="grid_4">
+                    <div class="box4 mb1 mb0 maxheight projects">
+                      <img class="img-projects" src="./assets/projects/tizziano_mannagment.PNG" alt="tizziano-barbershop mannagment" title="tizziano-barbershop mannagment">
+                      <div class="text2"><a href="./private.html" target="_blank" class="translate" data-translation-key="tizziano-barbershop2">Tizzina barbershop manejo de cuentas</a></div>
+                      <p class="translate" data-translation-key="tizziano-barbershop-description2">La aplicación de contabilidad y gestión de cuentas de Tizzianos Barbershop se utiliza para llevar un registro de los ingresos y gastos diarios, semanales y mensuales, además de administrar los precios en la plataforma web del negocio. Esto es fundamental para una gestión financiera precisa y eficiente.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid_4">
+                    <div class="box4 mb1 mb0 maxheight projects">
+                      <img class="img-projects" src="./assets/projects/tizziano_mannagment.PNG" alt="tizziano-barbershop mannagment" title="tizziano-barbershop mannagment">
+                      <div class="text2"><a href="./private.html" target="_blank" class="translate" data-translation-key="tizziano-barbershop2">Tizzina barbershop manejo de cuentas</a></div>
+                      <p class="translate" data-translation-key="tizziano-barbershop-description2">La aplicación de contabilidad y gestión de cuentas de Tizzianos Barbershop se utiliza para llevar un registro de los ingresos y gastos diarios, semanales y mensuales, además de administrar los precios en la plataforma web del negocio. Esto es fundamental para una gestión financiera precisa y eficiente.</p>
+                    </div>
+                  </div>
+              </div>
         </div>
     </div>
+
+    <div id="modal1" class="modal">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <div class="modal-content">
+            <!-- Contenido del modal -->
+            <img src="./assets/projects/estufas_rocket.jpg" alt="Estufas rocket" title="Estufas rocket" class="project-img">
+            <p>Tu contenido adicional aquí.</p>
+        </div>
+    </div>
+    
 
     <p class="chat-bot-hello">Hello there!</p>
     <img class="space_cat_chat" src="./assets/space_cat_DALLE.png" alt="Space cat chat" title="Space cat chat">

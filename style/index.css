@@ -118,10 +118,10 @@ li{
 }
 .info{
     width: 100%;
-    min-height: 800px; 
+    min-height:500px; 
     width: auto;
     display: flex;
-    margin-top: 80px;
+    margin-top: 250px;
 }
 .name {
     background-color: transparent;
