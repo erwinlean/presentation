@@ -104,6 +104,12 @@ body > div > div > p{
 }
 #content > div:nth-child(2) > div:nth-child(4){
     text-align-last: center;
+    width: 90%;
+    margin: 100px 3% 0 3%;
+}
+.img-projects, .text2, .translate{
+    position: relative;
+    z-index: 1005 !important;
 }
 #content > div:nth-child(2) > div.fade-in.typing.visible > img{
     justify-self: center;
