@@ -1,6 +1,6 @@
 "use strict";
 
-const hiElement = document.querySelector("body > p");
+const hiElement = document.querySelector("#hello_cat");
 const hello_not = document.getElementById("hello_not");
 
 function hello() {
@@ -10,7 +10,7 @@ function hello() {
         setTimeout(() => {
             hiElement.style.opacity = "1";
         }, 10);
-    }, 2000);
+    }, 3000);
 };
 
-//hello();
+hello();

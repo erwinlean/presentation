@@ -1,5 +1,3 @@
-// About function
-
 "use strict";
 
 const traslateBtn = document.querySelector("#languageToggle > li > button");

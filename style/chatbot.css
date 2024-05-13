@@ -1,6 +1,6 @@
 .space_cat_chat{
     position: fixed;
-    z-index: 450;
+    z-index: 1111;
     top: 89%;
     right: 25px;
     width: 75px;
@@ -16,7 +16,7 @@
 }
 .chat-bot-hello{
     position: fixed;
-    z-index: 350;
+    z-index: 1111;
     bottom: 10%;
     padding: 8px;
     text-align: center;
@@ -39,7 +39,7 @@
 .chatbot-container {
     display: none;
     position: fixed;
-    z-index: 340;
+    z-index: 1501;
     bottom: 10%;
     right: 85px;
     width: 240px;

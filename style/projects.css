@@ -2,40 +2,69 @@
 .container_12 {
     display: flex;
     flex-wrap: wrap;
-  }
-  
-  .grid_4 {
-    flex: 0 0 calc(33.33% - 20px); /* Ajusta según tus necesidades */
-    margin-right: 20px;
-  }
+    margin-bottom: 180px;
+}
+
+.grid_4 {
+    flex: 0 0 calc(33.33% - 20px);
+    margin: 0 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
 
 .img-projects{
 	width: 100%;
-	height: 150px !important;
+	height: 158px !important;
 	object-fit:contain;
 	cursor: pointer;
+    margin-bottom: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
+
 .projects{
-	height: 445px !important;
+	height: 350px !important;
+    z-index: 985;
+    position: relative;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+#scroll-container > div.content > div > div > div > p,#scroll-container > div.content > div.container_12 > div.container_12 > div > div > p, #scroll-container > div.content > div.container_12 > div.container_12 > div.container_12 > div > div > p {
+    text-align: center;
+    padding: 10px 12px 0 12px;
+    font-size: 12.5px;
+}
+
+/* Estilo para ocultar los elementos cuando el modal está abierto */
+.modal-open .content {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 /* Estilos para el modal */
 .modal {
     display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 50px;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: #30313393;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-img{
+    border-radius: 5px;
 }
 
 .modal-content {
     display: block;
-    margin: 0 auto;
     max-width: 80%;
     max-height: 80%;
 }
@@ -48,16 +77,30 @@
     font-size: 30px;
     cursor: pointer;
 }
-body > div.modal > img{
-	margin-top: 5% !important;
-}
-/* Estilos adicionales según tus necesida*/
-.project-img {
-    width: 200px;
-    height: 150px;
-    object-fit: cover;
+
+.img-projects {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
     cursor: pointer;
 }
-body > div.content > div > div > p{
-	text-align: justify;
+
+@media screen and (max-width: 768px) {
+    .container_12 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .grid_4 {
+        flex: 0 0 calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid_4 {
+        flex: 0 0 calc(100% - 20px);
+    }
 }
