@@ -8,13 +8,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js"></script>
 
     <title>Erwin Leandro Marte - Web Developer Portfolio</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/Logos/stars_180.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/star_icon.png">
     <link rel="shortcut icon" href="./assets/star_icon.png" type="image/x-icon">
 
     <meta name="description" content="Soy un programador en crecimiento con experiencia en diferentes tecnologías. Especializado en el desarrollo de aplicaciones utilizando JavaScript (Node.js, Express, Svelte), además de PHP, Linux, Docker y otras herramientas esenciales de programación. Actualmente, trabajando como Software Engineer Jr. en Criteria Online. Mi objetivo es aportar soluciones innovadoras en cada proyecto en el que participo.">
     <meta name="keywords" content="web developer, programador, JavaScript, Node.js, Express, Svelte, Rust, PHP, Linux, Docker, portfolio.">
     <meta name="author" content="Erwin Leandro Marte">
-    <link rel="canonical" href="https://test-porfolio.netlify.app/">
+    <link rel="canonical" href="https://erwin-marte.netlify.app/">
     <meta name="robots" content="index, follow">
     <meta property="og:image" content="">
     <meta property="og:description" content="Erwin Leandro Marte - Portfolio Web Developer">
@@ -103,6 +103,7 @@
                     <img class="tech_images" src="./assets/Logos/Javascript.png" alt="Javascript icon" title="Javascript icon">
                     <img class="tech_images" src="./assets/Logos/svelte.png" alt="svelte icon" title="svelte icon">
                     <img class="tech_images" src="./assets/Logos/rust.png" alt="rust icon" title="rust icon">
+                    <img class="tech_images" style="margin-bottom: 15px;" src="./assets/Logos/go.svg" alt="go icon" title="go icon">
                     <img class="tech_images" src="./assets/Logos/Electron.png" alt="Electron icon" title="Electron icon">
                     <img class="tech_images" src="./assets/Logos/Express.png" alt="Express icon" title="Express icon">
                     <img class="tech_images" src="./assets/Logos/Php.png" alt="Php icon" title="Php icon">
@@ -112,50 +113,92 @@
                     <img class="tech_images" src="./assets/Logos/CSS.png" alt="Css icon" title="Css icon">
                     <img class="tech_images" src="./assets/Logos/MySQL.png" alt="MySQL icon" title="MySQL icon">
                     <img class="tech_images" src="./assets/Logos/MongoDB.png" alt="MongoDB icon" title="MongoDB icon">
+                    <img class="tech_images" src="./assets/Logos/Git.png" alt="Git icon" title="Git icon">
+                    <img class="tech_images" src="./assets/Logos/GithUb.png" alt="GithUb icon" title="GithUb icon">
                 </div>
             </div>
 
             <!-- Section four  -->
-            <!--
             <div class="content">
                 <div class="container_12">
-                  <div class="grid_4">
-                    <div class="box4 mb1 mb0 maxheight projects">
-                      <img class="img-projects" src="./assets/projects/estufas_rocket.jpg" alt="Estufas rocket" title="Estufas rocket">
-                      <div class="text2"><a href="https://estufasrocket.netlify.app/" target="_blank" class="translate" data-translation-key="estufas-rocket">Landing page Estufas rocket</a></div>
-                      <p class="translate" data-translation-key="estufas-rocket-description">Creación de una landing page para Estufas Rocket MDQ. Promociónando las construcciones ecológicas en barro. Tanto hornos, estufas, como casas con elementos naturales.</p>
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/estufas_rocket.jpg" alt="Estufas rocket" title="Estufas rocket">
+                            <div class="text2"><a href="https://estufasrocket.netlify.app/" target="_blank" class="translate" data-translation-key="estufas-rocket">Landing page Estufas rocket</a></div>
+                            <p class="translate" data-translation-key="estufas-rocket-description">Creación de una landing page para Estufas Rocket MDQ. Promociónando las construcciones ecológicas en barro. Tanto hornos, estufas, como casas con elementos naturales.</p>
+                        </div>
                     </div>
-                  </div>
-                  <div class="grid_4">
-                    <div class="box4 mb1 mb0 maxheight projects">
-                      <img class="img-projects" src="./assets/projects/tizziano_mannagment.PNG" alt="tizziano-barbershop mannagment" title="tizziano-barbershop mannagment">
-                      <div class="text2"><a href="./private.html" target="_blank" class="translate" data-translation-key="tizziano-barbershop2">Tizzina barbershop manejo de cuentas</a></div>
-                      <p class="translate" data-translation-key="tizziano-barbershop-description2">La aplicación de contabilidad y gestión de cuentas de Tizzianos Barbershop se utiliza para llevar un registro de los ingresos y gastos diarios, semanales y mensuales, además de administrar los precios en la plataforma web del negocio. Esto es fundamental para una gestión financiera precisa y eficiente.</p>
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/tizziano_barbershop.jpg" alt="barbershop" title="Barbershop">
+                            <div class="text2"><a href="https://tizziano-barbershop.netlify.app/" target="_blank" class="translate" data-translation-key="tizziano-barbershop">Landing page Tizziano Barbershop</a></div>
+                            <p class="translate" data-translation-key="tizziano-barbershop-description">Desarrollo de una landing page para Tizziano Barbershop la cual incluye autogestión de precios por parte del usuario.</p>
                     </div>
-                  </div>
-                  <div class="grid_4">
-                    <div class="box4 mb1 mb0 maxheight projects">
-                      <img class="img-projects" src="./assets/projects/tizziano_mannagment.PNG" alt="tizziano-barbershop mannagment" title="tizziano-barbershop mannagment">
-                      <div class="text2"><a href="./private.html" target="_blank" class="translate" data-translation-key="tizziano-barbershop2">Tizzina barbershop manejo de cuentas</a></div>
-                      <p class="translate" data-translation-key="tizziano-barbershop-description2">La aplicación de contabilidad y gestión de cuentas de Tizzianos Barbershop se utiliza para llevar un registro de los ingresos y gastos diarios, semanales y mensuales, además de administrar los precios en la plataforma web del negocio. Esto es fundamental para una gestión financiera precisa y eficiente.</p>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/caliz.jpg" alt="Caliz espacio integral" title="Caliz espacio integral">
+                            <div class="text2"><a href="https://caliz.netlify.app/" target="_blank" class="translate" data-translation-key="caliz-title">Landing page Caliz espacio integral</a></div>
+                            <p class="translate" data-translation-key="caliz-description">La landing page de Caliz Espacio Integral ofrece una experiencia integral de bienestar, con clases de yoga, masajes y Reiki para equilibrar cuerpo y mente. Con un diseño atractivo y una navegación sencilla, atrae a los visitantes hacia la relajación y la sanación.</p>
                     </div>
                 </div>
+                <div class="container_12">
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/project_life.PNG" alt="Proyecto life" title="Proyecto life">
+                            <div class="text2"><a href="https://github.com/CodeSystem2022/E.A.B.M.O.D.E.L_tercer-semestre/tree/main/ProyectoLife" target="_blank" class="translate" data-translation-key="proyecto-life">Proyecto Life</a></div>
+                            <p class="translate" data-translation-key="proyecto-life-description">Aplicación tiene como objetivo ofrecer un sistema de inicio de sesión de usuario, donde se almacenan los datos del usuario y se calcula el IMC (Índice de Masa Corporal), el peso ideal y las calorías quemadas diariamente según su nivel de actividad física. Además, proporciona gráficos informativos para el seguimiento del progreso del usuario.</p>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/cms_criteria.jpg" alt="criteria cms" title="criteria cms">
+                            <div class="text2"><a href="./private.html" target="_blank" class="translate" data-translation-key="criteria-cms">Sistema de Gestión de Contenidos (CMS) PIM</a></div>
+                            <p class="translate" data-translation-key="criteria-cms-description">Portal para la carga de productos de proveedores, vía API hacia un PIM (Gestor de Información de Productos). Incluye la gestión de usuarios, la creación de productos y la descarga de productos en formato PDF, entre otras funciones de administración requeridas por el cliente.</p>
+                    </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/tizziano_mannagment.PNG" alt="tizziano-barbershop mannagment" title="tizziano-barbershop mannagment">
+                            <div class="text2"><a href="./private.html" target="_blank" class="translate" data-translation-key="tizziano-barbershop2">Tizzina barbershop manejo de cuentas</a></div>
+                            <p class="translate" data-translation-key="tizziano-barbershop-description2">La aplicación de contabilidad y gestión de cuentas de Tizzianos Barbershop se utiliza para llevar un registro de los ingresos y gastos diarios, semanales y mensuales, además de administrar los precios en la plataforma web del negocio. Esto es fundamental para una gestión financiera precisa y eficiente.</p>
+                    </div>
                 </div>
-              </div>
+                <div class="container_12">
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/inkua.png" alt="Inkua" title="Inkua">
+                            <div class="text2"><a href="https://eco-encuentro.netlify.app/" target="_blank" class="translate" data-translation-key="inkua">Web app de reuniones (Ecologicas)</a></div>
+                            <p class="translate" data-translation-key="inkua-description">Aplicación Web para generar encuentro y conciencia en el cuidadodel medio ambiente, desarrollado para Inkua como parte de practicas profesional.</p>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/hackaton.png" alt="Hackaton UTN" title="Hackaton UTN">
+                            <div class="text2"><a href="https://utn-hackaton-eabmodelgroup.netlify.app/" target="_blank" class="translate" data-translation-key="Hackaton UTN">Web, información & Alertas en para la U.T.N.</a></div>
+                            <p class="translate" data-translation-key="Hackaton UTN-description">Sitio desarrollado como parte de proyecto en la Universidad Tecnologica Nacional (Regional San rafael). Completamente relacionado con la contaminacion, y que puede producir esto, teniendo incidencia en diferentes catastrofes.</p>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="box4 mb1 mb0 maxheight projects">
+                            <img class="img-projects" src="./assets/projects/scrap.png" alt="scrapping-img" title="scrapping-img">
+                            <div class="text2"><a href="" target="_blank" class="translate" data-translation-key="scrapping-img">Aplicación desktop, para la descarga de Imagenes</a></div>
+                            <p class="translate" data-translation-key="scrapping-img-description">Aplicacion Desktop multi-plataforma, para la descarga de imagenes a partir de la Url que ingrese el usuario.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="modal1" class="modal">
-        <span class="close" onclick="closeModal('modal1')">&times;</span>
-        <div class="modal-content">
-            <img src="./assets/projects/estufas_rocket.jpg" alt="Estufas rocket" title="Estufas rocket" class="project-img">
-        </div>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
     </div>
-    -->
-    
 
-    <p class="chat-bot-hello">Hello there!</p>
-    <img class="space_cat_chat" src="./assets/space_cat_DALLE.png" alt="Space cat chat" title="Space cat chat">
+    <p class="chat-bot-hello" id="hello_cat" >Hello there!</p>
+    <img class="space_cat_chat" id="cat_perse" src="./assets/space_cat_DALLE.png" alt="Space cat chat" title="Space cat chat">
     <div class="chatbot-container hidden" id="chatbot">
         <div class="chatbot-header" >
             <span class="icon">▼</span>Hey how can i help you?
@@ -170,7 +213,7 @@
 
     <audio id="hello_not" src="./assets/Music/notification.mp3"></audio>
 
-    <a href="#" id="scrollToPerfil"><button><img src="./assets/toHeader.png" alt="To header" title="To header"></button></a>
+    <a href="#menu" id="scrollToPerfil"><button><img src="./assets/toHeader.png" alt="To header" title="To header"></button></a>
 
     <script src="./functions/menu/header_menu.js"></script>
     <script src="./functions/index/body.js"></script>
@@ -180,5 +223,6 @@
     <script src="./functions/background/background_hole.js"></script>
     <script src="./functions/chatbot/chat.js"></script>
     <script src="./functions/chatbot/hiUser.js"></script>
+    <script src="./functions/modal/modal.js"></script>
 </body>
 </html>
